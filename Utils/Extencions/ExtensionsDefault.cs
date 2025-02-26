@@ -49,256 +49,230 @@ namespace EterPharmaPro.Utils.Extencions
 			return null;
 		}
 
-		public static int ReturnIndexUserCB(this ComboBox cb, object id)
-		{
-			try
-			{
-				BindingSource sb = (BindingSource)cb.DataSource;
-				Dictionary<string, string> tempD = (Dictionary<string, string>)sb.DataSource;
-				int index = 0;
-				foreach (KeyValuePair<string, string> item in tempD)
-				{
-					if (item.Key.Equals(id.ToString()))
-					{
-						return index;
-					}
-					index++;
-				}
-			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
-			return -1;
-		}
+		//public static int ReturnIndexUserCB(this ComboBox cb, object id)
+		//{
+		//	try
+		//	{
+		//		BindingSource sb = (BindingSource)cb.DataSource;
+		//		Dictionary<string, string> tempD = (Dictionary<string, string>)sb.DataSource;
+		//		int index = 0;
+		//		foreach (KeyValuePair<string, string> item in tempD)
+		//		{
+		//			if (item.Key.Equals(id.ToString()))
+		//			{
+		//				return index;
+		//			}
+		//			index++;
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		ex.ErrorGet();
+		//	}
+		//	return -1;
+		//}
 
-		public static int ReturnIndexCategoryCB(this ComboBox cb, long? id)
-		{
-			try
-			{
-				BindingSource sb = (BindingSource)cb.DataSource;
-				Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
-				int index = 0;
-				foreach (KeyValuePair<long?, string> item in tempD)
-				{
-					if (item.Key.Equals(id))
-					{
-						return index;
-					}
-					index++;
-				}
-			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
-			return -1;
-		}
+		//public static int ReturnIndexCategoryCB(this ComboBox cb, long? id)
+		//{
+		//	try
+		//	{
+		//		BindingSource sb = (BindingSource)cb.DataSource;
+		//		Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
+		//		int index = 0;
+		//		foreach (KeyValuePair<long?, string> item in tempD)
+		//		{
+		//			if (item.Key.Equals(id))
+		//			{
+		//				return index;
+		//			}
+		//			index++;
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		ex.ErrorGet();
+		//	}
+		//	return -1;
+		//}
 
-		public static int ReturnIndexFuncaoCB(this ComboBox cb, long? id)
-		{
-			try
-			{
-				BindingSource sb = (BindingSource)cb.DataSource;
-				Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
-				int index = 0;
-				foreach (KeyValuePair<long?, string> item in tempD)
-				{
-					if (item.Key.Equals(id))
-					{
-						return index;
-					}
-					index++;
-				}
-			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
-			return -1;
-		}
+		//public static int ReturnIndexFuncaoCB(this ComboBox cb, long? id)
+		//{
+		//	try
+		//	{
+		//		BindingSource sb = (BindingSource)cb.DataSource;
+		//		Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
+		//		int index = 0;
+		//		foreach (KeyValuePair<long?, string> item in tempD)
+		//		{
+		//			if (item.Key.Equals(id))
+		//			{
+		//				return index;
+		//			}
+		//			index++;
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		ex.ErrorGet();
+		//	}
+		//	return -1;
+		//}
 
-		public static async Task<ComboBox> CBListUserAsync(this ComboBox cb, bool isStatusAll = false)
-		{
-			List<UserDbModel> list = null;// await eterDb.ActionDb.GETFIELDS<UserDbModel>(new QueryWhereModel());
+		//public static async Task<ComboBox> CBListUserAsync(this ComboBox cb, bool isStatusAll = false)
+		//{
+		//	List<UserDbModel> list = null;// await eterDb.ActionDb.GETFIELDS<UserDbModel>(new QueryWhereModel());
 
-			Dictionary<string, string> users = new Dictionary<string, string>();
+		//	Dictionary<string, string> users = new Dictionary<string, string>();
 
-			foreach (var user in list)
-			{
-				string key = user.ID.ToString();
+		//	foreach (var user in list)
+		//	{
+		//		string key = user.ID.ToString();
 
-				string value = $"{user.ID_LOJA.ToString().PadLeft(4, '0')} - {user.NOME}";
-				if (user.STATUS && !isStatusAll)
-				{
-					if (!users.ContainsKey(key))
-					{
-						users.Add(key, value);
-					}
-				}
-				else if (isStatusAll)
-				{
-					if (!users.ContainsKey(key))
-					{
-						users.Add(key, value);
-					}
-				}
+		//		string value = $"{user.ID_LOJA.ToString().PadLeft(4, '0')} - {user.NOME}";
+		//		if (user.STATUS && !isStatusAll)
+		//		{
+		//			if (!users.ContainsKey(key))
+		//			{
+		//				users.Add(key, value);
+		//			}
+		//		}
+		//		else if (isStatusAll)
+		//		{
+		//			if (!users.ContainsKey(key))
+		//			{
+		//				users.Add(key, value);
+		//			}
+		//		}
 
-			}
+		//	}
 
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = users
-			};
+		//	BindingSource bindingSource = new BindingSource
+		//	{
+		//		DataSource = users
+		//	};
 
-			cb.DataSource = bindingSource;
-			cb.DisplayMember = "Value";
-			cb.ValueMember = "Key";
-			cb.SelectedIndex = 0;
-			return cb;
-		}
-		public static ComboBox CBListUser(this ComboBox cb, List<UserDbModel> list, bool isStatusAll = false)
-		{
-			Dictionary<string, string> users = new Dictionary<string, string>();
+		//	cb.DataSource = bindingSource;
+		//	cb.DisplayMember = "Value";
+		//	cb.ValueMember = "Key";
+		//	cb.SelectedIndex = 0;
+		//	return cb;
+		//}
+		//public static ComboBox CBListUser(this ComboBox cb, List<UserDbModel> list, bool isStatusAll = false)
+		//{
+		//	Dictionary<string, string> users = new Dictionary<string, string>();
 
-			foreach (var user in list)
-			{
-				string key = user.ID.ToString();
+		//	foreach (var user in list)
+		//	{
+		//		string key = user.ID.ToString();
 
-				string value = $"{user.ID_LOJA.ToString().PadLeft(4, '0')} - {user.NOME}";
-				if (user.STATUS && !isStatusAll)
-				{
-					if (!users.ContainsKey(key))
-					{
-						users.Add(key, value);
-					}
-				}
-				else if (isStatusAll)
-				{
-					if (!users.ContainsKey(key))
-					{
-						users.Add(key, value);
-					}
-				}
+		//		string value = $"{user.ID_LOJA.ToString().PadLeft(4, '0')} - {user.NOME}";
+		//		if (user.STATUS && !isStatusAll)
+		//		{
+		//			if (!users.ContainsKey(key))
+		//			{
+		//				users.Add(key, value);
+		//			}
+		//		}
+		//		else if (isStatusAll)
+		//		{
+		//			if (!users.ContainsKey(key))
+		//			{
+		//				users.Add(key, value);
+		//			}
+		//		}
 
-			}
+		//	}
 
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = users
-			};
+		//	BindingSource bindingSource = new BindingSource
+		//	{
+		//		DataSource = users
+		//	};
 
-			cb.DataSource = bindingSource;
-			cb.DisplayMember = "Value";
-			cb.ValueMember = "Key";
-			cb.SelectedIndex = 0;
-			return cb;
-		}
+		//	cb.DataSource = bindingSource;
+		//	cb.DisplayMember = "Value";
+		//	cb.ValueMember = "Key";
+		//	cb.SelectedIndex = 0;
+		//	return cb;
+		//}
 
-		public static ComboBox CBListCategory(this ComboBox cb, List<CategoryDbModal> categoriaDbModal)
-		{
-			Dictionary<long?, string> cat = new Dictionary<long?, string>();
+		//public static ComboBox CBListCategory(this ComboBox cb, List<CategoryDbModal> categoriaDbModal)
+		//{
+		//	Dictionary<long?, string> cat = new Dictionary<long?, string>();
 
-			cat.Add(1, "SEM CATEGORIA");
-
-
-			for (int i = 0; i < categoriaDbModal.Count; i++)
-			{
-				long? key = categoriaDbModal[i].ID;
-				if (!cat.ContainsKey(key))
-				{
-					cat.Add(key, categoriaDbModal[i].NAME);
-				}
-			}
-
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = cat
-			};
-
-			cb.DataSource = bindingSource;
-			cb.DisplayMember = "Value";
-			cb.ValueMember = "Key";
-			cb.SelectedIndex = 0;
-			return cb;
-		}
-
-		public static ComboBox CBListUserFuncao(this ComboBox cb, List<PositionDbModel> funcaoDbModels)
-		{
-			Dictionary<long?, string> func = new Dictionary<long?, string>();
-
-			func.Add(1, "PADRÃO");
+		//	cat.Add(1, "SEM CATEGORIA");
 
 
-			for (int i = 0; i < funcaoDbModels.Count; i++)
-			{
-				long? key = funcaoDbModels[i].ID;
-				if (!func.ContainsKey(key))
-				{
-					func.Add(key, funcaoDbModels[i].NOME);
-				}
-			}
+		//	for (int i = 0; i < categoriaDbModal.Count; i++)
+		//	{
+		//		long? key = categoriaDbModal[i].ID;
+		//		if (!cat.ContainsKey(key))
+		//		{
+		//			cat.Add(key, categoriaDbModal[i].NAME);
+		//		}
+		//	}
 
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = func
-			};
+		//	BindingSource bindingSource = new BindingSource
+		//	{
+		//		DataSource = cat
+		//	};
 
-			cb.DataSource = bindingSource;
-			cb.DisplayMember = "Value";
-			cb.ValueMember = "Key";
-			cb.SelectedIndex = 0;
-			return cb;
-		}
+		//	cb.DataSource = bindingSource;
+		//	cb.DisplayMember = "Value";
+		//	cb.ValueMember = "Key";
+		//	cb.SelectedIndex = 0;
+		//	return cb;
+		//}
+
+		//public static ComboBox CBListUserFuncao(this ComboBox cb, List<PositionDbModel> funcaoDbModels)
+		//{
+		//	Dictionary<long?, string> func = new Dictionary<long?, string>();
+
+		//	func.Add(1, "PADRÃO");
 
 
+		//	for (int i = 0; i < funcaoDbModels.Count; i++)
+		//	{
+		//		long? key = funcaoDbModels[i].ID;
+		//		if (!func.ContainsKey(key))
+		//		{
+		//			func.Add(key, funcaoDbModels[i].NOME);
+		//		}
+		//	}
 
-		public static ComboBox CBListProps<T>(this ComboBox cb, List<T> type)
-		{
-			Dictionary<long?, string> func = new Dictionary<long?, string>();
+		//	BindingSource bindingSource = new BindingSource
+		//	{
+		//		DataSource = func
+		//	};
 
-			foreach (var item in type)
-			{
-				long? key = Convert.ToUInt32(typeof(T).GetProperty("ID").GetValue(item));
-				if (!func.ContainsKey(key))
-				{
-					func.Add(key, typeof(T).GetProperty("NAME").GetValue(item).ToString());
-				}
-			}
-			BindingSource bindingSource = new BindingSource
-			{
-				DataSource = func
-			};
+		//	cb.DataSource = bindingSource;
+		//	cb.DisplayMember = "Value";
+		//	cb.ValueMember = "Key";
+		//	cb.SelectedIndex = 0;
+		//	return cb;
+		//}
 
-			cb.DataSource = bindingSource;
-			cb.DisplayMember = "Value";
-			cb.ValueMember = "Key";
-			cb.SelectedIndex = 0;
-			return cb;
-		}
-
-		public static int ReturnIndexPropsCB(this ComboBox cb, long? id)
-		{
-			try
-			{
-				BindingSource sb = (BindingSource)cb.DataSource;
-				Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
-				int index = 0;
-				foreach (KeyValuePair<long?, string> item in tempD)
-				{
-					if (item.Key.Equals(id))
-					{
-						return index;
-					}
-					index++;
-				}
-			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
-			return -1;
-		}
+		//public static int ReturnIndexPropsCB(this ComboBox cb, long? id)
+		//{
+		//	try
+		//	{
+		//		BindingSource sb = (BindingSource)cb.DataSource;
+		//		Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
+		//		int index = 0;
+		//		foreach (KeyValuePair<long?, string> item in tempD)
+		//		{
+		//			if (item.Key.Equals(id))
+		//			{
+		//				return index;
+		//			}
+		//			index++;
+		//		}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		ex.ErrorGet();
+		//	}
+		//	return -1;
+		//}
 
 		public static async Task<AddressHttpModel> BuscaCepAsync(string cep)
 		{
@@ -329,10 +303,10 @@ namespace EterPharmaPro.Utils.Extencions
 		}
 
 
-		public static long ToDatetimeUnix(this DateTime? dateTime) => ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
-		public static long ToDatetimeUnix(this DateTime dateTime) => ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
-		public static long ToDatetimeUnix(this string dateTime) => ((DateTimeOffset)Convert.ToDateTime(dateTime)).ToUnixTimeSeconds();
-		public static DateTime? ToUnixDatetime(this long? DATE) => DATE.HasValue ? DateTimeOffset.FromUnixTimeSeconds(DATE.Value).DateTime : (DateTime?)null;
+		//public static long ToDatetimeUnix(this DateTime? dateTime) => ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
+		//public static long ToDatetimeUnix(this DateTime dateTime) => ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
+		//public static long ToDatetimeUnix(this string dateTime) => ((DateTimeOffset)Convert.ToDateTime(dateTime)).ToUnixTimeSeconds();
+		//public static DateTime? ToUnixDatetime(this long? DATE) => DATE.HasValue ? DateTimeOffset.FromUnixTimeSeconds(DATE.Value).DateTime : (DateTime?)null;
 		public static string GetEnderecoArray(this List<AddressClienteDbModel> enderecoClienteModels, out int indexSelect)
 		{
 			try
@@ -461,6 +435,8 @@ namespace EterPharmaPro.Utils.Extencions
 			validationToolTip.Show("Este campo é obrigatório", control, 0, -40, 3000);
 		}
 
+
+		/// NOVO
 		public static string PadRight(string text, int totalWidth)
 		{
 			if (text.Length >= totalWidth)
@@ -470,6 +446,54 @@ namespace EterPharmaPro.Utils.Extencions
 			return text.PadRight(totalWidth);
 		}
 
+		public static ComboBox CBListGeneric(this ComboBox cb, List<ViewCbModel> type)
+		{
+			if (type == null || !type.Any()) return cb;
+
+			Dictionary<long?, string> func = new Dictionary<long?, string>();
+
+			foreach (var item in type)
+			{
+				long? key = item.ID;
+				if (!func.ContainsKey(key))
+				{
+					func.Add(key, item.NAME ?? string.Empty);
+				}
+			}
+			BindingSource bindingSource = new BindingSource
+			{
+				DataSource = func
+			};
+
+			cb.DataSource = new BindingSource(func, null);
+			cb.DisplayMember = "Value";
+			cb.ValueMember = "Key";
+			cb.SelectedIndex = 0;
+			return cb;
+		}
+
+		public static int ReturnIndexCbGeneric(this ComboBox cb, object id)
+		{
+			try
+			{
+				BindingSource sb = (BindingSource)cb.DataSource;
+				Dictionary<long?, string> tempD = (Dictionary<long?, string>)sb.DataSource;
+				int index = 0;
+				foreach (KeyValuePair<long?, string> item in tempD)
+				{
+					if (item.Key.Equals((long)id))
+					{
+						return index;
+					}
+					index++;
+				}
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
+			return -1;
+		}
 
 	}
 

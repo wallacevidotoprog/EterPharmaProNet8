@@ -6,9 +6,9 @@
 
 		public long? user_id { get; set; }
 
-		public int user_idLoja { get; set; }
+		public long? user_idLoja { get; set; }
 
-		public DateTime dataCreate { get; set; }
+		public DateTime? dataCreate { get; set; }
 
 		public long? vality_id { get; set; }
 
@@ -23,7 +23,7 @@
 		public string descricao { get; set; }
 
 		public int quantidade { get; set; }
-		public long? dateVality { get; set; }
+		public DateTime? dateVality { get; set; }
 		public int category_id { get; set; }
 
 		//public ProdutoSetValityModel ConvertDbModel(ProdutoValidadeDbModal modal, long? id = null)

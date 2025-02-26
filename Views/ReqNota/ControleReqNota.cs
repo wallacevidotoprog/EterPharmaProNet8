@@ -2,7 +2,6 @@
 using EterPharmaPro.Models;
 using EterPharmaPro.Properties;
 using EterPharmaPro.Utils.Events;
-using EterPharmaPro.Utils.Extencions;
 using System.Data;
 
 namespace EterPharmaPro.Views.ReqNota
@@ -205,8 +204,8 @@ namespace EterPharmaPro.Views.ReqNota
 				dataGridView_reqs.Rows.Add(new object[] { requisicaoNotas.REQS[i].id, requisicaoNotas.REQS[i].name });
 			}
 
-			comboBox_user_red.SelectedIndex = comboBox_user_red.ReturnIndexUserCB(requisicaoNotas.REG_USERID);
-			comboBox_vend.SelectedIndex = comboBox_vend.ReturnIndexUserCB(requisicaoNotas.USERID);
+			//comboBox_user_red.SelectedIndex = comboBox_user_red.ReturnIndexUserCB(requisicaoNotas.REG_USERID);
+			//comboBox_vend.SelectedIndex = comboBox_vend.ReturnIndexUserCB(requisicaoNotas.USERID);
 			dateTimePicker_data.Value = (DateTime)requisicaoNotas.DATA_VENDA;
 			OpenSaveUp();
 			isEdit = true;

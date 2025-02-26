@@ -1,30 +1,26 @@
-﻿using EterLibrary.Application.Services;
-using EterLibrary.Domain.Interfaces;
-using EterLibrary.Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace EterPharmaPro.Infrastructure
+﻿namespace EterPharmaPro.Infrastructure
 {
 	public static class DependencyInjection
 	{
-		private static ServiceProvider _serviceProvider;
+		//private static ServiceProvider _serviceProvider;
 
 		public static void ConfigureServices()
 		{
-			var services = new ServiceCollection();
+			//var services = new ServiceCollection();
 
 
-			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			//services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			//services.AddScoped(typeof(IUserRepository<>), typeof(IUserRepository<>));
 
-			services.AddScoped<UserService>();
+			//services.AddScoped<UserRepository>();
 
 
-			_serviceProvider = services.BuildServiceProvider();
+			//_serviceProvider = services.BuildServiceProvider();
 		}
 
-		public static T GetService<T>()
-		{
-			return _serviceProvider.GetRequiredService<T>();
-		}
+		//public static T GetService<T>()
+		//{
+		//	//return _serviceProvider.GetRequiredService<T>();
+		//}
 	}
 }

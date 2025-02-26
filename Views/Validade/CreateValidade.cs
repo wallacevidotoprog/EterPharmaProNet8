@@ -1,4 +1,7 @@
-﻿using EterPharmaPro.Enums;
+﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Controllers.Validade;
+using EterPharmaPro.Core;
+using EterPharmaPro.Enums;
 using EterPharmaPro.Models;
 using EterPharmaPro.Properties;
 using EterPharmaPro.Utils.Extencions;
@@ -7,8 +10,10 @@ namespace EterPharmaPro.Views.Validade
 {
 	public partial class CreateValidade : Form
 	{
+		private List<UserDbModel> userModels;
+		private List<ViewCbModel> userViewModels;
 
-		//private readonly ValidadeController validadeController;
+		private readonly ValidadeController validadeController;
 
 		private SetValityModel setValityModel;
 
@@ -21,17 +26,17 @@ namespace EterPharmaPro.Views.Validade
 		{
 			InitializeComponent();
 
-			//validadeController = new ValidadeController(eterDb, _databaseProdutosDb);
+			validadeController = new ValidadeController();
 		}
 
-		private void CreateValidade_Load(object sender, EventArgs e)
+		private async void CreateValidade_LoadAsync(object sender, EventArgs e)
 		{
+			userModels = (await EterCache.Instance.EterDb.UserService.GetAllIncudeAsync()).ToList().Where(x => x.STATUS == true).ToList();
+			userViewModels = userModels.Select(x => new ViewCbModel { ID = x.ID, NAME = $"{x.ID_LOJA.ToString().PadRight(4, '0')} - {x.NOME}" }).ToList();
+
 			contextMenuStrip_produtos.Enabled = false;
 			dateTimePicker_dataBusca.Value = DateTime.Now.DateTimeDay();
-			comboBox_user.Invoke((Action)async delegate
-			{
-				//await comboBox_user.CBListUserAsync(eterDb);
-			});
+			comboBox_user.CBListGeneric(userViewModels);
 		}
 
 		private void toolStripButton_exit_Click(object sender, EventArgs e)
@@ -48,7 +53,7 @@ namespace EterPharmaPro.Views.Validade
 			comboBox_user.Enabled = state;
 
 			dateTimePicker_dataD.Enabled = state;
-			dateTimePicker_dataD.Value = DateTime.Today;
+			dateTimePicker_dataD.Value = DateTime.Now;
 
 
 			groupBox_ne.Size = state ? new Size(566, 88) : new Size(566, 315);
@@ -83,10 +88,14 @@ namespace EterPharmaPro.Views.Validade
 			}
 			toolStripButton_clear_Click(null, null);
 			NewDocValidade(true);
-			//comboBox_user.SelectedIndex = comboBox_user.ReturnIndexUserCB(eterDb.EterDbController.UserModelAcess.ID);
+			comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(EterCache.Instance.UserDbModel.ID);
 
 		}
 
+		private void RefreshCbC()
+		{
+			comboBox_categoria.CBListGeneric(EterCache.Instance.UserDbModel.Category.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME }).ToList());
+		}
 		private async void ePictureBox_create_Click(object sender, EventArgs e)
 		{
 			if (isActionValidade)
@@ -104,25 +113,26 @@ namespace EterPharmaPro.Views.Validade
 			setValityModel.user_id = Convert.ToUInt32(comboBox_user.SelectedValue);
 			setValityModel.dataCreate = Convert.ToDateTime(dateTimePicker_dataD.Value.ToShortDateString());
 
-			//setValityModel.vality_id = await validadeController.CreateNewDocVality(setValityModel);
+			setValityModel.vality_id = await validadeController.CreateNewDocVality(setValityModel);
 
-			//comboBox_categoria.CBListCategory(await validadeController.GetCategoryUser(setValityModel.user_id));
+			RefreshCbC();
 
 			RefreshCategoryAsync(null, ListViewActionsEnum.INIT);
 			ePictureBox_seach_Click(null, null);
 		}
+
 
 		private async void ePictureBox_addCat_ClickAsync(object sender, EventArgs e)
 		{
 			string result = InputBox.Show("Por favor, insira a categoria:", "Categoria");
 			if (!string.IsNullOrEmpty(result))
 			{
-				//long? resulAddCat = await validadeController.CreateCategory(setValityModel.user_id, result);
-				//if (resulAddCat > -1)
-				//{
-				//	comboBox_categoria.CBListCategory(await validadeController.GetCategoryUser(setValityModel.user_id));
-				//	RefreshCategoryAsync((resulAddCat, result), ListViewActionsEnum.ADD);
-				//}
+				long? resulAddCat = await validadeController.CreateCategory(setValityModel.user_id, result);
+				if (resulAddCat > 0)
+				{
+					RefreshCbC();
+					//RefreshCategoryAsync((resulAddCat, result), ListViewActionsEnum.ADD);
+				}
 			}
 
 		}
@@ -137,15 +147,20 @@ namespace EterPharmaPro.Views.Validade
 			string tempName = comboBox_categoria.Text;
 			if (MessageBox.Show("Deseja excluir esse categoria ?\n" + comboBox_categoria.Text + "\nAo deletar essa categoria você pode alterar outros formulários que já foram lançados.", "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
 			{
-				//if (await validadeController.DeleteCategory(tempRemove))
-				//{
-				//	comboBox_categoria.CBListCategory(await validadeController.GetCategoryUser(setValityModel.user_id));
-				//	RefreshCategoryAsync((tempRemove, tempName), ListViewActionsEnum.REMOVE);
-				//}
+				if (await validadeController.DeleteCategory(tempRemove))
+				{
+					RefreshCbC();
+					//RefreshCategoryAsync((tempRemove, tempName), ListViewActionsEnum.REMOVE);
+				}
 			}
 
 		}
 
+		/// <summary>
+		/// Parei aqui para baixo
+		/// </summary>
+		/// <param name="cat"></param>
+		/// <param name="actionsEnum"></param>
 		private async void RefreshCategoryAsync((long? id, string namec)? cat, ListViewActionsEnum actionsEnum = ListViewActionsEnum.NONE)
 		{
 			//var tempCat = await validadeController.GetCategoryUser(setValityModel.user_id);

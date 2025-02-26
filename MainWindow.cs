@@ -15,55 +15,23 @@ namespace EterPharmaPro
 			InitializeComponent();
 
 			EterCache.Instance.DatabaseProdutosDb = new DatabaseProdutosDb(toolStripProgressBar_status);
-
-
-
 		}
 		private void MainWindow_Load(object sender, EventArgs e)
 		{
 			SetLogin();
 		}
 
-
-
-
 		private void SetLogin()
 		{
 			AcesUser acesUser = new AcesUser();
 			acesUser.ShowDialog();
 
-			if (acesUser.exit)
-			{
-				this.Close();
-			}
-			else
-			{
-				if (!acesUser.loginSucced)
-				{
-					SetLogin();
-				}
-				else
-				{
+			if (acesUser.exit) this.Close();
 
+			
+			if (!acesUser.loginSucced) SetLogin();
 
-					//EterCache.Instance.UserModelAcess = .Controller.UserModelAcess;
-					//this.Text = $"ETER PHARMA PRO [ {.Controller.UserModelAcess.ID_LOJA.ToString().PadLeft(4, '0')} - {.Controller.UserModelAcess.NOME} - {.Controller.UserModelAcess.FUNCAO_NAME} ]";
-
-					//Task.Run(() => { new Notifications().Show("VB", $"Bem Vindo {.Controller.UserModelAcess.FUNCAO_NAME} {.Controller.UserModelAcess.NOME} "); });
-
-					Task.Run(() =>
-					{
-						//SendAlertBox.SendT($"Bem Vindo {.Controller.UserModelAcess.FUNCAO_NAME} {.Controller.UserModelAcess.NOME}", TypeAlertEnum.Info);
-					});
-
-
-
-					//toolStripButton_conf.Visible = (.Controller.UserModelAcess.FUNCAO_NAME == "DEV") ? true : false;
-
-				}
-			}
-
-
+			this.Text = $"ETER PHARMA PRO [ {EterCache.Instance.UserDbModel.ID_LOJA.ToString().PadRight(4,'0')} - {EterCache.Instance.UserDbModel.NOME} - {EterCache.Instance.UserDbModel?.Position?.NOME} ]";	
 		}
 		private void OpenForm(Form form)
 		{

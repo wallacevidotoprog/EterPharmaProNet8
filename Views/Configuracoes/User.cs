@@ -81,7 +81,7 @@ namespace EterPharmaPro.Views.Configuracoes
 
 		private async void User_Load(object sender, EventArgs e)
 		{
-			comboBox_funcao.CBListUserFuncao(await configsPageController.GetAllFuncao());
+			//comboBox_funcao.CBListUserFuncao(await configsPageController.GetAllFuncao());
 			dataGridView_user.DataSource = await configsPageController.GetAllUser();
 		}
 

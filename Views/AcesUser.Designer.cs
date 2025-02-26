@@ -29,132 +29,142 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AcesUser));
-			this.comboBox_user = new System.Windows.Forms.ComboBox();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.ePictureBox_close = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.ePictureBox_acess = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.textBox_pass = new System.Windows.Forms.TextBox();
-			this.groupBox_pass = new System.Windows.Forms.GroupBox();
-			this.groupBox1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_close)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_acess)).BeginInit();
-			this.groupBox_pass.SuspendLayout();
-			this.SuspendLayout();
+			comboBox_user = new ComboBox();
+			groupBox1 = new GroupBox();
+			panel1 = new Panel();
+			ePictureBox_close = new EterPharmaPro.Utils.eControl.ePictureBox();
+			ePictureBox_acess = new EterPharmaPro.Utils.eControl.ePictureBox();
+			textBox_pass = new TextBox();
+			groupBox_pass = new GroupBox();
+			groupBox1.SuspendLayout();
+			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_close).BeginInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_acess).BeginInit();
+			groupBox_pass.SuspendLayout();
+			SuspendLayout();
 			// 
 			// comboBox_user
 			// 
-			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBox_user.Dock = System.Windows.Forms.DockStyle.Top;
-			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_user.FormattingEnabled = true;
-			this.comboBox_user.Location = new System.Drawing.Point(3, 16);
-			this.comboBox_user.Name = "comboBox_user";
-			this.comboBox_user.Size = new System.Drawing.Size(328, 34);
-			this.comboBox_user.TabIndex = 1;
-			this.comboBox_user.Text = " ";
-			this.comboBox_user.SelectedIndexChanged += new System.EventHandler(this.comboBox_user_SelectedIndexChanged);
-			this.comboBox_user.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_user_KeyDown);
+			comboBox_user.AutoCompleteMode = AutoCompleteMode.Append;
+			comboBox_user.AutoCompleteSource = AutoCompleteSource.ListItems;
+			comboBox_user.Dock = DockStyle.Top;
+			comboBox_user.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			comboBox_user.FormattingEnabled = true;
+			comboBox_user.Location = new Point(4, 19);
+			comboBox_user.Margin = new Padding(4, 3, 4, 3);
+			comboBox_user.Name = "comboBox_user";
+			comboBox_user.Size = new Size(382, 34);
+			comboBox_user.TabIndex = 1;
+			comboBox_user.Text = " ";
+			comboBox_user.SelectedIndexChanged += comboBox_user_SelectedIndexChanged;
+			comboBox_user.KeyDown += comboBox_user_KeyDown;
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-			this.groupBox1.Controls.Add(this.panel1);
-			this.groupBox1.Controls.Add(this.groupBox_pass);
-			this.groupBox1.Controls.Add(this.comboBox_user);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox1.Location = new System.Drawing.Point(0, 0);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(334, 185);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "USUÁRIO";
+			groupBox1.BackColor = Color.Transparent;
+			groupBox1.Controls.Add(panel1);
+			groupBox1.Controls.Add(groupBox_pass);
+			groupBox1.Controls.Add(comboBox_user);
+			groupBox1.Dock = DockStyle.Fill;
+			groupBox1.Location = new Point(0, 0);
+			groupBox1.Margin = new Padding(4, 3, 4, 3);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new Padding(4, 3, 4, 3);
+			groupBox1.Size = new Size(390, 213);
+			groupBox1.TabIndex = 0;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "USUÁRIO";
 			// 
 			// panel1
 			// 
-			this.panel1.Controls.Add(this.ePictureBox_close);
-			this.panel1.Controls.Add(this.ePictureBox_acess);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(3, 107);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(328, 71);
-			this.panel1.TabIndex = 3;
+			panel1.Controls.Add(ePictureBox_close);
+			panel1.Controls.Add(ePictureBox_acess);
+			panel1.Dock = DockStyle.Top;
+			panel1.Location = new Point(4, 119);
+			panel1.Margin = new Padding(4, 3, 4, 3);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(382, 82);
+			panel1.TabIndex = 3;
 			// 
 			// ePictureBox_close
 			// 
-			this.ePictureBox_close.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ePictureBox_close.Image = global::EterPharmaPro.Properties.Resources.cancelar;
-			this.ePictureBox_close.Location = new System.Drawing.Point(255, 3);
-			this.ePictureBox_close.Name = "ePictureBox_close";
-			this.ePictureBox_close.Size = new System.Drawing.Size(64, 64);
-			this.ePictureBox_close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.ePictureBox_close.TabIndex = 4;
-			this.ePictureBox_close.TabStop = false;
-			this.ePictureBox_close.ToolTipText = "Clique aqui para acessar com sua ID de loja";
-			this.ePictureBox_close.Click += new System.EventHandler(this.ePictureBox_close_Click);
+			ePictureBox_close.Cursor = Cursors.Hand;
+			ePictureBox_close.Image = Properties.Resources.cancelar;
+			ePictureBox_close.Location = new Point(298, 3);
+			ePictureBox_close.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_close.Name = "ePictureBox_close";
+			ePictureBox_close.Size = new Size(64, 64);
+			ePictureBox_close.SizeMode = PictureBoxSizeMode.AutoSize;
+			ePictureBox_close.TabIndex = 4;
+			ePictureBox_close.TabStop = false;
+			ePictureBox_close.ToolTipText = "Clique aqui para acessar com sua ID de loja";
+			ePictureBox_close.Click += ePictureBox_close_Click;
 			// 
 			// ePictureBox_acess
 			// 
-			this.ePictureBox_acess.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ePictureBox_acess.Image = global::EterPharmaPro.Properties.Resources.acesso;
-			this.ePictureBox_acess.Location = new System.Drawing.Point(9, 3);
-			this.ePictureBox_acess.Name = "ePictureBox_acess";
-			this.ePictureBox_acess.Size = new System.Drawing.Size(64, 64);
-			this.ePictureBox_acess.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.ePictureBox_acess.TabIndex = 4;
-			this.ePictureBox_acess.TabStop = false;
-			this.ePictureBox_acess.ToolTipText = "Clique aqui para acessar com sua ID de loja";
-			this.ePictureBox_acess.Click += new System.EventHandler(this.ePictureBox_acess_Click);
+			ePictureBox_acess.Cursor = Cursors.Hand;
+			ePictureBox_acess.Image = Properties.Resources.acesso;
+			ePictureBox_acess.Location = new Point(10, 3);
+			ePictureBox_acess.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_acess.Name = "ePictureBox_acess";
+			ePictureBox_acess.Size = new Size(75, 74);
+			ePictureBox_acess.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_acess.TabIndex = 4;
+			ePictureBox_acess.TabStop = false;
+			ePictureBox_acess.ToolTipText = "Clique aqui para acessar com sua ID de loja";
+			ePictureBox_acess.Click += ePictureBox_acess_Click;
 			// 
 			// textBox_pass
 			// 
-			this.textBox_pass.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_pass.Dock = System.Windows.Forms.DockStyle.Top;
-			this.textBox_pass.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_pass.Location = new System.Drawing.Point(3, 16);
-			this.textBox_pass.Name = "textBox_pass";
-			this.textBox_pass.PasswordChar = '*';
-			this.textBox_pass.Size = new System.Drawing.Size(322, 33);
-			this.textBox_pass.TabIndex = 1;
-			this.textBox_pass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_pass_KeyDown);
+			textBox_pass.CharacterCasing = CharacterCasing.Upper;
+			textBox_pass.Dock = DockStyle.Top;
+			textBox_pass.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			textBox_pass.Location = new Point(4, 19);
+			textBox_pass.Margin = new Padding(4, 3, 4, 3);
+			textBox_pass.Name = "textBox_pass";
+			textBox_pass.PasswordChar = '*';
+			textBox_pass.Size = new Size(374, 33);
+			textBox_pass.TabIndex = 1;
+			textBox_pass.KeyDown += textBox_pass_KeyDown;
 			// 
 			// groupBox_pass
 			// 
-			this.groupBox_pass.Controls.Add(this.textBox_pass);
-			this.groupBox_pass.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox_pass.Location = new System.Drawing.Point(3, 50);
-			this.groupBox_pass.Name = "groupBox_pass";
-			this.groupBox_pass.Size = new System.Drawing.Size(328, 57);
-			this.groupBox_pass.TabIndex = 2;
-			this.groupBox_pass.TabStop = false;
-			this.groupBox_pass.Text = "SENHA";
-			this.groupBox_pass.Visible = false;
+			groupBox_pass.Controls.Add(textBox_pass);
+			groupBox_pass.Dock = DockStyle.Top;
+			groupBox_pass.Location = new Point(4, 53);
+			groupBox_pass.Margin = new Padding(4, 3, 4, 3);
+			groupBox_pass.Name = "groupBox_pass";
+			groupBox_pass.Padding = new Padding(4, 3, 4, 3);
+			groupBox_pass.Size = new Size(382, 66);
+			groupBox_pass.TabIndex = 2;
+			groupBox_pass.TabStop = false;
+			groupBox_pass.Text = "SENHA";
+			groupBox_pass.Visible = false;
 			// 
 			// AcesUser
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(334, 185);
-			this.Controls.Add(this.groupBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "AcesUser";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Acesso de Usuário";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AcesUser_FormClosing);
-			this.Load += new System.EventHandler(this.AcesUser_LoadAsync);
-			this.groupBox1.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_close)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_acess)).EndInit();
-			this.groupBox_pass.ResumeLayout(false);
-			this.groupBox_pass.PerformLayout();
-			this.ResumeLayout(false);
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			ClientSize = new Size(390, 213);
+			Controls.Add(groupBox1);
+			FormBorderStyle = FormBorderStyle.FixedSingle;
+			Icon = (Icon)resources.GetObject("$this.Icon");
+			Margin = new Padding(4, 3, 4, 3);
+			MaximizeBox = false;
+			MinimizeBox = false;
+			Name = "AcesUser";
+			StartPosition = FormStartPosition.CenterScreen;
+			Text = "Acesso de Usuário";
+			FormClosing += AcesUser_FormClosing;
+			Load += AcesUser_LoadAsync;
+			groupBox1.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_close).EndInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_acess).EndInit();
+			groupBox_pass.ResumeLayout(false);
+			groupBox_pass.PerformLayout();
+			ResumeLayout(false);
 
 		}
 
@@ -165,7 +175,7 @@
 		private System.Windows.Forms.Panel panel1;
 		private Utils.eControl.ePictureBox ePictureBox_acess;
 		private Utils.eControl.ePictureBox ePictureBox_close;
-		private System.Windows.Forms.GroupBox groupBox_pass;
-		private System.Windows.Forms.TextBox textBox_pass;
+		private GroupBox groupBox_pass;
+		private TextBox textBox_pass;
 	}
 }
