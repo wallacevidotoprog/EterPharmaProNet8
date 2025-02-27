@@ -24,44 +24,48 @@ namespace EterPharmaPro.Infrastructure.Services.XLSX
 					title.Style.Font.SetBold().Font.FontSize = 16.0;
 					title.Style.Fill.SetBackgroundColor(XLColor.FromArgb(189, 189, 183));
 					int line = 2;
-					//if (inCategory)
-					//{
-					//	int i;
-					//	for (i = 0; i < validade.categoriasDbModals.Count; i++)
-					//	{
-					//		List<ProductValidadeDbModal> tp = validade.produtoValidadeDbModals.Where(x => x.CATEGORIA_ID == validade.categoriasDbModals[i].ID).ToList();
+
+					List<ProductValidadeDbModal> tempProduct = validade.ValityDbModal.ProductValidades.ToList();
+
+					if (inCategory)
+					{
+
+						int i;
+						for (i = 0; i < validade?.Category?.Count; i++)
+						{
+							List<ProductValidadeDbModal> tp = tempProduct.Where(x => x.ID_CATEGORIA == validade?.Category?[i].ID).ToList();
 
 
 
-					//		if (tp.Count > 0)
-					//		{
-					//			worksheet.Cell($"A{line}").Value = validade.categoriasDbModals[i].NAME;
-					//			IXLRange range = worksheet.Range($"A{line}:D{line}");
-					//			range.Merge().Style.Font.SetBold().Font.FontSize = 16.0;
-					//			range.Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-					//			line++;
-					//			for (int x = 0; x < tp.Count; x++)
-					//			{
-					//				worksheet.Cell($"A{line}").Value = tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'); ;
-					//				worksheet.Cell($"B{line}").Value = tp[x].PRODUTO_DESCRICAO;
-					//				worksheet.Cell($"C{line}").Value = tp[x].QUANTIDADE;
-					//				worksheet.Cell($"D{line}").Value = tp[x].DATA_VALIDADE?.ToShortDateString();
-					//				line++;
-					//			}
-					//		}
-					//	}
-					//}
-					//else
-					//{
-					//	for (int i = 0; i < validade.produtoValidadeDbModals.Count; i++)
-					//	{
-					//		worksheet.Cell($"A{line}").Value = validade.produtoValidadeDbModals[i].PRODUTO_CODIGO.ToString().PadLeft(6, '0'); ;
-					//		worksheet.Cell($"B{line}").Value = validade.produtoValidadeDbModals[i].PRODUTO_DESCRICAO;
-					//		worksheet.Cell($"C{line}").Value = validade.produtoValidadeDbModals[i].QUANTIDADE;
-					//		worksheet.Cell($"D{line}").Value = validade.produtoValidadeDbModals[i].DATA_VALIDADE.ToUnixDatetime()?.ToShortDateString();
-					//		line++;
-					//	}
-					//}
+							if (tp.Count > 0)
+							{
+								worksheet.Cell($"A{line}").Value = validade?.Category?[i].NAME;
+								IXLRange range = worksheet.Range($"A{line}:D{line}");
+								range.Merge().Style.Font.SetBold().Font.FontSize = 16.0;
+								range.Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+								line++;
+								for (int x = 0; x < tp.Count; x++)
+								{
+									worksheet.Cell($"A{line}").Value = tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'); ;
+									worksheet.Cell($"B{line}").Value = tp[x].PRODUTO_DESCRICAO;
+									worksheet.Cell($"C{line}").Value = tp[x].QUANTIDADE;
+									worksheet.Cell($"D{line}").Value = tp[x].DATA_VALIDADE?.ToShortDateString();
+									line++;
+								}
+							}
+						}
+					}
+					else
+					{
+						for (int i = 0; i < tempProduct.Count; i++)
+						{
+							worksheet.Cell($"A{line}").Value = tempProduct[i].PRODUTO_CODIGO.ToString().PadLeft(6, '0'); ;
+							worksheet.Cell($"B{line}").Value = tempProduct[i].PRODUTO_DESCRICAO;
+							worksheet.Cell($"C{line}").Value = tempProduct[i].QUANTIDADE;
+							worksheet.Cell($"D{line}").Value = tempProduct[i].DATA_VALIDADE?.ToShortDateString();
+							line++;
+						}
+					}
 					line--;
 					worksheet.Range($"A1:D{line}").Style.Border.TopBorder = XLBorderStyleValues.Thin;
 					worksheet.Range($"A1:D{line}").Style.Border.OutsideBorder = XLBorderStyleValues.Thin;

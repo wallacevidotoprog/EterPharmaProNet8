@@ -235,11 +235,11 @@
 			// 
 			groupBox5.Controls.Add(listView1);
 			groupBox5.Dock = DockStyle.Fill;
-			groupBox5.Location = new Point(4, 382);
+			groupBox5.Location = new Point(4, 370);
 			groupBox5.Margin = new Padding(4, 3, 4, 3);
 			groupBox5.Name = "groupBox5";
 			groupBox5.Padding = new Padding(4, 3, 4, 3);
-			groupBox5.Size = new Size(1239, 157);
+			groupBox5.Size = new Size(1239, 169);
 			groupBox5.TabIndex = 1;
 			groupBox5.TabStop = false;
 			// 
@@ -257,7 +257,7 @@
 			listView1.Margin = new Padding(4, 3, 4, 3);
 			listView1.MultiSelect = false;
 			listView1.Name = "listView1";
-			listView1.Size = new Size(1231, 135);
+			listView1.Size = new Size(1231, 147);
 			listView1.TabIndex = 12;
 			listView1.UseCompatibleStateImageBehavior = false;
 			listView1.View = View.Details;
@@ -330,7 +330,7 @@
 			groupBox_ne.Margin = new Padding(4, 3, 4, 3);
 			groupBox_ne.Name = "groupBox_ne";
 			groupBox_ne.Padding = new Padding(4, 3, 4, 3);
-			groupBox_ne.Size = new Size(1239, 363);
+			groupBox_ne.Size = new Size(1239, 351);
 			groupBox_ne.TabIndex = 0;
 			groupBox_ne.TabStop = false;
 			groupBox_ne.Visible = false;
@@ -364,7 +364,7 @@
 			groupBox_insert.Controls.Add(textBox_nproduto);
 			groupBox_insert.Controls.Add(textBox_codigo);
 			groupBox_insert.Dock = DockStyle.Bottom;
-			groupBox_insert.Location = new Point(4, 103);
+			groupBox_insert.Location = new Point(4, 91);
 			groupBox_insert.Margin = new Padding(4, 3, 4, 3);
 			groupBox_insert.Name = "groupBox_insert";
 			groupBox_insert.Padding = new Padding(4, 3, 4, 3);

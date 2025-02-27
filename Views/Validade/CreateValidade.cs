@@ -56,14 +56,14 @@ namespace EterPharmaPro.Views.Validade
 			dateTimePicker_dataD.Value = DateTime.Now;
 
 
-			groupBox_ne.Size = state ? new Size(566, 88) : new Size(566, 315);
+			groupBox_ne.Size = state ? new Size(566, 88) : new Size(566, 350);
 			comboBox_user.Enabled = state;
 			dateTimePicker_dataD.Enabled = state;
 		}
 
 		private void VisibleBodyDoc(bool state)
 		{
-			groupBox_ne.Size = state ? new Size(566, 315) : new Size(566, 88);
+			groupBox_ne.Size = state ? new Size(566, 350) : new Size(566, 88);
 			groupBox_insert.Visible = state;
 			comboBox_user.Enabled = !state;
 			dateTimePicker_dataD.Enabled = !state;
@@ -131,7 +131,7 @@ namespace EterPharmaPro.Views.Validade
 				if (resulAddCat > 0)
 				{
 					RefreshCbC();
-					//RefreshCategoryAsync((resulAddCat, result), ListViewActionsEnum.ADD);
+					RefreshCategoryAsync((resulAddCat, result), ListViewActionsEnum.ADD);
 				}
 			}
 
@@ -150,51 +150,46 @@ namespace EterPharmaPro.Views.Validade
 				if (await validadeController.DeleteCategory(tempRemove))
 				{
 					RefreshCbC();
-					//RefreshCategoryAsync((tempRemove, tempName), ListViewActionsEnum.REMOVE);
 				}
 			}
 
 		}
 
-		/// <summary>
-		/// Parei aqui para baixo
-		/// </summary>
-		/// <param name="cat"></param>
-		/// <param name="actionsEnum"></param>
+
 		private async void RefreshCategoryAsync((long? id, string namec)? cat, ListViewActionsEnum actionsEnum = ListViewActionsEnum.NONE)
 		{
-			//var tempCat = await validadeController.GetCategoryUser(setValityModel.user_id);
-			//switch (actionsEnum)
-			//{
-			//	case ListViewActionsEnum.INIT:
-			//		listView1.Groups.Add(new ListViewGroup(1.ToString(), "SEM CATEGORIA"));
-			//		for (int i = 0; i < tempCat.Count; i++)
-			//		{
-			//			var groupAd = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == tempCat[i].NAME).FirstOrDefault();
-			//			if (groupAd is null)
-			//			{
-			//				listView1.Groups.Add(new ListViewGroup(tempCat[i].ID.ToString(), tempCat[i].NAME));
-			//			}
-			//		}
-			//		break;
-			//	case ListViewActionsEnum.ADD:
-			//		listView1.Groups.Add(new ListViewGroup(cat.Value.id.ToString(), cat.Value.namec));
-			//		break;
-			//	case ListViewActionsEnum.UPDATE:
-			//		break;
-			//	case ListViewActionsEnum.REMOVE:
-			//		ListViewGroup novoGrupo = listView1.Groups.Cast<ListViewGroup>()
-			//		 .FirstOrDefault(g => g.Name == 1.ToString());
+			var tempCat = await validadeController.GetCategoryUser();
+			switch (actionsEnum)
+			{
+				case ListViewActionsEnum.INIT:
+					listView1.Groups.Add(new ListViewGroup(1.ToString(), "SEM CATEGORIA"));
+					for (int i = 0; i < tempCat.Count; i++)
+					{
+						var groupAd = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == tempCat[i].NAME).FirstOrDefault();
+						if (groupAd is null)
+						{
+							listView1.Groups.Add(new ListViewGroup(tempCat[i].ID.ToString(), tempCat[i].NAME));
+						}
+					}
+					break;
+				case ListViewActionsEnum.ADD:
+					listView1.Groups.Add(new ListViewGroup(cat.Value.id.ToString(), cat.Value.namec));
+					break;
+				case ListViewActionsEnum.UPDATE:
+					break;
+				case ListViewActionsEnum.REMOVE:
+					ListViewGroup novoGrupo = listView1.Groups.Cast<ListViewGroup>()
+					 .FirstOrDefault(g => g.Name == 1.ToString());
 
-			//		foreach (ListViewItem item in listView1.Items)
-			//		{
-			//			if (item.Group.Header == cat.Value.namec.ToString())
-			//			{
-			//				item.Group = novoGrupo;
-			//			}
-			//		}
-			//		break;
-			//}
+					foreach (ListViewItem item in listView1.Items)
+					{
+						if (item.Group.Header == cat.Value.namec.ToString())
+						{
+							item.Group = novoGrupo;
+						}
+					}
+					break;
+			}
 
 
 
@@ -207,8 +202,8 @@ namespace EterPharmaPro.Views.Validade
 				bool inLoadProd = false;
 				if (textBox_codigo.Text.Trim().Replace(" ", null) == "")
 				{
-					//List<ProdutosModel> tempQuery = validadeController.GetAllProdutos(out inLoadProd);
-					//textBox_codigo.Text = tempQuery == null ? string.Empty : InputListProduto.Show(tempQuery, "Busca de Produtos").ToString().PadLeft(6, '0'); ;
+					List<ProdutosModel> tempQuery = validadeController.GetAllProdutos(out inLoadProd);
+					textBox_codigo.Text = tempQuery == null ? string.Empty : InputListProduto.Show(tempQuery, "Busca de Produtos").ToString().PadLeft(6, '0'); ;
 				}
 				if (!inLoadProd)
 				{
@@ -222,8 +217,8 @@ namespace EterPharmaPro.Views.Validade
 			bool tempBool = false;
 			try
 			{
-				ProdutosModel tempProdutos = null;// validadeController.GetProduto(textBox_codigo.Text, out bool inLoad);
-				var inLoad = false;
+				ProdutosModel tempProdutos = validadeController.GetProduto(textBox_codigo.Text, out bool inLoad);
+
 				if (inLoad)
 				{
 					return false;
@@ -259,41 +254,41 @@ namespace EterPharmaPro.Views.Validade
 
 				setValityModel.produto = setValityModel.produto ?? new ProdutoSetValityModel();
 
-				//ProdutosModel tempProdutos = validadeController.GetProduto(textBox_codigo.Text, out bool inLoad);
-				//if (inLoad)
-				//{
-				//	return;
-				//}
+				ProdutosModel tempProdutos = validadeController.GetProduto(textBox_codigo.Text, out bool inLoad);
+				if (inLoad)
+				{
+					return;
+				}
 
-				//setValityModel.produto.codigo = tempProdutos is null ? Convert.ToInt32(textBox_codigo.Text) : Convert.ToInt32(tempProdutos.COD_PRODUTO);
-				//setValityModel.produto.descricao = tempProdutos is null ? textBox_nproduto.Text : tempProdutos.DESCRICAO_PRODUTO;
-				//setValityModel.produto.quantidade = (int)numericUpDown_qtd.Value;
-				//setValityModel.produto.dateVality = dateTimePicker_data.Value.ToDatetimeUnix();
-				//setValityModel.produto.category_id = Convert.ToInt32(comboBox_categoria.SelectedValue);
+				setValityModel.produto.codigo = tempProdutos is null ? Convert.ToInt32(textBox_codigo.Text) : Convert.ToInt32(tempProdutos.COD_PRODUTO);
+				setValityModel.produto.descricao = tempProdutos is null ? textBox_nproduto.Text : tempProdutos.DESCRICAO_PRODUTO;
+				setValityModel.produto.quantidade = (int)numericUpDown_qtd.Value;
+				setValityModel.produto.dateVality = dateTimePicker_data.Value;
+				setValityModel.produto.category_id = Convert.ToInt32(comboBox_categoria.SelectedValue);
 
 				bool isSetClear = false;
 
 				if (!isEditProduto)
 				{
-					//(bool result, long? id) = await validadeController.CreateProdutoVality(setValityModel);
-					//if (result)
-					//{
-					//	setValityModel.produto.id = id;
+					(bool result, long? id) = await validadeController.CreateProdutoVality(setValityModel);
+					if (result)
+					{
+						setValityModel.produto.id = id;
 
-					//	ListViewAction(setValityModel.produto, ListViewActionsEnum.ADD);
-					//}
+						ListViewAction(setValityModel.produto, ListViewActionsEnum.ADD);
+					}
 
-					//isSetClear = result;
+					isSetClear = result;
 				}
 				else if (isEditProduto)
 				{
 
-					//isSetClear = await validadeController.UpdateProdutoVality(setValityModel);
-					//isEditProduto = false;
-					//if (isSetClear)
-					//{
-					//	ListViewAction((indexEditLv, setValityModel.produto), ListViewActionsEnum.UPDATE);
-					//}
+					isSetClear = await validadeController.UpdateProdutoVality(setValityModel);
+					isEditProduto = false;
+					if (isSetClear)
+					{
+						ListViewAction((indexEditLv, setValityModel.produto), ListViewActionsEnum.UPDATE);
+					}
 				}
 
 
@@ -335,27 +330,28 @@ namespace EterPharmaPro.Views.Validade
 		{
 			try
 			{
-				//if (listView1.SelectedItems.Count > 0)
-				//{
-				//	ProdutoValidadeDbModal tempProduto = await validadeController.GetProdutoDb(listView1.SelectedItems[0].SubItems[0].Text);
-				//	if (tempProduto != null)
-				//	{
-				//		isEditProduto = true;
-				//		setValityModel.produto = new ProdutoSetValityModel();
-				//		indexEditLv = Convert.ToInt32(listView1.SelectedItems[0].Index);
-				//		setValityModel.produto.id = tempProduto.ID;
-				//		textBox_codigo.Text = (setValityModel.produto.codigo = tempProduto.PRODUTO_CODIGO).ToString().PadLeft(6, '0');
-				//		textBox_nproduto.Text = setValityModel.produto.descricao = tempProduto.PRODUTO_DESCRICAO;
-				//		numericUpDown_qtd.Value = setValityModel.produto.quantidade = Convert.ToInt32(tempProduto.QUANTIDADE);
-				//		setValityModel.produto.dateVality = tempProduto.DATA_VALIDADE;
-				//		dateTimePicker_data.Value = Convert.ToDateTime(tempProduto.DATA_VALIDADE.ToUnixDatetime());
-				//		setValityModel.produto.category_id = Convert.ToInt32(tempProduto.CATEGORIA_ID);
-				//		comboBox_categoria.SelectedIndex = comboBox_categoria.ReturnIndexCategoryCB(setValityModel.produto.category_id);
+				if (listView1.SelectedItems.Count > 0)
+				{
+					ProductValidadeDbModal tempProduto = await validadeController.GetProdutoDb(listView1.SelectedItems[0].SubItems[0].Text);
+					if (tempProduto != null)
+					{
+						isEditProduto = true;
+						setValityModel.produto = new ProdutoSetValityModel();
+						indexEditLv = Convert.ToInt32(listView1.SelectedItems[0].Index);
+						setValityModel.produto.id = tempProduto.ID;
+						textBox_codigo.Text = (setValityModel.produto.codigo = tempProduto.PRODUTO_CODIGO).ToString().PadLeft(6, '0');
+						textBox_nproduto.Text = setValityModel.produto.descricao = tempProduto.PRODUTO_DESCRICAO;
+						setValityModel.produto.quantidade = tempProduto.QUANTIDADE;
+						numericUpDown_qtd.Value = (decimal)tempProduto.QUANTIDADE;
+						setValityModel.produto.dateVality = tempProduto.DATA_VALIDADE;
+						dateTimePicker_data.Value = (DateTime)tempProduto.DATA_VALIDADE;
+						setValityModel.produto.category_id = Convert.ToInt32(tempProduto.ID_CATEGORIA);
+						comboBox_categoria.SelectedIndex = comboBox_categoria.ReturnIndexCbGeneric(setValityModel.produto.category_id);
 
-				//		ePictureBox_sava_up.Image = Resources.arquivo_update;
-				//	}
+						ePictureBox_sava_up.Image = Resources.arquivo_update;
+					}
 
-				//}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -374,10 +370,10 @@ namespace EterPharmaPro.Views.Validade
 				int temp = int.Parse(listView1.SelectedItems[0]?.SubItems[0].Text);
 				if (MessageBox.Show("Deseja excluir esse item ?\n" + listView1.SelectedItems[0]?.SubItems[3].Text, "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK && temp >= 0)
 				{
-					//if (await validadeController.DeleteProduto(temp))
-					//{
-					//	ListViewAction(listView1.SelectedItems[0], ListViewActionsEnum.REMOVE);
-					//}
+					if (await validadeController.DeleteProduto(temp))
+					{
+						ListViewAction(listView1.SelectedItems[0], ListViewActionsEnum.REMOVE);
+					}
 
 				}
 			}
@@ -392,66 +388,70 @@ namespace EterPharmaPro.Views.Validade
 			ListViewItem item = null;
 			try
 			{
-				//switch (actionsEnum)
-				//{
-				//	case ListViewActionsEnum.ADD:
-				//		ProdutoSetValityModel tempObjAd = (ProdutoSetValityModel)action;
+				switch (actionsEnum)
+				{
+					case ListViewActionsEnum.ADD:
+						ProdutoSetValityModel tempObjAd = (ProdutoSetValityModel)action;
 
-				//		string getcat = await validadeController.GetCategory(tempObjAd.category_id);
-				//		var groupAd = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == getcat).FirstOrDefault();//se não tiver add
+						string getcat = validadeController.GetCategory(tempObjAd.category_id);
 
-				//		groupAd = groupAd ?? listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == "SEM CATEGORIA").FirstOrDefault();
+						var groupAd = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == getcat).FirstOrDefault();//se não tiver add
 
-
-
-				//		item = new ListViewItem(tempObjAd.id.ToString());
-				//		item.SubItems.Add(tempObjAd.codigo.ToString().PadLeft(6, '0'));
-				//		item.SubItems.Add(tempObjAd.descricao);
-				//		item.SubItems.Add(tempObjAd.quantidade.ToString());
-				//		item.SubItems.Add(tempObjAd.dateVality.ToUnixDatetime()?.ToString("dd/MM/yyyy"));
-				//		item.Group = groupAd;
-				//		listView1.Items.Add(item);
-				//		listView1.Refresh();
-
-				//		break;
-				//	case ListViewActionsEnum.UPDATE:
-				//		(int indexUp, ProdutoSetValityModel newUp) tempObjUp = ((int indexUp, ProdutoSetValityModel newUp))action;
-				//		listView1.Items[tempObjUp.indexUp].Text = tempObjUp.newUp.id.ToString();
-				//		listView1.Items[tempObjUp.indexUp].SubItems[1].Text = tempObjUp.newUp.codigo.ToString().PadLeft(6, '0');
-				//		listView1.Items[tempObjUp.indexUp].SubItems[2].Text = tempObjUp.newUp.descricao.ToString();
-				//		listView1.Items[tempObjUp.indexUp].SubItems[3].Text = tempObjUp.newUp.quantidade.ToString();
-				//		listView1.Items[tempObjUp.indexUp].SubItems[4].Text = tempObjUp.newUp.dateVality.ToUnixDatetime()?.ToShortDateString();
-				//		listView1.Items[tempObjUp.indexUp].Group = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Name == tempObjUp.newUp.category_id.ToString()).FirstOrDefault();
-				//		break;
-				//	case ListViewActionsEnum.REMOVE:
-				//		listView1.Items.Remove((ListViewItem)action);//listView1.Items[0]
-				//		break;
-				//	case ListViewActionsEnum.UPGRADE:
-				//		List<ProdutoValidadeDbModal> tempObjUg = (List<ProdutoValidadeDbModal>)action;
-
-				//		List<(int cat_id, string cat_name)> tempCategoriasSelect = await validadeController.GetCategoryList(tempObjUg.GroupBy(p => p.CATEGORIA_ID).Select(g => g.Key).ToList());
+						groupAd = groupAd ?? listView1.Groups.Cast<ListViewGroup>().Where(x => x.Header == "SEM CATEGORIA").FirstOrDefault();
 
 
-				//		for (int i = 0; i < tempCategoriasSelect.Count; i++)
-				//		{
-				//			ListViewGroup groupUp = new ListViewGroup(tempCategoriasSelect[i].cat_name, HorizontalAlignment.Left);
-				//			listView1.Groups.Add(groupUp);
 
-				//			List<ProdutoValidadeDbModal> tp = tempObjUg.Where(x => x.CATEGORIA_ID == tempCategoriasSelect[i].cat_id).ToList();
+						item = new ListViewItem(tempObjAd.id.ToString());
+						item.SubItems.Add(tempObjAd.codigo.ToString().PadLeft(6, '0'));
+						item.SubItems.Add(tempObjAd.descricao);
+						item.SubItems.Add(tempObjAd.quantidade.ToString());
+						item.SubItems.Add(tempObjAd.dateVality?.ToShortDateString());
+						item.Group = groupAd;
+						listView1.Items.Add(item);
+						listView1.Refresh();
 
-				//			for (int x = 0; x < tp.Count; x++)
-				//			{
-				//				item = new ListViewItem(tp[x].ID.ToString());
-				//				item.SubItems.Add(tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
-				//				item.SubItems.Add(tp[x].PRODUTO_DESCRICAO);
-				//				item.SubItems.Add(tp[x].QUANTIDADE.ToString());
-				//				item.SubItems.Add(tp[x].DATA_VALIDADE.ToUnixDatetime()?.ToString("dd/MM/yyyy"));
-				//				item.Group = groupUp;
-				//				listView1.Items.Add(item);
-				//			}
-				//		}
-				//		break;
-				//}
+						break;
+					case ListViewActionsEnum.UPDATE:
+						(int indexUp, ProdutoSetValityModel newUp) tempObjUp = ((int indexUp, ProdutoSetValityModel newUp))action;
+						listView1.Items[tempObjUp.indexUp].Text = tempObjUp.newUp.id.ToString();
+						listView1.Items[tempObjUp.indexUp].SubItems[1].Text = tempObjUp.newUp.codigo.ToString().PadLeft(6, '0');
+						listView1.Items[tempObjUp.indexUp].SubItems[2].Text = tempObjUp.newUp.descricao.ToString();
+						listView1.Items[tempObjUp.indexUp].SubItems[3].Text = tempObjUp.newUp.quantidade.ToString();
+						listView1.Items[tempObjUp.indexUp].SubItems[4].Text = tempObjUp.newUp.dateVality?.ToShortDateString();
+						listView1.Items[tempObjUp.indexUp].Group = listView1.Groups.Cast<ListViewGroup>().Where(x => x.Name == tempObjUp.newUp.category_id.ToString()).FirstOrDefault();
+						break;
+					case ListViewActionsEnum.REMOVE:
+						listView1.Items.Remove((ListViewItem)action);//listView1.Items[0]
+						break;
+					/// <summary>
+					/// ----------------------------------------------------- REVISAR
+					/// </summary>
+					case ListViewActionsEnum.UPGRADE:
+						//List<ProductValidadeDbModal> tempObjUg = (List<ProductValidadeDbModal>)action;
+
+						//List<(int cat_id, string cat_name)> tempCategoriasSelect = await validadeController.GetCategoryList(tempObjUg.GroupBy(p => p.ID_CATEGORIA).Select(g => g.Key).ToList());
+
+
+						//for (int i = 0; i < tempCategoriasSelect.Count; i++)
+						//{
+						//	ListViewGroup groupUp = new ListViewGroup(tempCategoriasSelect[i].cat_name, HorizontalAlignment.Left);
+						//	listView1.Groups.Add(groupUp);
+
+						//	List<ProductValidadeDbModal> tp = tempObjUg.Where(x => x.CATEGORIA_ID == tempCategoriasSelect[i].cat_id).ToList();
+
+						//	for (int x = 0; x < tp.Count; x++)
+						//	{
+						//		item = new ListViewItem(tp[x].ID.ToString());
+						//		item.SubItems.Add(tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
+						//		item.SubItems.Add(tp[x].PRODUTO_DESCRICAO);
+						//		item.SubItems.Add(tp[x].QUANTIDADE.ToString());
+						//		item.SubItems.Add(tp[x].DATA_VALIDADE.ToUnixDatetime()?.ToString("dd/MM/yyyy"));
+						//		item.Group = groupUp;
+						//		listView1.Items.Add(item);
+						//	}
+						//}
+						break;
+				}
 			}
 			catch (Exception ex)
 			{
@@ -462,20 +462,20 @@ namespace EterPharmaPro.Views.Validade
 
 		private async void ePictureBox_seach_Click(object sender, EventArgs e)
 		{
-			//var t = await validadeController.GetValityDate(dateTimePicker_dataBusca.Value);
-			//if (t != null)
-			//{
-			//	dataGridView_validadeFile.Rows.Clear();
-			//	for (int i = 0; i < t.Count; i++)
-			//	{
-			//		dataGridView_validadeFile.Rows.Add(new string[]
-			//		{
-			//			t[i].id.ToString(),
-			//			t[i].nameUser,
-			//			t[i].date
-			//		});
-			//	}
-			//}
+			var t = await validadeController.GetValityDate(dateTimePicker_dataBusca.Value);
+			if (t != null)
+			{
+				dataGridView_validadeFile.Rows.Clear();
+				for (int i = 0; i < t.Count; i++)
+				{
+					dataGridView_validadeFile.Rows.Add(new string[]
+					{
+						t[i].id.ToString(),
+						t[i].nameUser,
+						t[i].date
+					});
+				}
+			}
 		}
 
 		private async void dataGridView_validadeFile_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -505,44 +505,46 @@ namespace EterPharmaPro.Views.Validade
 				}
 			}
 
-			//try
-			//{
-			//	var tempEditVality = await validadeController.GetEditVality(idVality);
+			try
+			{
+				var tempEditVality = await validadeController.GetEditVality(idVality);
 
-			//	if (tempEditVality.v is null)
-			//	{
-			//		return;
-			//	}
+				if (tempEditVality.v is null)
+				{
+					return;
+				}
 
-			//	isActionValidade = true;
-			//	VisibleHeaderDoc(true);
-			//	VisibleBodyDoc(true);
+				isActionValidade = true;
+				VisibleHeaderDoc(true);
+				VisibleBodyDoc(true);
 
-			//	setValityModel = new SetValityModel
-			//	{
-			//		isEdit = true,
-			//		dataCreate = tempEditVality.v.DATE.ToUnixDatetime() ?? DateTime.Now,
-			//		vality_id = tempEditVality.v.ID,
-			//		user_id = tempEditVality.v.USER_ID
-			//	};
+				setValityModel = new SetValityModel
+				{
+					isEdit = true,
+					dataCreate = tempEditVality.v.DATE ?? DateTime.Now,
+					vality_id = tempEditVality.v.ID,
+					user_id = tempEditVality.v.ID_USER
+				};
 
-			//	comboBox_user.SelectedIndex = comboBox_user.ReturnIndexUserCB(setValityModel.user_id.ToString());
-			//	dateTimePicker_dataD.Value = setValityModel.dataCreate;
+				comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(setValityModel.user_id.ToString());
+				dateTimePicker_dataD.Value = setValityModel.dataCreate ?? DateTime.Now;
 
-			//	if (tempEditVality.p is null)
-			//	{
-			//		return;
-			//	}
+				if (tempEditVality.p is null)
+				{
+					return;
+				}
 
-			//	RefreshCategoryAsync(null, ListViewActionsEnum.INIT);
-			//	ListViewAction(tempEditVality.p, ListViewActionsEnum.UPGRADE);
-			//	comboBox_categoria.CBListCategory(await validadeController.GetCategoryUser(setValityModel.user_id));
+				RefreshCategoryAsync(null, ListViewActionsEnum.INIT);
+				ListViewAction(tempEditVality.p, ListViewActionsEnum.UPGRADE);
+				//List<CategoryDbModal> tempC = await validadeController.GetCategoryUser();
+				//comboBox_categoria.CBListGeneric(tempC.Select(x => new ViewCbModel { ID= x.ID,NAME=x?.NAME }).ToList());
+				comboBox_categoria.CBListGeneric(validadeController.GetCategoryUser().Result.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME ?? string.Empty }).ToList());
 
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-			//}
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
 
 		}
 
@@ -562,23 +564,26 @@ namespace EterPharmaPro.Views.Validade
 					return;
 				}
 				SaveFileDialog op = new SaveFileDialog();
-				//try
-				//{
-				//	op.FileName = string.Format("{0} ({1}-{2}).xlsx", (await eterDb.ActionDb.GETFIELDS<UserModel>(new QueryWhereModel().SetWhere("ID", setValityModel.user_id))).FirstOrDefault().NOME, setValityModel.dataCreate.ToString("MMMM"), setValityModel.dataCreate.Year);
-				//	op.Filter = "Excel Files|*.xlsx";
-				//	op.Title = "Save an Excel File";
-				//	if (op.ShowDialog() == DialogResult.OK)
-				//	{
-				//		await validadeController.ExportValityXLSX(setValityModel.vality_id, op.FileName);
-				//	}
-				//}
-				//finally
-				//{
-				//	if (op != null)
-				//	{
-				//		((IDisposable)op).Dispose();
-				//	}
-				//}
+				try
+				{
+					op.FileName = string.Format("{0} ({1}-{2}).xlsx",
+						(await EterCache.Instance.EterDb.UserService.GetByAsync(u => u.ID == setValityModel.user_id)).NOME,
+						setValityModel.dataCreate?.ToString("MMMM"),
+						setValityModel.dataCreate?.Year);
+					op.Filter = "Excel Files|*.xlsx";
+					op.Title = "Save an Excel File";
+					if (op.ShowDialog() == DialogResult.OK)
+					{
+						await validadeController.ExportValityXLSX(setValityModel.vality_id, op.FileName);
+					}
+				}
+				finally
+				{
+					if (op != null)
+					{
+						((IDisposable)op).Dispose();
+					}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -594,14 +599,14 @@ namespace EterPharmaPro.Views.Validade
 				return;
 			}
 
-			//var tempImport = await validadeController.ImportProdutos(dateTimeQuery, setValityModel.user_id, setValityModel.vality_id);
-			//if (tempImport is null)
-			//	return;
+			var tempImport = await validadeController.ImportProdutos(dateTimeQuery, setValityModel.user_id, setValityModel.vality_id);
+			if (tempImport is null)
+				return;
 
-			//for (int i = 0; i < tempImport.Count; i++)
-			//{
-			//	ListViewAction(tempImport[i], ListViewActionsEnum.ADD);
-			//}
+			for (int i = 0; i < tempImport.Count; i++)
+			{
+				ListViewAction(tempImport[i], ListViewActionsEnum.ADD);
+			}
 
 		}
 	}

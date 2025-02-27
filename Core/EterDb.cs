@@ -7,13 +7,19 @@ namespace EterPharmaPro.Core
 	public class EterDb
 	{
 		public IUserRepository<UserDbModel> UserService { get; private set; }
+
 		public IGenericRepository<CategoryDbModal> CategoryService { get; private set; }
+
+		public IGenericRepository<ProductValidadeDbModal> ProductValidadeService { get; private set; }
+
 		public IGenericRepository<ValityDbModal> ValityService { get; private set; }
+
 		public EterDb()
 		{
 			UserService = new UserService();
 			CategoryService = new CategoryService();
 			ValityService = new ValityService();
+			ProductValidadeService = new ProductValidadeService();
 		}
 	}
 }

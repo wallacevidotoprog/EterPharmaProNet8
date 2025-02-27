@@ -18,13 +18,15 @@
 	public class ProdutoSetValityModel
 	{
 		public long? id { get; set; }
-		public int codigo { get; set; }
+		public int? codigo { get; set; }
 
-		public string descricao { get; set; }
+		public string? descricao { get; set; }
 
-		public int quantidade { get; set; }
+		public int? quantidade { get; set; }
+
 		public DateTime? dateVality { get; set; }
-		public int category_id { get; set; }
+
+		public long? category_id { get; set; }
 
 		//public ProdutoSetValityModel ConvertDbModel(ProdutoValidadeDbModal modal, long? id = null)
 		//{
