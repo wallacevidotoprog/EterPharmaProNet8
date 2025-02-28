@@ -1,5 +1,4 @@
 using EterPharmaPro.Enums;
-using EterPharmaPro.Infrastructure.Services;
 using EterPharmaPro.Models.Print;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EterPharmaPro.Infrastructure.Services.Prints
+namespace EterPharmaPro.Infrastructure.Services
 {
 	public class RawPrinterHelper
 	{

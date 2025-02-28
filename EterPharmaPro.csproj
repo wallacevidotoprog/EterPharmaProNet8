@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Services\Prints\Prints - Cópia\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="itext7" Version="9.1.0" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>

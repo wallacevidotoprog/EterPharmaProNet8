@@ -92,9 +92,16 @@ namespace EterPharmaPro.Views.Validade
 
 		}
 
-		private void RefreshCbC()
+		private async Task RefreshCbC()
 		{
-			comboBox_categoria.CBListGeneric(EterCache.Instance.UserDbModel.Category.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME }).ToList());
+
+			List<ViewCbModel> temoC = (await EterCache.Instance.EterDb.UserService.GetByAsync(f => f.ID == setValityModel.user_id, i => i.Category))
+				.Category.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME ?? string.Empty })
+				.ToList();
+
+			temoC.Add(new ViewCbModel { ID = 1, NAME = "SEM CATEGORIA" });
+
+			comboBox_categoria.CBListGeneric(temoC);
 		}
 		private async void ePictureBox_create_Click(object sender, EventArgs e)
 		{
@@ -111,7 +118,7 @@ namespace EterPharmaPro.Views.Validade
 
 			setValityModel = new SetValityModel();
 			setValityModel.user_id = Convert.ToUInt32(comboBox_user.SelectedValue);
-			setValityModel.dataCreate = Convert.ToDateTime(dateTimePicker_dataD.Value.ToShortDateString());
+			setValityModel.dataCreate = Convert.ToDateTime(dateTimePicker_dataD.Value);
 
 			setValityModel.vality_id = await validadeController.CreateNewDocVality(setValityModel);
 
@@ -423,33 +430,31 @@ namespace EterPharmaPro.Views.Validade
 					case ListViewActionsEnum.REMOVE:
 						listView1.Items.Remove((ListViewItem)action);//listView1.Items[0]
 						break;
-					/// <summary>
-					/// ----------------------------------------------------- REVISAR
-					/// </summary>
+
 					case ListViewActionsEnum.UPGRADE:
-						//List<ProductValidadeDbModal> tempObjUg = (List<ProductValidadeDbModal>)action;
+						List<ProductValidadeDbModal> tempObjUg = (List<ProductValidadeDbModal>)action;
 
-						//List<(int cat_id, string cat_name)> tempCategoriasSelect = await validadeController.GetCategoryList(tempObjUg.GroupBy(p => p.ID_CATEGORIA).Select(g => g.Key).ToList());
+						List<(long? cat_id, string cat_name)> tempCategoriasSelect = await validadeController.GetCategoryList(tempObjUg.GroupBy(p => p.ID_CATEGORIA).Select(g => g.Key).ToList());
 
 
-						//for (int i = 0; i < tempCategoriasSelect.Count; i++)
-						//{
-						//	ListViewGroup groupUp = new ListViewGroup(tempCategoriasSelect[i].cat_name, HorizontalAlignment.Left);
-						//	listView1.Groups.Add(groupUp);
+						for (int i = 0; i < tempCategoriasSelect.Count; i++)
+						{
+							ListViewGroup groupUp = new ListViewGroup(tempCategoriasSelect[i].cat_name, HorizontalAlignment.Left);
+							listView1.Groups.Add(groupUp);
 
-						//	List<ProductValidadeDbModal> tp = tempObjUg.Where(x => x.CATEGORIA_ID == tempCategoriasSelect[i].cat_id).ToList();
+							List<ProductValidadeDbModal> tp = tempObjUg.Where(x => x.ID_CATEGORIA == tempCategoriasSelect[i].cat_id).ToList();
 
-						//	for (int x = 0; x < tp.Count; x++)
-						//	{
-						//		item = new ListViewItem(tp[x].ID.ToString());
-						//		item.SubItems.Add(tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
-						//		item.SubItems.Add(tp[x].PRODUTO_DESCRICAO);
-						//		item.SubItems.Add(tp[x].QUANTIDADE.ToString());
-						//		item.SubItems.Add(tp[x].DATA_VALIDADE.ToUnixDatetime()?.ToString("dd/MM/yyyy"));
-						//		item.Group = groupUp;
-						//		listView1.Items.Add(item);
-						//	}
-						//}
+							for (int x = 0; x < tp.Count; x++)
+							{
+								item = new ListViewItem(tp[x].ID.ToString());
+								item.SubItems.Add(tp[x].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
+								item.SubItems.Add(tp[x].PRODUTO_DESCRICAO);
+								item.SubItems.Add(tp[x].QUANTIDADE.ToString());
+								item.SubItems.Add(tp[x].DATA_VALIDADE?.ToString("dd/MM/yyyy"));
+								item.Group = groupUp;
+								listView1.Items.Add(item);
+							}
+						}
 						break;
 				}
 			}
@@ -526,7 +531,7 @@ namespace EterPharmaPro.Views.Validade
 					user_id = tempEditVality.v.ID_USER
 				};
 
-				comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(setValityModel.user_id.ToString());
+				comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(setValityModel.user_id);
 				dateTimePicker_dataD.Value = setValityModel.dataCreate ?? DateTime.Now;
 
 				if (tempEditVality.p is null)
@@ -536,9 +541,16 @@ namespace EterPharmaPro.Views.Validade
 
 				RefreshCategoryAsync(null, ListViewActionsEnum.INIT);
 				ListViewAction(tempEditVality.p, ListViewActionsEnum.UPGRADE);
-				//List<CategoryDbModal> tempC = await validadeController.GetCategoryUser();
-				//comboBox_categoria.CBListGeneric(tempC.Select(x => new ViewCbModel { ID= x.ID,NAME=x?.NAME }).ToList());
-				comboBox_categoria.CBListGeneric(validadeController.GetCategoryUser().Result.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME ?? string.Empty }).ToList());
+
+
+				UserDbModel tempUserSelected = await EterCache.Instance.EterDb.UserService.GetByAsync(u => u.ID == setValityModel.user_id, i => i.Category);
+
+				List<ViewCbModel> temoC = tempUserSelected.Category.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME ?? string.Empty }).ToList();
+				temoC.Add(new ViewCbModel { ID = 1, NAME = "SEM CATEGORIA" });
+
+				comboBox_categoria.CBListGeneric(temoC);
+
+				// ATUAL comboBox_categoria.CBListGeneric(validadeController.GetCategoryUser().Result.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME ?? string.Empty }).ToList());
 
 			}
 			catch (Exception ex)

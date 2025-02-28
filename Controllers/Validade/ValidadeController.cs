@@ -168,25 +168,18 @@ namespace EterPharmaPro.Controllers.Validade
 			return tempObjUg;// temp == null ? null : temp.Count > 0 ? temp[0] : null;
 		}
 
-		public async Task<List<(int cat_id, string cat_name)>> GetCategoryList(List<long?> list)
+		public async Task<List<(long? cat_id, string cat_name)>> GetCategoryList(List<long?> list)
 		{
-			List<(int cat_id, string cat_name)> resp = new List<(int cat_id, string cat_name)>();
+			List<(long? cat_id, string cat_name)> resp = new List<(long? cat_id, string cat_name)>();
 
-			//List<CategoryDbModal> allCat = EterCache.Instance.UserDbModel.Category.ToList();
+			List<CategoryDbModal> allCat = EterCache.Instance.EterDb.CategoryService.GetAllAsync().Result.ToList();
 
-			//foreach (CategoryDbModal item in allCat)
-			//{
-			//	resp.Add((item, cat?.NAME));
-			//}
 
-			//for (int i = 0; i < list.Count; i++)
-			//{
-			//	CategoryDbModal cat = allCat.FirstOrDefault(x => x.ID == Convert.ToUInt32(list[i]));
-			//	cat = cat ?? allCat.FirstOrDefault(x => x.ID == Convert.ToUInt32(1));
-			//	resp.Add((
-			//		list[i], cat?.NAME
-			//		));
-			//}
+			foreach (var item in list)
+			{
+				resp.Add((item, allCat.FirstOrDefault(x => x.ID == item)?.NAME ?? string.Empty));
+			}
+
 
 			return resp;
 		}
@@ -225,6 +218,8 @@ namespace EterPharmaPro.Controllers.Validade
 		public async Task<(ValityDbModal v, List<ProductValidadeDbModal> p)> GetEditVality(long? idVality)
 		{
 			ValityDbModal tempValidadeDbModal = await EterCache.Instance.EterDb.ValityService.GetByAsync(p => p.ID == idVality, i => i.ProductValidades);
+
+			var te = await EterCache.Instance.EterDb.ProductValidadeService.GetAllAsync(p => p.ID_VALIDADE == idVality, i => i.Vality);
 
 			// ---------- TESTAR SE O DE CIMA PUXA OS PRODUTOS
 			//List<ProductValidadeDbModal> produtoValidadeDbModals = EterCache.Instance.EterDb.ProductValidadeService.GetAllAsync(f => f.ID_VALIDADE == tempValidadeDbModal.ID).Result.ToList();

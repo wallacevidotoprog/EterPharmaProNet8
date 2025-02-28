@@ -1,6 +1,6 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Enums;
-using EterPharmaPro.Infrastructure.Services.Prints;
+using EterPharmaPro.Infrastructure.Services;
 using EterPharmaPro.Models;
 using EterPharmaPro.Models.Print;
 using EterPharmaPro.Utils.Extencions;

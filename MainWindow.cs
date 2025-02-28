@@ -28,10 +28,10 @@ namespace EterPharmaPro
 
 			if (acesUser.exit) this.Close();
 
-			
+
 			if (!acesUser.loginSucced) SetLogin();
 
-			this.Text = $"ETER PHARMA PRO [ {EterCache.Instance.UserDbModel.ID_LOJA.ToString().PadRight(4,'0')} - {EterCache.Instance.UserDbModel.NOME} - {EterCache.Instance.UserDbModel?.Position?.NOME} ]";	
+			this.Text = $"ETER PHARMA PRO [ {EterCache.Instance.UserDbModel?.ID_LOJA?.ToString().PadRight(4, '0')} - {EterCache.Instance.UserDbModel?.NOME} - {EterCache.Instance.UserDbModel?.Position?.NOME} ]";
 		}
 		private void OpenForm(Form form)
 		{
