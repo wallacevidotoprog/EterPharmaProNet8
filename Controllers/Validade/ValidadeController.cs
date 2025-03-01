@@ -35,7 +35,11 @@ namespace EterPharmaPro.Controllers.Validade
 			{
 
 				var resp = await EterCache.Instance.EterDb.CategoryService.AddAsync(new CategoryDbModal { ID_USER = user_id, NAME = cat_name });
-				await EterCache.Instance.RefreshUserDbModel();
+
+				if (user_id == EterCache.Instance.UserDbModel.ID)
+				{
+					await EterCache.Instance.RefreshUserDbModel();
+				}
 
 				return resp.ID;
 			}
@@ -184,7 +188,7 @@ namespace EterPharmaPro.Controllers.Validade
 			return resp;
 		}
 
-		public string GetCategory(long? id) => EterCache.Instance.UserDbModel.Category.FirstOrDefault(x => x.ID == id)?.NAME ?? string.Empty;
+		public string GetCategory(long? id) => EterCache.Instance.EterDb.CategoryService.GetByAsync(f => f.ID == id).Result.NAME ?? "SEM CATEGORIA";
 
 
 		public async Task<List<(long? id, string nameUser, string date)>> GetValityDate(DateTime dateTime)
@@ -220,9 +224,6 @@ namespace EterPharmaPro.Controllers.Validade
 			ValityDbModal tempValidadeDbModal = await EterCache.Instance.EterDb.ValityService.GetByAsync(p => p.ID == idVality, i => i.ProductValidades);
 
 			var te = await EterCache.Instance.EterDb.ProductValidadeService.GetAllAsync(p => p.ID_VALIDADE == idVality, i => i.Vality);
-
-			// ---------- TESTAR SE O DE CIMA PUXA OS PRODUTOS
-			//List<ProductValidadeDbModal> produtoValidadeDbModals = EterCache.Instance.EterDb.ProductValidadeService.GetAllAsync(f => f.ID_VALIDADE == tempValidadeDbModal.ID).Result.ToList();
 
 			if (tempValidadeDbModal != null)
 			{
@@ -334,5 +335,6 @@ namespace EterPharmaPro.Controllers.Validade
 
 		}
 
+		public async Task<List<UserDbModel>> GetUsers() => EterCache.Instance.EterDb.UserService.GetAllAsync().Result.ToList();
 	}
 }

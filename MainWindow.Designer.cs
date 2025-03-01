@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			toolStrip_menu = new ToolStrip();
 			toolStripSeparator1 = new ToolStripSeparator();
 			toolStripButton_manipulacao = new ToolStripDropDownButton();
@@ -37,7 +38,6 @@
 			toolStripButton1 = new ToolStripDropDownButton();
 			gERARVALIDADEDOMÊSToolStripMenuItem = new ToolStripMenuItem();
 			rELATÓRIOToolStripMenuItem = new ToolStripMenuItem();
-			tAGToolStripMenuItem = new ToolStripMenuItem();
 			toolStripButton_conf = new ToolStripButton();
 			toolStripSeparator3 = new ToolStripSeparator();
 			toolStripDropDownButton_impressos = new ToolStripButton();
@@ -83,15 +83,17 @@
 			// 
 			// fORMUToolStripMenuItem
 			// 
+			fORMUToolStripMenuItem.Image = Properties.Resources.seta_direita;
 			fORMUToolStripMenuItem.Name = "fORMUToolStripMenuItem";
-			fORMUToolStripMenuItem.Size = new Size(145, 22);
+			fORMUToolStripMenuItem.Size = new Size(180, 22);
 			fORMUToolStripMenuItem.Text = "FORMULÁRIO";
 			fORMUToolStripMenuItem.Click += fORMUToolStripMenuItem_Click;
 			// 
 			// rELATÓRIOToolStripMenuItem1
 			// 
+			rELATÓRIOToolStripMenuItem1.Image = Properties.Resources.seta_direita;
 			rELATÓRIOToolStripMenuItem1.Name = "rELATÓRIOToolStripMenuItem1";
-			rELATÓRIOToolStripMenuItem1.Size = new Size(145, 22);
+			rELATÓRIOToolStripMenuItem1.Size = new Size(180, 22);
 			rELATÓRIOToolStripMenuItem1.Text = "RELATÓRIO";
 			rELATÓRIOToolStripMenuItem1.Click += rELATÓRIOToolStripMenuItem1_Click;
 			// 
@@ -103,7 +105,7 @@
 			// toolStripButton1
 			// 
 			toolStripButton1.AutoSize = false;
-			toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { gERARVALIDADEDOMÊSToolStripMenuItem, rELATÓRIOToolStripMenuItem, tAGToolStripMenuItem });
+			toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { gERARVALIDADEDOMÊSToolStripMenuItem, rELATÓRIOToolStripMenuItem });
 			toolStripButton1.Image = Properties.Resources.expirado;
 			toolStripButton1.ImageAlign = ContentAlignment.BottomCenter;
 			toolStripButton1.ImageScaling = ToolStripItemImageScaling.None;
@@ -118,6 +120,7 @@
 			// 
 			// gERARVALIDADEDOMÊSToolStripMenuItem
 			// 
+			gERARVALIDADEDOMÊSToolStripMenuItem.Image = Properties.Resources.seta_direita;
 			gERARVALIDADEDOMÊSToolStripMenuItem.Name = "gERARVALIDADEDOMÊSToolStripMenuItem";
 			gERARVALIDADEDOMÊSToolStripMenuItem.Size = new Size(212, 22);
 			gERARVALIDADEDOMÊSToolStripMenuItem.Text = "GERAR VALIDADE DO MÊS";
@@ -125,18 +128,11 @@
 			// 
 			// rELATÓRIOToolStripMenuItem
 			// 
+			rELATÓRIOToolStripMenuItem.Image = Properties.Resources.seta_direita;
 			rELATÓRIOToolStripMenuItem.Name = "rELATÓRIOToolStripMenuItem";
 			rELATÓRIOToolStripMenuItem.Size = new Size(212, 22);
 			rELATÓRIOToolStripMenuItem.Text = "RELATÓRIO";
 			rELATÓRIOToolStripMenuItem.Click += rELATÓRIOToolStripMenuItem_Click;
-			// 
-			// tAGToolStripMenuItem
-			// 
-			tAGToolStripMenuItem.Image = Properties.Resources.seta_direita;
-			tAGToolStripMenuItem.Name = "tAGToolStripMenuItem";
-			tAGToolStripMenuItem.Size = new Size(212, 22);
-			tAGToolStripMenuItem.Text = "TAG";
-			tAGToolStripMenuItem.Click += tAGToolStripMenuItem_Click;
 			// 
 			// toolStripButton_conf
 			// 
@@ -229,6 +225,7 @@
 			Controls.Add(panel_center);
 			Controls.Add(statusStrip_notify);
 			Controls.Add(toolStrip_menu);
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			Margin = new Padding(4, 3, 4, 3);
 			Name = "MainWindow";
 			StartPosition = FormStartPosition.CenterScreen;
@@ -260,7 +257,6 @@
 		private System.Windows.Forms.StatusStrip statusStrip_notify;
 		private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar_status;
 		private System.Windows.Forms.Panel panel_center;
-		private System.Windows.Forms.ToolStripMenuItem tAGToolStripMenuItem;
 		private System.Windows.Forms.ToolStripButton toolStripButton_delivery;
 	}
 }

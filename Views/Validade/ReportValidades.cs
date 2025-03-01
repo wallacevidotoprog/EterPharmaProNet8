@@ -1,18 +1,18 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
-//using EterPharmaPro.Controllers.Validade;
+using EterPharmaPro.Controllers.Validade;
 using EterPharmaPro.Utils.Extencions;
 
 namespace EterPharmaPro.Views.Validade
 {
 	public partial class ReportValidades : Form
 	{
-		//private readonly ValidadeController validadeController;
+		private readonly ValidadeController validadeController;
 
 		List<ProductValidadeDbModal> produtoValidadeDbs;
 		public ReportValidades()
 		{
 
-			//validadeController = new ValidadeController();
+			validadeController = new ValidadeController();
 			InitializeComponent();
 		}
 
@@ -25,21 +25,21 @@ namespace EterPharmaPro.Views.Validade
 
 		private async void ePictureBox_busca_ClickAsync(object sender, EventArgs e)
 		{
-			//var t = await validadeController.GetValityDate(dateTimePicker_dataBusca.Value);
-			//if (t != null)
-			//{
-			//	dataGridView_validadeFile.Rows.Clear();
-			//	for (int i = 0; i < t.Count; i++)
-			//	{
-			//		dataGridView_validadeFile.Rows.Add(new object[]
-			//		{
-			//			t[i].id.ToString(),
-			//			t[i].nameUser,
-			//			t[i].date,
-			//			true,
-			//		});
-			//	}
-			//}
+			var t = await validadeController.GetValityDate(dateTimePicker_dataBusca.Value);
+			if (t != null)
+			{
+				dataGridView_validadeFile.Rows.Clear();
+				for (int i = 0; i < t.Count; i++)
+				{
+					dataGridView_validadeFile.Rows.Add(new object[]
+					{
+						t[i].id.ToString(),
+						t[i].nameUser,
+						t[i].date,
+						true,
+					});
+				}
+			}
 		}
 
 		private void dataGridView_validadeFile_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,37 +65,39 @@ namespace EterPharmaPro.Views.Validade
 
 		private async Task ListViewImportsAsync(List<long> imports)
 		{
-			//listView_produtos.Items.Clear();
-			//listView_produtos.Groups.Clear();
-			//produtoValidadeDbs = new List<ProdutoValidadeDbModal>();
-			//try
-			//{
-			//	ListViewItem item = null;
-			//	for (int i = 0; i < imports.Count; i++)
-			//	{
-			//		var tempEditVality = await validadeController.GetEditVality(imports[i]);
-			//		UserModel userModel = await validadeController.GetUser(tempEditVality.v.USER_ID);
+			listView_produtos.Items.Clear();
+			listView_produtos.Groups.Clear();
+			produtoValidadeDbs = new List<ProductValidadeDbModal>();
+			List<UserDbModel> usersModel = await validadeController.GetUsers();
+			try
+			{
+				ListViewItem item = null;
+				for (int i = 0; i < imports.Count; i++)
+				{
+					var tempEditVality = await validadeController.GetEditVality(imports[i]);
 
-			//		ListViewGroup group = new ListViewGroup($" Funcionário: [{userModel.ID_LOJA.ToString().PadLeft(4, '0')} - {userModel.NOME}]  |  Total de Itens: [{tempEditVality.p.Count}]", HorizontalAlignment.Left);
-			//		listView_produtos.Groups.Add(group);
-			//		for (int j = 0; j < tempEditVality.p.Count; j++)
-			//		{
-			//			produtoValidadeDbs.Add(tempEditVality.p[j]);
+					//UserDbModel userModel = usersModel.Where(x => x.ID == tempEditVality.v.).FirstOrDefault();	
 
-			//			item = new ListViewItem(tempEditVality.p[j].ID.ToString().PadLeft(6, '0'));
-			//			item.SubItems.Add(tempEditVality.p[j].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
-			//			item.SubItems.Add(tempEditVality.p[j].PRODUTO_DESCRICAO);
-			//			item.SubItems.Add(tempEditVality.p[j].QUANTIDADE.ToString());
-			//			item.SubItems.Add(tempEditVality.p[j].DATA_VALIDADE.ToUnixDatetime()?.ToString("dd/MM/yyyy"));
-			//			item.Group = group;
-			//			listView_produtos.Items.Add(item);
-			//		}
-			//	}
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-			//}
+					ListViewGroup group = new ListViewGroup($" Funcionário: [{tempEditVality.v.UserModel?.ID_LOJA?.ToString().PadLeft(4, '0') ?? "NÃO ENCONTRADO"} - {tempEditVality.v.UserModel?.NOME ?? "NÃO ENCONTRADO"}]  |  Total de Itens: [{tempEditVality.p.Count}]", HorizontalAlignment.Left);
+					listView_produtos.Groups.Add(group);
+					for (int j = 0; j < tempEditVality.p.Count; j++)
+					{
+						produtoValidadeDbs.Add(tempEditVality.p[j]);
+
+						item = new ListViewItem(tempEditVality.p[j].ID.ToString().PadLeft(6, '0'));
+						item.SubItems.Add(tempEditVality.p[j].PRODUTO_CODIGO.ToString().PadLeft(6, '0'));
+						item.SubItems.Add(tempEditVality.p[j].PRODUTO_DESCRICAO);
+						item.SubItems.Add(tempEditVality.p[j].QUANTIDADE.ToString());
+						item.SubItems.Add(tempEditVality.p[j].DATA_VALIDADE?.ToShortDateString());
+						item.Group = group;
+						listView_produtos.Items.Add(item);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
 
 
 			dateTimePicker_de_ValueChanged(null, null);
@@ -165,7 +167,7 @@ namespace EterPharmaPro.Views.Validade
 				op.Title = "Save an Excel File";
 				if (op.ShowDialog() == DialogResult.OK)
 				{
-					//await validadeController.ExportValityXLSX(produtoValidadeDbs, op.FileName);
+					await validadeController.ExportValityXLSX(produtoValidadeDbs, op.FileName);
 				}
 			}
 			catch (Exception ex)
@@ -178,17 +180,17 @@ namespace EterPharmaPro.Views.Validade
 		{
 			try
 			{
-				//List<ProdutoValidadeDbModal> temp = produtoValidadeDbs.Where(x => BetweenDate(x.DATA_VALIDADE)).ToList();
+				List<ProductValidadeDbModal> temp = produtoValidadeDbs.Where(x => BetweenDate(x.DATA_VALIDADE)).ToList();
 
-				//SaveFileDialog op = new SaveFileDialog();
+				SaveFileDialog op = new SaveFileDialog();
 
-				//op.FileName = "Listagem de validade de " + dateTimePicker_dataBusca.Value.ToString("MMMM-yyyy") + ".xlsx";
-				//op.Filter = "Excel Files|*.xlsx";
-				//op.Title = "Save an Excel File";
-				//if (op.ShowDialog() == DialogResult.OK)
-				//{
-				//	await validadeController.ExportValityXLSX(temp, op.FileName);
-				//}
+				op.FileName = "Listagem de validade de " + dateTimePicker_dataBusca.Value.ToString("MMMM-yyyy") + ".xlsx";
+				op.Filter = "Excel Files|*.xlsx";
+				op.Title = "Save an Excel File";
+				if (op.ShowDialog() == DialogResult.OK)
+				{
+					await validadeController.ExportValityXLSX(temp, op.FileName);
+				}
 			}
 			catch (Exception ex)
 			{

@@ -19,8 +19,6 @@ namespace EterPharmaPro.Views
 			//atualizar para setout
 			permissoesController = new PermissoesController(new PermissionsEnum[] { PermissionsEnum.Dev, PermissionsEnum.Admin, PermissionsEnum.Supervisor, PermissionsEnum.Gerente });
 
-			//toolStripDropDownButton_gerencial.Visible = permissoesController.HasPermission(eterDb.EterDbController.UserModelAcess.PERMISSION);
-
 		}
 		private void OpenForm(Form form)
 		{
@@ -60,7 +58,7 @@ namespace EterPharmaPro.Views
 		}
 
 
-		private void lOTEVALIDAEToolStripMenuItem_Click_1(object sender, EventArgs e) => OpenForm(new CreateLoteControlados());
+		private void lOTEVALIDAEToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new CreateLoteControlados());
 
 		private void toolStripMenuItem_remanejo_Click(object sender, EventArgs e) => OpenForm(new RemanejoPrint());
 
@@ -70,5 +68,12 @@ namespace EterPharmaPro.Views
 
 		private void cONTROLEDEREQNOTAToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new ControleReqNota());
 
+
+		private void pROMOÇÃOToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void TagValidade(object sender, EventArgs e) => OpenForm(new TagViewer());
 	}
 }

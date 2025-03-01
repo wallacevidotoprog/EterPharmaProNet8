@@ -165,10 +165,10 @@ namespace EterPharmaPro.Views.Validade
 
 		private async void RefreshCategoryAsync((long? id, string namec)? cat, ListViewActionsEnum actionsEnum = ListViewActionsEnum.NONE)
 		{
-			var tempCat = await validadeController.GetCategoryUser();
 			switch (actionsEnum)
 			{
 				case ListViewActionsEnum.INIT:
+					var tempCat = await validadeController.GetCategoryUser();
 					listView1.Groups.Add(new ListViewGroup(1.ToString(), "SEM CATEGORIA"));
 					for (int i = 0; i < tempCat.Count; i++)
 					{
@@ -185,8 +185,11 @@ namespace EterPharmaPro.Views.Validade
 				case ListViewActionsEnum.UPDATE:
 					break;
 				case ListViewActionsEnum.REMOVE:
-					ListViewGroup novoGrupo = listView1.Groups.Cast<ListViewGroup>()
-					 .FirstOrDefault(g => g.Name == 1.ToString());
+
+					MessageBox.Show("Você não tem permissão", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+					return;
+					//////////////////////////////////////////////////// Verificar, pois tem RELAÇÔES no Db
+					ListViewGroup novoGrupo = listView1.Groups.Cast<ListViewGroup>().FirstOrDefault(g => g.Name == 1.ToString());
 
 					foreach (ListViewItem item in listView1.Items)
 					{

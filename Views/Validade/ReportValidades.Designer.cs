@@ -28,439 +28,451 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.toolStrip_topMenu = new System.Windows.Forms.ToolStrip();
-			this.toolStripButton_exit = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton_clear = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton_excel = new System.Windows.Forms.ToolStripButton();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.dataGridView_validadeFile = new System.Windows.Forms.DataGridView();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.ePictureBox_busca = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.dateTimePicker_dataBusca = new System.Windows.Forms.DateTimePicker();
-			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.listView_produtos = new System.Windows.Forms.ListView();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.ePictureBox_import = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.ePictureBox_export = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.dateTimePicker_ate = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker_de = new System.Windows.Forms.DateTimePicker();
-			this.label1 = new System.Windows.Forms.Label();
-			this.toolStrip_topMenu.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).BeginInit();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_busca)).BeginInit();
-			this.groupBox3.SuspendLayout();
-			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_import)).BeginInit();
-			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_export)).BeginInit();
-			this.SuspendLayout();
+			toolStrip_topMenu = new ToolStrip();
+			toolStripButton_exit = new ToolStripButton();
+			toolStripButton_clear = new ToolStripButton();
+			toolStripSeparator1 = new ToolStripSeparator();
+			toolStripButton_excel = new ToolStripButton();
+			groupBox1 = new GroupBox();
+			groupBox4 = new GroupBox();
+			dataGridView_validadeFile = new DataGridView();
+			dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+			dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+			dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+			Action = new DataGridViewCheckBoxColumn();
+			groupBox2 = new GroupBox();
+			ePictureBox_busca = new EterPharmaPro.Utils.eControl.ePictureBox();
+			dateTimePicker_dataBusca = new DateTimePicker();
+			label6 = new Label();
+			groupBox3 = new GroupBox();
+			listView_produtos = new ListView();
+			columnHeader1 = new ColumnHeader();
+			columnHeader8 = new ColumnHeader();
+			columnHeader9 = new ColumnHeader();
+			columnHeader10 = new ColumnHeader();
+			columnHeader11 = new ColumnHeader();
+			groupBox5 = new GroupBox();
+			ePictureBox_import = new EterPharmaPro.Utils.eControl.ePictureBox();
+			groupBox6 = new GroupBox();
+			ePictureBox_export = new EterPharmaPro.Utils.eControl.ePictureBox();
+			label2 = new Label();
+			dateTimePicker_ate = new DateTimePicker();
+			dateTimePicker_de = new DateTimePicker();
+			label1 = new Label();
+			toolStrip_topMenu.SuspendLayout();
+			groupBox1.SuspendLayout();
+			groupBox4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView_validadeFile).BeginInit();
+			groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_busca).BeginInit();
+			groupBox3.SuspendLayout();
+			groupBox5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_import).BeginInit();
+			groupBox6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_export).BeginInit();
+			SuspendLayout();
 			// 
 			// toolStrip_topMenu
 			// 
-			this.toolStrip_topMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.toolStrip_topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_exit,
-            this.toolStripButton_clear,
-            this.toolStripSeparator1,
-            this.toolStripButton_excel});
-			this.toolStrip_topMenu.Location = new System.Drawing.Point(0, 0);
-			this.toolStrip_topMenu.Name = "toolStrip_topMenu";
-			this.toolStrip_topMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.toolStrip_topMenu.Size = new System.Drawing.Size(1223, 93);
-			this.toolStrip_topMenu.TabIndex = 5;
-			this.toolStrip_topMenu.Text = "toolStrip1";
+			toolStrip_topMenu.BackColor = Color.WhiteSmoke;
+			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_exit, toolStripButton_clear, toolStripSeparator1, toolStripButton_excel });
+			toolStrip_topMenu.Location = new Point(0, 0);
+			toolStrip_topMenu.Name = "toolStrip_topMenu";
+			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
+			toolStrip_topMenu.Size = new Size(1427, 93);
+			toolStrip_topMenu.TabIndex = 5;
+			toolStrip_topMenu.Text = "toolStrip1";
 			// 
 			// toolStripButton_exit
 			// 
-			this.toolStripButton_exit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.toolStripButton_exit.AutoSize = false;
-			this.toolStripButton_exit.Font = new System.Drawing.Font("Segoe UI", 7F);
-			this.toolStripButton_exit.Image = global::EterPharmaPro.Properties.Resources.sair__1_;
-			this.toolStripButton_exit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_exit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_exit.Name = "toolStripButton_exit";
-			this.toolStripButton_exit.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_exit.Tag = "SAIR";
-			this.toolStripButton_exit.Text = "SAIR";
-			this.toolStripButton_exit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_exit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_exit.ToolTipText = "SAIR";
-			this.toolStripButton_exit.Click += new System.EventHandler(this.toolStripButton_exit_Click);
+			toolStripButton_exit.Alignment = ToolStripItemAlignment.Right;
+			toolStripButton_exit.AutoSize = false;
+			toolStripButton_exit.Font = new Font("Segoe UI", 7F);
+			toolStripButton_exit.Image = Properties.Resources.sair__1_;
+			toolStripButton_exit.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_exit.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_exit.ImageTransparentColor = Color.Magenta;
+			toolStripButton_exit.Name = "toolStripButton_exit";
+			toolStripButton_exit.Size = new Size(90, 90);
+			toolStripButton_exit.Tag = "SAIR";
+			toolStripButton_exit.Text = "SAIR";
+			toolStripButton_exit.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_exit.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_exit.ToolTipText = "SAIR";
+			toolStripButton_exit.Click += toolStripButton_exit_Click;
 			// 
 			// toolStripButton_clear
 			// 
-			this.toolStripButton_clear.AutoSize = false;
-			this.toolStripButton_clear.Font = new System.Drawing.Font("Segoe UI", 8F);
-			this.toolStripButton_clear.Image = global::EterPharmaPro.Properties.Resources.limpar_limpo__1_;
-			this.toolStripButton_clear.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_clear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_clear.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_clear.Name = "toolStripButton_clear";
-			this.toolStripButton_clear.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_clear.Tag = "";
-			this.toolStripButton_clear.Text = "LIMPAR";
-			this.toolStripButton_clear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_clear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_clear.ToolTipText = "Limpar formulário";
-			this.toolStripButton_clear.Click += new System.EventHandler(this.toolStripButton_clear_Click);
+			toolStripButton_clear.AutoSize = false;
+			toolStripButton_clear.Font = new Font("Segoe UI", 8F);
+			toolStripButton_clear.Image = Properties.Resources.limpar_limpo__1_;
+			toolStripButton_clear.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_clear.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_clear.ImageTransparentColor = Color.Magenta;
+			toolStripButton_clear.Name = "toolStripButton_clear";
+			toolStripButton_clear.Size = new Size(90, 90);
+			toolStripButton_clear.Tag = "";
+			toolStripButton_clear.Text = "LIMPAR";
+			toolStripButton_clear.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_clear.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_clear.ToolTipText = "Limpar formulário";
+			toolStripButton_clear.Click += toolStripButton_clear_Click;
 			// 
 			// toolStripSeparator1
 			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 93);
+			toolStripSeparator1.Name = "toolStripSeparator1";
+			toolStripSeparator1.Size = new Size(6, 93);
 			// 
 			// toolStripButton_excel
 			// 
-			this.toolStripButton_excel.AutoSize = false;
-			this.toolStripButton_excel.Font = new System.Drawing.Font("Segoe UI", 8F);
-			this.toolStripButton_excel.Image = global::EterPharmaPro.Properties.Resources.excel;
-			this.toolStripButton_excel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_excel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_excel.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_excel.Name = "toolStripButton_excel";
-			this.toolStripButton_excel.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_excel.Tag = "";
-			this.toolStripButton_excel.Text = "SALVAR EXCEL";
-			this.toolStripButton_excel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_excel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_excel.ToolTipText = "Salvar documento em excel";
-			this.toolStripButton_excel.Click += new System.EventHandler(this.toolStripButton_excel_Click);
+			toolStripButton_excel.AutoSize = false;
+			toolStripButton_excel.Font = new Font("Segoe UI", 8F);
+			toolStripButton_excel.Image = Properties.Resources.excel;
+			toolStripButton_excel.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_excel.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_excel.ImageTransparentColor = Color.Magenta;
+			toolStripButton_excel.Name = "toolStripButton_excel";
+			toolStripButton_excel.Size = new Size(90, 90);
+			toolStripButton_excel.Tag = "";
+			toolStripButton_excel.Text = "SALVAR EXCEL";
+			toolStripButton_excel.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_excel.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_excel.ToolTipText = "Salvar documento em excel";
+			toolStripButton_excel.Click += toolStripButton_excel_Click;
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.groupBox4);
-			this.groupBox1.Controls.Add(this.groupBox2);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.groupBox1.Location = new System.Drawing.Point(0, 93);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(434, 436);
-			this.groupBox1.TabIndex = 12;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "AÇÕES";
+			groupBox1.Controls.Add(groupBox4);
+			groupBox1.Controls.Add(groupBox2);
+			groupBox1.Dock = DockStyle.Left;
+			groupBox1.Location = new Point(0, 93);
+			groupBox1.Margin = new Padding(4, 3, 4, 3);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new Padding(4, 3, 4, 3);
+			groupBox1.Size = new Size(353, 517);
+			groupBox1.TabIndex = 12;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "AÇÕES";
 			// 
 			// groupBox4
 			// 
-			this.groupBox4.Controls.Add(this.dataGridView_validadeFile);
-			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox4.Location = new System.Drawing.Point(3, 77);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(428, 356);
-			this.groupBox4.TabIndex = 3;
-			this.groupBox4.TabStop = false;
+			groupBox4.Controls.Add(dataGridView_validadeFile);
+			groupBox4.Dock = DockStyle.Fill;
+			groupBox4.Location = new Point(4, 89);
+			groupBox4.Margin = new Padding(4, 3, 4, 3);
+			groupBox4.Name = "groupBox4";
+			groupBox4.Padding = new Padding(4, 3, 4, 3);
+			groupBox4.Size = new Size(345, 425);
+			groupBox4.TabIndex = 3;
+			groupBox4.TabStop = false;
 			// 
 			// dataGridView_validadeFile
 			// 
-			this.dataGridView_validadeFile.AllowUserToAddRows = false;
-			this.dataGridView_validadeFile.AllowUserToDeleteRows = false;
-			this.dataGridView_validadeFile.AllowUserToResizeColumns = false;
-			this.dataGridView_validadeFile.AllowUserToResizeRows = false;
-			this.dataGridView_validadeFile.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView_validadeFile.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-			this.dataGridView_validadeFile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-			this.dataGridView_validadeFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView_validadeFile.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.Action});
-			this.dataGridView_validadeFile.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView_validadeFile.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView_validadeFile.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView_validadeFile.Location = new System.Drawing.Point(3, 16);
-			this.dataGridView_validadeFile.MultiSelect = false;
-			this.dataGridView_validadeFile.Name = "dataGridView_validadeFile";
-			this.dataGridView_validadeFile.ReadOnly = true;
-			this.dataGridView_validadeFile.RowHeadersVisible = false;
-			this.dataGridView_validadeFile.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.dataGridView_validadeFile.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView_validadeFile.Size = new System.Drawing.Size(422, 337);
-			this.dataGridView_validadeFile.TabIndex = 5;
-			this.dataGridView_validadeFile.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_validadeFile_CellContentClick);
+			dataGridView_validadeFile.AllowUserToAddRows = false;
+			dataGridView_validadeFile.AllowUserToDeleteRows = false;
+			dataGridView_validadeFile.AllowUserToResizeColumns = false;
+			dataGridView_validadeFile.AllowUserToResizeRows = false;
+			dataGridView_validadeFile.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridView_validadeFile.BackgroundColor = SystemColors.ButtonFace;
+			dataGridView_validadeFile.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+			dataGridView_validadeFile.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dataGridView_validadeFile.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Action });
+			dataGridView_validadeFile.Cursor = Cursors.Hand;
+			dataGridView_validadeFile.Dock = DockStyle.Fill;
+			dataGridView_validadeFile.GridColor = SystemColors.ActiveCaptionText;
+			dataGridView_validadeFile.Location = new Point(4, 19);
+			dataGridView_validadeFile.Margin = new Padding(4, 3, 4, 3);
+			dataGridView_validadeFile.MultiSelect = false;
+			dataGridView_validadeFile.Name = "dataGridView_validadeFile";
+			dataGridView_validadeFile.ReadOnly = true;
+			dataGridView_validadeFile.RowHeadersVisible = false;
+			dataGridView_validadeFile.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			dataGridView_validadeFile.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dataGridView_validadeFile.Size = new Size(337, 403);
+			dataGridView_validadeFile.TabIndex = 5;
+			dataGridView_validadeFile.CellContentClick += dataGridView_validadeFile_CellContentClick;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+			dataGridViewTextBoxColumn1.HeaderText = "ID";
+			dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			dataGridViewTextBoxColumn1.ReadOnly = true;
+			dataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.NotSortable;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
-			this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
-			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
-			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-			this.dataGridViewTextBoxColumn2.ReadOnly = true;
-			this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
+			dataGridViewTextBoxColumn2.FillWeight = 200F;
+			dataGridViewTextBoxColumn2.HeaderText = "NOME";
+			dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			dataGridViewTextBoxColumn2.ReadOnly = true;
+			dataGridViewTextBoxColumn2.SortMode = DataGridViewColumnSortMode.NotSortable;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
-			this.dataGridViewTextBoxColumn3.DataPropertyName = "Data";
-			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
-			this.dataGridViewTextBoxColumn3.HeaderText = "DATA";
-			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-			this.dataGridViewTextBoxColumn3.ReadOnly = true;
-			this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+			dataGridViewTextBoxColumn3.DataPropertyName = "Data";
+			dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
+			dataGridViewTextBoxColumn3.HeaderText = "DATA";
+			dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			dataGridViewTextBoxColumn3.ReadOnly = true;
+			dataGridViewTextBoxColumn3.SortMode = DataGridViewColumnSortMode.NotSortable;
 			// 
 			// Action
 			// 
-			this.Action.FillWeight = 30F;
-			this.Action.HeaderText = "";
-			this.Action.Name = "Action";
-			this.Action.ReadOnly = true;
+			Action.FillWeight = 30F;
+			Action.HeaderText = "";
+			Action.Name = "Action";
+			Action.ReadOnly = true;
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.ePictureBox_busca);
-			this.groupBox2.Controls.Add(this.dateTimePicker_dataBusca);
-			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox2.Location = new System.Drawing.Point(3, 16);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(428, 61);
-			this.groupBox2.TabIndex = 2;
-			this.groupBox2.TabStop = false;
+			groupBox2.Controls.Add(ePictureBox_busca);
+			groupBox2.Controls.Add(dateTimePicker_dataBusca);
+			groupBox2.Controls.Add(label6);
+			groupBox2.Dock = DockStyle.Top;
+			groupBox2.Location = new Point(4, 19);
+			groupBox2.Margin = new Padding(4, 3, 4, 3);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Padding = new Padding(4, 3, 4, 3);
+			groupBox2.Size = new Size(345, 70);
+			groupBox2.TabIndex = 2;
+			groupBox2.TabStop = false;
 			// 
 			// ePictureBox_busca
 			// 
-			this.ePictureBox_busca.Image = global::EterPharmaPro.Properties.Resources.procurar;
-			this.ePictureBox_busca.Location = new System.Drawing.Point(381, 11);
-			this.ePictureBox_busca.Name = "ePictureBox_busca";
-			this.ePictureBox_busca.Size = new System.Drawing.Size(40, 40);
-			this.ePictureBox_busca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.ePictureBox_busca.TabIndex = 16;
-			this.ePictureBox_busca.TabStop = false;
-			this.ePictureBox_busca.ToolTipText = null;
-			this.ePictureBox_busca.Click += new System.EventHandler(this.ePictureBox_busca_ClickAsync);
+			ePictureBox_busca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			ePictureBox_busca.Image = Properties.Resources.procurar;
+			ePictureBox_busca.Location = new Point(291, 13);
+			ePictureBox_busca.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_busca.Name = "ePictureBox_busca";
+			ePictureBox_busca.Size = new Size(47, 46);
+			ePictureBox_busca.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_busca.TabIndex = 16;
+			ePictureBox_busca.TabStop = false;
+			ePictureBox_busca.ToolTipText = null;
+			ePictureBox_busca.Click += ePictureBox_busca_ClickAsync;
 			// 
 			// dateTimePicker_dataBusca
 			// 
-			this.dateTimePicker_dataBusca.CustomFormat = "MM/yyyy";
-			this.dateTimePicker_dataBusca.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker_dataBusca.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker_dataBusca.Location = new System.Drawing.Point(115, 16);
-			this.dateTimePicker_dataBusca.Name = "dateTimePicker_dataBusca";
-			this.dateTimePicker_dataBusca.ShowUpDown = true;
-			this.dateTimePicker_dataBusca.Size = new System.Drawing.Size(260, 33);
-			this.dateTimePicker_dataBusca.TabIndex = 0;
+			dateTimePicker_dataBusca.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			dateTimePicker_dataBusca.CustomFormat = "MM/yyyy";
+			dateTimePicker_dataBusca.Font = new Font("Microsoft Tai Le", 15F);
+			dateTimePicker_dataBusca.Format = DateTimePickerFormat.Custom;
+			dateTimePicker_dataBusca.Location = new Point(111, 18);
+			dateTimePicker_dataBusca.Margin = new Padding(4, 3, 4, 3);
+			dateTimePicker_dataBusca.Name = "dateTimePicker_dataBusca";
+			dateTimePicker_dataBusca.ShowUpDown = true;
+			dateTimePicker_dataBusca.Size = new Size(173, 33);
+			dateTimePicker_dataBusca.TabIndex = 0;
 			// 
 			// label6
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(3, 24);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(106, 25);
-			this.label6.TabIndex = 12;
-			this.label6.Text = "MÊS/ANO:";
+			label6.AutoSize = true;
+			label6.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(4, 28);
+			label6.Margin = new Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new Size(106, 25);
+			label6.TabIndex = 12;
+			label6.Text = "MÊS/ANO:";
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.listView_produtos);
-			this.groupBox3.Controls.Add(this.groupBox5);
-			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox3.Location = new System.Drawing.Point(434, 93);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(789, 436);
-			this.groupBox3.TabIndex = 14;
-			this.groupBox3.TabStop = false;
+			groupBox3.Controls.Add(listView_produtos);
+			groupBox3.Controls.Add(groupBox5);
+			groupBox3.Dock = DockStyle.Fill;
+			groupBox3.Location = new Point(353, 93);
+			groupBox3.Margin = new Padding(4, 3, 4, 3);
+			groupBox3.Name = "groupBox3";
+			groupBox3.Padding = new Padding(4, 3, 4, 3);
+			groupBox3.Size = new Size(1074, 517);
+			groupBox3.TabIndex = 14;
+			groupBox3.TabStop = false;
 			// 
 			// listView_produtos
 			// 
-			this.listView_produtos.Activation = System.Windows.Forms.ItemActivation.OneClick;
-			this.listView_produtos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11});
-			this.listView_produtos.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.listView_produtos.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listView_produtos.FullRowSelect = true;
-			this.listView_produtos.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.listView_produtos.HideSelection = false;
-			this.listView_produtos.HoverSelection = true;
-			this.listView_produtos.Location = new System.Drawing.Point(3, 116);
-			this.listView_produtos.Name = "listView_produtos";
-			this.listView_produtos.Size = new System.Drawing.Size(783, 317);
-			this.listView_produtos.TabIndex = 13;
-			this.listView_produtos.UseCompatibleStateImageBehavior = false;
-			this.listView_produtos.View = System.Windows.Forms.View.Details;
+			listView_produtos.Activation = ItemActivation.OneClick;
+			listView_produtos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader8, columnHeader9, columnHeader10, columnHeader11 });
+			listView_produtos.Cursor = Cursors.Hand;
+			listView_produtos.Dock = DockStyle.Fill;
+			listView_produtos.FullRowSelect = true;
+			listView_produtos.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			listView_produtos.HoverSelection = true;
+			listView_produtos.Location = new Point(4, 134);
+			listView_produtos.Margin = new Padding(4, 3, 4, 3);
+			listView_produtos.Name = "listView_produtos";
+			listView_produtos.Size = new Size(1066, 380);
+			listView_produtos.TabIndex = 13;
+			listView_produtos.UseCompatibleStateImageBehavior = false;
+			listView_produtos.View = View.Details;
 			// 
 			// columnHeader1
 			// 
-			this.columnHeader1.Text = "ID";
-			this.columnHeader1.Width = 80;
+			columnHeader1.Text = "ID";
+			columnHeader1.Width = 80;
 			// 
 			// columnHeader8
 			// 
-			this.columnHeader8.Text = "CÓDIGO";
-			this.columnHeader8.Width = 115;
+			columnHeader8.Text = "CÓDIGO";
+			columnHeader8.Width = 115;
 			// 
 			// columnHeader9
 			// 
-			this.columnHeader9.Text = "DESCRIÇÃO";
-			this.columnHeader9.Width = 300;
+			columnHeader9.Text = "DESCRIÇÃO";
+			columnHeader9.Width = 300;
 			// 
 			// columnHeader10
 			// 
-			this.columnHeader10.Text = "QTD";
-			this.columnHeader10.Width = 71;
+			columnHeader10.Text = "QTD";
+			columnHeader10.Width = 71;
 			// 
 			// columnHeader11
 			// 
-			this.columnHeader11.Text = "DATA VALIDADE";
-			this.columnHeader11.Width = 200;
+			columnHeader11.Text = "DATA VALIDADE";
+			columnHeader11.Width = 200;
 			// 
 			// groupBox5
 			// 
-			this.groupBox5.Controls.Add(this.ePictureBox_import);
-			this.groupBox5.Controls.Add(this.groupBox6);
-			this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox5.Location = new System.Drawing.Point(3, 16);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(783, 100);
-			this.groupBox5.TabIndex = 0;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "IMPORTAÇÃO";
+			groupBox5.Controls.Add(ePictureBox_import);
+			groupBox5.Controls.Add(groupBox6);
+			groupBox5.Dock = DockStyle.Top;
+			groupBox5.Location = new Point(4, 19);
+			groupBox5.Margin = new Padding(4, 3, 4, 3);
+			groupBox5.Name = "groupBox5";
+			groupBox5.Padding = new Padding(4, 3, 4, 3);
+			groupBox5.Size = new Size(1066, 115);
+			groupBox5.TabIndex = 0;
+			groupBox5.TabStop = false;
+			groupBox5.Text = "IMPORTAÇÃO";
 			// 
 			// ePictureBox_import
 			// 
-			this.ePictureBox_import.Image = global::EterPharmaPro.Properties.Resources.exportar;
-			this.ePictureBox_import.Location = new System.Drawing.Point(6, 19);
-			this.ePictureBox_import.Name = "ePictureBox_import";
-			this.ePictureBox_import.Size = new System.Drawing.Size(75, 75);
-			this.ePictureBox_import.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.ePictureBox_import.TabIndex = 15;
-			this.ePictureBox_import.TabStop = false;
-			this.ePictureBox_import.ToolTipText = "Importar validades selecionadas";
-			this.ePictureBox_import.Click += new System.EventHandler(this.ePictureBox_import_Click);
+			ePictureBox_import.Image = Properties.Resources.exportar;
+			ePictureBox_import.Location = new Point(7, 22);
+			ePictureBox_import.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_import.Name = "ePictureBox_import";
+			ePictureBox_import.Size = new Size(88, 87);
+			ePictureBox_import.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_import.TabIndex = 15;
+			ePictureBox_import.TabStop = false;
+			ePictureBox_import.ToolTipText = "Importar validades selecionadas";
+			ePictureBox_import.Click += ePictureBox_import_Click;
 			// 
 			// groupBox6
 			// 
-			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox6.Controls.Add(this.ePictureBox_export);
-			this.groupBox6.Controls.Add(this.label2);
-			this.groupBox6.Controls.Add(this.dateTimePicker_ate);
-			this.groupBox6.Controls.Add(this.dateTimePicker_de);
-			this.groupBox6.Controls.Add(this.label1);
-			this.groupBox6.Location = new System.Drawing.Point(352, 16);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(425, 68);
-			this.groupBox6.TabIndex = 14;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Exportar Produtos Próximo da Validade";
+			groupBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			groupBox6.Controls.Add(ePictureBox_export);
+			groupBox6.Controls.Add(label2);
+			groupBox6.Controls.Add(dateTimePicker_ate);
+			groupBox6.Controls.Add(dateTimePicker_de);
+			groupBox6.Controls.Add(label1);
+			groupBox6.Location = new Point(564, 18);
+			groupBox6.Margin = new Padding(4, 3, 4, 3);
+			groupBox6.Name = "groupBox6";
+			groupBox6.Padding = new Padding(4, 3, 4, 3);
+			groupBox6.Size = new Size(496, 78);
+			groupBox6.TabIndex = 14;
+			groupBox6.TabStop = false;
+			groupBox6.Text = "Exportar Produtos Próximo da Validade";
 			// 
 			// ePictureBox_export
 			// 
-			this.ePictureBox_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ePictureBox_export.Image = global::EterPharmaPro.Properties.Resources.excel;
-			this.ePictureBox_export.Location = new System.Drawing.Point(379, 22);
-			this.ePictureBox_export.Name = "ePictureBox_export";
-			this.ePictureBox_export.Size = new System.Drawing.Size(40, 40);
-			this.ePictureBox_export.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.ePictureBox_export.TabIndex = 16;
-			this.ePictureBox_export.TabStop = false;
-			this.ePictureBox_export.ToolTipText = "Exportar validades selecionadas";
-			this.ePictureBox_export.Click += new System.EventHandler(this.ePictureBox_export_ClickAsync);
+			ePictureBox_export.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			ePictureBox_export.Image = Properties.Resources.excel;
+			ePictureBox_export.Location = new Point(442, 25);
+			ePictureBox_export.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_export.Name = "ePictureBox_export";
+			ePictureBox_export.Size = new Size(47, 46);
+			ePictureBox_export.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_export.TabIndex = 16;
+			ePictureBox_export.TabStop = false;
+			ePictureBox_export.ToolTipText = "Exportar validades selecionadas";
+			ePictureBox_export.Click += ePictureBox_export_ClickAsync;
 			// 
 			// label2
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.BackColor = System.Drawing.Color.Transparent;
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(182, 27);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(75, 31);
-			this.label2.TabIndex = 18;
-			this.label2.Text = "ATE:";
+			label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			label2.AutoSize = true;
+			label2.BackColor = Color.Transparent;
+			label2.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label2.Location = new Point(212, 31);
+			label2.Margin = new Padding(4, 0, 4, 0);
+			label2.Name = "label2";
+			label2.Size = new Size(75, 31);
+			label2.TabIndex = 18;
+			label2.Text = "ATE:";
 			// 
 			// dateTimePicker_ate
 			// 
-			this.dateTimePicker_ate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.dateTimePicker_ate.CustomFormat = "MM/yyyy";
-			this.dateTimePicker_ate.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker_ate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker_ate.Location = new System.Drawing.Point(263, 29);
-			this.dateTimePicker_ate.Name = "dateTimePicker_ate";
-			this.dateTimePicker_ate.ShowUpDown = true;
-			this.dateTimePicker_ate.Size = new System.Drawing.Size(110, 33);
-			this.dateTimePicker_ate.TabIndex = 17;
-			this.dateTimePicker_ate.ValueChanged += new System.EventHandler(this.dateTimePicker_de_ValueChanged);
+			dateTimePicker_ate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			dateTimePicker_ate.CustomFormat = "MM/yyyy";
+			dateTimePicker_ate.Font = new Font("Microsoft Tai Le", 15F);
+			dateTimePicker_ate.Format = DateTimePickerFormat.Custom;
+			dateTimePicker_ate.Location = new Point(307, 33);
+			dateTimePicker_ate.Margin = new Padding(4, 3, 4, 3);
+			dateTimePicker_ate.Name = "dateTimePicker_ate";
+			dateTimePicker_ate.ShowUpDown = true;
+			dateTimePicker_ate.Size = new Size(128, 33);
+			dateTimePicker_ate.TabIndex = 17;
+			dateTimePicker_ate.ValueChanged += dateTimePicker_de_ValueChanged;
 			// 
 			// dateTimePicker_de
 			// 
-			this.dateTimePicker_de.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.dateTimePicker_de.CustomFormat = "MM/yyyy";
-			this.dateTimePicker_de.Font = new System.Drawing.Font("Microsoft Tai Le", 15F);
-			this.dateTimePicker_de.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePicker_de.Location = new System.Drawing.Point(66, 27);
-			this.dateTimePicker_de.Name = "dateTimePicker_de";
-			this.dateTimePicker_de.ShowUpDown = true;
-			this.dateTimePicker_de.Size = new System.Drawing.Size(110, 33);
-			this.dateTimePicker_de.TabIndex = 17;
-			this.dateTimePicker_de.ValueChanged += new System.EventHandler(this.dateTimePicker_de_ValueChanged);
+			dateTimePicker_de.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			dateTimePicker_de.CustomFormat = "MM/yyyy";
+			dateTimePicker_de.Font = new Font("Microsoft Tai Le", 15F);
+			dateTimePicker_de.Format = DateTimePickerFormat.Custom;
+			dateTimePicker_de.Location = new Point(77, 31);
+			dateTimePicker_de.Margin = new Padding(4, 3, 4, 3);
+			dateTimePicker_de.Name = "dateTimePicker_de";
+			dateTimePicker_de.ShowUpDown = true;
+			dateTimePicker_de.Size = new Size(128, 33);
+			dateTimePicker_de.TabIndex = 17;
+			dateTimePicker_de.ValueChanged += dateTimePicker_de_ValueChanged;
 			// 
 			// label1
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.Transparent;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(0, 27);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(60, 31);
-			this.label1.TabIndex = 16;
-			this.label1.Text = "DE:";
+			label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			label1.AutoSize = true;
+			label1.BackColor = Color.Transparent;
+			label1.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label1.Location = new Point(0, 31);
+			label1.Margin = new Padding(4, 0, 4, 0);
+			label1.Name = "label1";
+			label1.Size = new Size(60, 31);
+			label1.TabIndex = 16;
+			label1.Text = "DE:";
 			// 
 			// ReportValidades
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1223, 529);
-			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.toolStrip_topMenu);
-			this.Name = "ReportValidades";
-			this.Text = "ReportMenipulados";
-			this.Load += new System.EventHandler(this.ReportValidades_Load);
-			this.toolStrip_topMenu.ResumeLayout(false);
-			this.toolStrip_topMenu.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_validadeFile)).EndInit();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_busca)).EndInit();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_import)).EndInit();
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_export)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			ClientSize = new Size(1427, 610);
+			Controls.Add(groupBox3);
+			Controls.Add(groupBox1);
+			Controls.Add(toolStrip_topMenu);
+			Margin = new Padding(4, 3, 4, 3);
+			Name = "ReportValidades";
+			Text = "ReportMenipulados";
+			Load += ReportValidades_Load;
+			toolStrip_topMenu.ResumeLayout(false);
+			toolStrip_topMenu.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)dataGridView_validadeFile).EndInit();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_busca).EndInit();
+			groupBox3.ResumeLayout(false);
+			groupBox5.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)ePictureBox_import).EndInit();
+			groupBox6.ResumeLayout(false);
+			groupBox6.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_export).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
 
 		}
 
