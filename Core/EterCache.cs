@@ -6,30 +6,19 @@ using System.Threading.Tasks;
 namespace EterPharmaPro.Core
 {
 	public class EterCache
-	{
-		private static EterCache _instance;
-		private static readonly object _lock = new object();
-
-		public static EterCache Instance
-		{
-			get
-			{
-				lock (_lock)
-				{
-					if (_instance == null)
-					{
-						_instance = new EterCache();
-					}
-					return _instance;
-				}
-			}
-		}
+	{		
+		private static readonly Lazy<EterCache> _instance = new Lazy<EterCache>(() => new EterCache());
+		
+		public static EterCache Instance => _instance.Value;
+		
 
 		private EterCache() {
 			EterDb = new EterDb();
+			EterDbController = new EterDbController();
+			//EterDbController.SetPropsAsync()?.Wait();
 		}
 
-		public EterDb EterDb { get; set; }
+		public EterDb EterDb { get; private set; }
 
 		public UserDbModel UserDbModel { get; set; }
 

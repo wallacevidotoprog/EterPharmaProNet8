@@ -67,7 +67,28 @@ namespace EterPharmaPro.Controllers.CarimboLoteValidade
 			}
 			try
 			{
-				var tempResult = await EterCache.Instance.EterDb.ClientService.AddAsync(clienteModel);
+
+
+				List<MedControlDbModel> medControl = clienteModel.MedControl.ToList();
+				clienteModel.MedControl = null;
+
+				var tempResultC = await EterCache.Instance.EterDb.ClientService.AddAsync(clienteModel);
+
+				medControl = medControl.Select(x =>
+				{
+					x.ID_CLIENT = tempResultC.ID;
+					x.ID_ADDRESS = clienteModel.AddressCliente.First().ID;
+					x.ID_USER = EterCache.Instance.UserDbModel.ID;
+					return x;
+				}).ToList();
+
+
+				foreach (var item in medControl)
+				{
+					await EterCache.Instance.EterDb.MedControlService.AddAsync(item);
+				}
+
+				return true;
 			}
 			catch (Exception ex)
 			{

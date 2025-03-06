@@ -1,4 +1,6 @@
-﻿using EterPharmaPro.Controllers.Manipulacao;
+﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Controllers.Manipulacao;
+using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
@@ -9,7 +11,8 @@ namespace EterPharmaPro.Views.Manipulados
 	{
 
 
-		private ManipulacaoModel manipulados;
+		private ManipulationDbModel manipulados;
+		private List<ClientDbModel> clientDbModels;
 
 		private bool edit = false;
 
@@ -20,11 +23,13 @@ namespace EterPharmaPro.Views.Manipulados
 			InitializeComponent();
 		}
 
-		public CreateManipulados(ManipulacaoModel model)
+		public CreateManipulados(ManipulationDbModel model)
 		{
 
 			manipuladoController = new ManipuladoController();
+
 			InitializeComponent();
+
 			if (model != null)
 			{
 				edit = true;
@@ -34,9 +39,11 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private void LoadDropDown()
 		{
-			//comboBox_situacao.CBListProps<SituationDbModal>(EterCache.Instance.Situation);
-			//comboBox_pag.CBListProps<PaymentDbModal>(EterCache.Instance.Paymente);
-			//comboBox_modo.CBListProps<DeliveryMethodDbModal>(EterCache.Instance.DeliveryMethod);
+			comboBox_user.CBListGeneric(EterCache.Instance.EterDb.UserService.GetAllAsync().Result.ToList().Select(x => new ViewCbModel { ID = x.ID, NAME = $"{x.ID_LOJA.ToString().PadLeft(4, '0')} - {x.NOME}" }).ToList());
+
+			comboBox_situacao.CBListGeneric(EterCache.Instance.EterDbController.SituationDbs.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME }).ToList());
+			comboBox_pag.CBListGeneric(EterCache.Instance.EterDbController.PaymentDbs.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME }).ToList());
+			comboBox_modo.CBListGeneric(EterCache.Instance.EterDbController.DeliveryMethodDbs.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NAME }).ToList());
 		}
 
 		private void toolStripButton_sair_Click(object sender, EventArgs e)
@@ -68,33 +75,42 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private async void CreateManipulados_Load(object sender, EventArgs e)
 		{
-			//CleanAll(null, null);
-			//await comboBox_user.CBListUserAsync(eterDb);
-			//LoadDropDown();
-			//comboBox_user.SelectedIndex = comboBox_user.ReturnIndexUserCB(eterDb.EterDbController.UserModelAcess.ID);
 
-			//if (manipulados != null && edit)
-			//{
-			//	dateTimePicker_data.Value = (DateTime)manipulados.DADOSATENDIMENTO.DATA;
-			//	textBox_atn.Text = manipulados?.DADOSATENDIMENTO.ATEN_MANI;
-			//	comboBox_user.SelectedIndex = comboBox_user.ReturnIndexUserCB(manipulados.DADOSATENDIMENTO?.ATEN_LOJA.ToString());
-			//	textBox_cpf.Text = ((ClienteDbModel)manipulados.DADOSCLIENTE)?.CPF.ReturnFormation(FormatationEnum.CPF);
-			//	textBox_rg.Text = ((ClienteDbModel)manipulados.DADOSCLIENTE)?.RG.ReturnFormation(FormatationEnum.RG);
-			//	textBox_nomeC.Text = ((ClienteDbModel)manipulados.DADOSCLIENTE)?.NOME;
-			//	textBox5_tel.Text = ((ClienteDbModel)manipulados.DADOSCLIENTE)?.TELEFONE.ReturnFormation(FormatationEnum.TELEFONE);
-			//	textBox_log.Text = ((EnderecoClienteDbModel)(((ClienteDbModel)manipulados.DADOSCLIENTE)?.ENDERECO)).ENDERECO;
-			//	textBox_obsEnd.Text = ((EnderecoClienteDbModel)(((ClienteDbModel)manipulados.DADOSCLIENTE)?.ENDERECO)).OBSERVACAO;
-			//	dataGridView_medicamentos.Rows.Clear();
-			//	for (int i = 0; i < ((List<MedicamentosManipuladosDbModal>)manipulados.MEDICAMENTOS)?.Count; i++)
-			//	{
-			//		dataGridView_medicamentos.Rows.Add(((List<MedicamentosManipuladosDbModal>)manipulados.MEDICAMENTOS)[i].NAME_M.ToString());
-			//	}
-			//	textBox_obsGeral.Text = manipulados?.OBSGERAL;
-			//	comboBox_situacao.SelectedIndex = comboBox_situacao.ReturnIndexPropsCB(manipulados.SITUCAO);
-			//	comboBox_pag.SelectedIndex = comboBox_pag.ReturnIndexPropsCB(manipulados.FORMAPAGAMENTO);
-			//	comboBox_modo.SelectedIndex = comboBox_modo.ReturnIndexPropsCB(manipulados.MODOENTREGA);
-			//	textBox_valorT.Text = manipulados.VALORFINAL.ToString("F2");
-			//}
+			clientDbModels = await manipuladoController.GetAllClient();
+
+			CleanAll(null, null);
+
+			LoadDropDown();
+
+			comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(EterCache.Instance.UserDbModel.ID);
+
+			if (manipulados != null && edit)
+			{
+				dateTimePicker_data.Value = (DateTime)manipulados.DATA;
+				textBox_atn.Text = manipulados.ATEN_MANI;
+				comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(manipulados.ATEN_LOJA);
+				textBox_cpf.Text = manipulados.Client.CPF.ReturnFormation(FormatationEnum.CPF);
+				textBox_rg.Text = manipulados.Client.RG.ReturnFormation(FormatationEnum.RG);
+				textBox_nomeC.Text = manipulados.Client.NOME;
+				textBox5_tel.Text = manipulados.Client.PHONE.ReturnFormation(FormatationEnum.TELEFONE);
+				textBox_log.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.ToString() ?? string.Empty;
+				textBox_obsEnd.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
+				dataGridView_medicamentos.Rows.Clear();
+				foreach (var item in manipulados.MedManipulation)
+				{
+					dataGridView_medicamentos.Rows.Add(item.NAME_M);
+				}
+				textBox_obsGeral.Text = manipulados?.OBSGERAL;
+				comboBox_situacao.SelectedIndex = comboBox_situacao.ReturnIndexCbGeneric(manipulados.Situation.ID);
+				comboBox_pag.SelectedIndex = comboBox_pag.ReturnIndexCbGeneric(manipulados.Payment.ID);
+				comboBox_modo.SelectedIndex = comboBox_modo.ReturnIndexCbGeneric(manipulados.DeliveryMethod.ID);
+				textBox_valorT.Text = manipulados.VALORFINAL?.ToString("F2");
+
+				if (true)
+				{
+					comboBox_user.SelectedIndex = comboBox_user.ReturnIndexCbGeneric(manipulados.ATEN_LOJA);
+				}
+			}
 		}
 
 		private bool Validade()
@@ -117,35 +133,35 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private async void BuscaCliente_Click(object sender, EventArgs e)
 		{
-			//List<ClienteDbModel> temp = null;
-			//ClienteDbModel tempSelect = null;
-			//try
-			//{
-			//	temp = ((textBox_cpf.Text != "") ? await manipuladoController.GetCliente(textBox_cpf.Text.ReturnInt(), TypeDoc.CPF) :
-			//		(((textBox_rg.Text != "")) ? await manipuladoController.GetCliente(textBox_rg.Text.ReturnInt(), TypeDoc.RG) :
-			//		 await manipuladoController.GetCliente()));
+			List<ClientDbModel> temp = null;
+			ClientDbModel tempSelect = null;
+			try
+			{
+				temp = ((textBox_cpf.Text != "") ? await manipuladoController.GetCliente(textBox_cpf.Text.ReturnInt()) :
+					(((textBox_rg.Text != "")) ? await manipuladoController.GetCliente(textBox_rg.Text.ReturnInt()) :
+					 await manipuladoController.GetCliente(null)));
 
-			//	if (temp.Count <= 0)
-			//	{
-			//		return;
-			//	}
-			//	tempSelect = temp.GetClienteArray();
-			//	if (tempSelect is null)
-			//	{
-			//		return;
-			//	}
-			//	textBox_cpf.Text = tempSelect?.CPF.ReturnFormation(FormatationEnum.CPF);
-			//	textBox_rg.Text = tempSelect?.RG.ReturnFormation(FormatationEnum.RG);
-			//	textBox_nomeC.Text = tempSelect?.NOME;
-			//	textBox5_tel.Text = tempSelect?.TELEFONE.ReturnFormation(FormatationEnum.TELEFONE);
-			//	textBox_log.Text = ((EnderecoClienteDbModel)tempSelect?.ENDERECO)?.ENDERECO;
-			//	textBox_obsEnd.Text = ((EnderecoClienteDbModel)tempSelect?.ENDERECO)?.OBSERVACAO;
+				if (temp.Count <= 0)
+				{
+					return;
+				}
+				tempSelect = temp.GetClienteArray();
+				if (tempSelect is null)
+				{
+					return;
+				}
+				textBox_cpf.Text = tempSelect?.CPF.ReturnFormation(FormatationEnum.CPF);
+				textBox_rg.Text = tempSelect?.RG.ReturnFormation(FormatationEnum.RG);
+				textBox_nomeC.Text = tempSelect?.NOME;
+				textBox5_tel.Text = tempSelect?.PHONE.ReturnFormation(FormatationEnum.TELEFONE);
+				textBox_log.Text = tempSelect.AddressCliente.FirstOrDefault()?.ToString() ?? string.Empty;
+				textBox_obsEnd.Text = tempSelect.AddressCliente.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
 
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-			//}
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
 		}
 
 		private void textBox_cpf_Validated(object sender, EventArgs e)
@@ -183,58 +199,62 @@ namespace EterPharmaPro.Views.Manipulados
 
 			try
 			{
-				//List<MedicamentosManipuladosDbModal> list = new List<MedicamentosManipuladosDbModal>();
-				//textBox_obsGeral.Focus();
-				//for (int i = 0; i < dataGridView_medicamentos.Rows.Count; i++)
-				//{
-				//	if (dataGridView_medicamentos.Rows[i].Cells[0].Value != null && dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString() != "")
-				//	{
-				//		list.Add(new MedicamentosManipuladosDbModal { NAME_M = dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString().ToUpper() });
-				//	}
-				//}
-				//ManipulacaoModel manipulacaoModel = new ManipulacaoModel
-				//{
-				//	ID = edit ? null : manipulados?.ID,
-				//	DADOSATENDIMENTO = new DadosAtendimentoModel
-				//	{
-				//		ATEN_LOJA = Convert.ToInt32(comboBox_user.SelectedValue.ToString()),
-				//		DATA = dateTimePicker_data.Value,
-				//		ATEN_MANI = textBox_atn.Text
-				//	},
-				//	DADOSCLIENTE = new ClienteDbModel
-				//	{
-				//		ID = edit ? null : ((ClienteDbModel)manipulados?.DADOSCLIENTE)?.ID,
-				//		CPF = textBox_cpf.Text.ReturnInt(),
-				//		RG = textBox_rg.Text.ReturnInt(),
-				//		NOME = textBox_nomeC.Text,
-				//		TELEFONE = textBox5_tel.Text.ReturnInt(),
-				//		ENDERECO = new EnderecoClienteDbModel
-				//		{
-				//			CLIENTE_ID = edit ? null : ((EnderecoClienteDbModel)((ClienteDbModel)manipulados?.DADOSCLIENTE)?.ENDERECO)?.CLIENTE_ID,
-				//			ENDERECO = textBox_log.Text,
-				//			OBSERVACAO = textBox_obsEnd.Text
-				//		}
-				//	},
-				//	MEDICAMENTOS = list,
-				//	OBSGERAL = textBox_obsGeral.Text,
-				//	SITUCAO = Convert.ToInt32(comboBox_situacao.SelectedValue),
-				//	FORMAPAGAMENTO = Convert.ToInt32(comboBox_pag.SelectedValue),
-				//	MODOENTREGA = Convert.ToInt32(comboBox_modo.SelectedValue),
-				//	VALORFINAL = Convert.ToDecimal(textBox_valorT.Text)
-				//};
+				List<MedManipulationDbModal> list = new List<MedManipulationDbModal>();
+				textBox_obsGeral.Focus();
+				for (int i = 0; i < dataGridView_medicamentos.Rows.Count; i++)
+				{
+					if (dataGridView_medicamentos.Rows[i].Cells[0].Value != null && dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString() != "")
+					{
+						list.Add(new MedManipulationDbModal { NAME_M = dataGridView_medicamentos.Rows[i].Cells[0].Value.ToString().ToUpper() });
+					}
+				}
+				ManipulationDbModel manipulacaoModel = new ManipulationDbModel
+				{
+					ID = edit ? manipulados?.ID : null,
 
 
-				//if (await manipuladoController.PrintDocManipulado(manipulacaoModel, EnumManipulado.P_80, edit))
-				//{
-				//	if (edit)
-				//	{
-				//		Close();
-				//	}
-				//	if (MessageBox.Show("TUDO OK!!\nDeseja limpar o formulário ?", "MANIPULAÇÂO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				//	{
-				//		CleanAll(null, null);
-				//	}
-				//}
+					ATEN_LOJA = Convert.ToInt32(comboBox_user.SelectedValue.ToString()),
+					DATA = dateTimePicker_data.Value,
+					ATEN_MANI = textBox_atn.Text
+					,
+					Client = new ClientDbModel
+					{
+						ID = edit ? manipulados.Client.ID : null,
+						CPF = textBox_cpf.Text.ReturnInt(),
+						RG = textBox_rg.Text.ReturnInt(),
+						NOME = textBox_nomeC.Text,
+						PHONE = textBox5_tel.Text.ReturnInt(),
+						AddressCliente = new List<AddressClienteDbModel> {new AddressClienteDbModel
+						{
+							PLACE = textBox_log.Text,
+							OBSERVACAO = textBox_obsEnd.Text
+						} }
+					},
+					AddressCliente = new AddressClienteDbModel
+					{
+						PLACE = textBox_log.Text,
+						OBSERVACAO = textBox_obsEnd.Text
+					},
+					MedManipulation = list,
+					OBSGERAL = textBox_obsGeral.Text,
+					ID_SITUCAO = Convert.ToUInt32(comboBox_situacao.SelectedValue),
+					ID_FORMAPAGAMENTO = Convert.ToUInt32(comboBox_pag.SelectedValue),
+					ID_MODOENTREGA = Convert.ToUInt32(comboBox_modo.SelectedValue),
+					VALORFINAL = Convert.ToDecimal(textBox_valorT.Text)
+				};
+
+
+				if (await manipuladoController.PrintDocManipulado(manipulacaoModel, EnumManipulado.P_80, edit))
+				{
+					if (edit)
+					{
+						Close();
+					}
+					if (MessageBox.Show("TUDO OK!!\nDeseja limpar o formulário ?", "MANIPULAÇÂO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+					{
+						CleanAll(null, null);
+					}
+				}
 			}
 			catch (Exception ex)
 			{

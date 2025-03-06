@@ -1,24 +1,25 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Core;
 using EterPharmaPro.Utils.Extencions;
 
 namespace EterPharmaPro.Controllers
 {
 	public class EterDbController
 	{
-
+		public List<PaymentDbModal> PaymentDbs { get; private set; }
+		public List<SituationDbModal> SituationDbs { get; private set; }
+		public List<DeliveryMethodDbModal> DeliveryMethodDbs { get; private set; }
 
 		public EterDbController()
 		{
+			Task.Run(async () => await SetPropsAsync()).ConfigureAwait(false);
 		}
 
-		public async Task<(List<PaymentDbModal> paymente, List<SituationDbModal> situation, List<DeliveryMethodDbModal> deliveryMethod)> ReturnPropsAsync()
+		public async Task SetPropsAsync()
 		{
-			//List<PaymentDbModal> pay = await eterDb.ActionDb.GETFIELDS<PaymentDbModal>(new QueryWhereModel());
-			//List<SituationDbModal> sit = await eterDb.ActionDb.GETFIELDS<SituationDbModal>(new QueryWhereModel());
-			//List<DeliveryMethodDbModal> dm = await eterDb.ActionDb.GETFIELDS<DeliveryMethodDbModal>(new QueryWhereModel());
-
-			return (null, null, null);
-			//return (pay, sit, dm);
+			PaymentDbs = EterCache.Instance.EterDb.PaymentService.GetAllAsync().Result.ToList();
+			SituationDbs = EterCache.Instance.EterDb.SituationService.GetAllAsync().Result.ToList();
+			DeliveryMethodDbs = EterCache.Instance.EterDb.DeliveryMethodService.GetAllAsync().Result.ToList();
 		}
 
 		//public async Task<(bool exist, EnderecoClienteDbModel end)> ExistAdressCliente(EnderecoClienteDbModel enderecoCliente)

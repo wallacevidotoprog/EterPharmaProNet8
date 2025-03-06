@@ -85,7 +85,7 @@
 			// 
 			fORMUToolStripMenuItem.Image = Properties.Resources.seta_direita;
 			fORMUToolStripMenuItem.Name = "fORMUToolStripMenuItem";
-			fORMUToolStripMenuItem.Size = new Size(180, 22);
+			fORMUToolStripMenuItem.Size = new Size(145, 22);
 			fORMUToolStripMenuItem.Text = "FORMULÁRIO";
 			fORMUToolStripMenuItem.Click += fORMUToolStripMenuItem_Click;
 			// 
@@ -93,7 +93,7 @@
 			// 
 			rELATÓRIOToolStripMenuItem1.Image = Properties.Resources.seta_direita;
 			rELATÓRIOToolStripMenuItem1.Name = "rELATÓRIOToolStripMenuItem1";
-			rELATÓRIOToolStripMenuItem1.Size = new Size(180, 22);
+			rELATÓRIOToolStripMenuItem1.Size = new Size(145, 22);
 			rELATÓRIOToolStripMenuItem1.Text = "RELATÓRIO";
 			rELATÓRIOToolStripMenuItem1.Click += rELATÓRIOToolStripMenuItem1_Click;
 			// 
@@ -150,7 +150,6 @@
 			toolStripButton_conf.TextAlign = ContentAlignment.BottomCenter;
 			toolStripButton_conf.TextImageRelation = TextImageRelation.ImageAboveText;
 			toolStripButton_conf.ToolTipText = "CONFIGURAÇÕES";
-			toolStripButton_conf.Visible = false;
 			toolStripButton_conf.Click += toolStripButton_conf_Click;
 			// 
 			// toolStripSeparator3

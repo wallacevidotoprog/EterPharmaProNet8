@@ -1,6 +1,8 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Models;
+using EterPharmaPro.Utils.Extencions;
 using System.Data;
 
 namespace EterPharmaPro.Controllers.Configs
@@ -12,8 +14,7 @@ namespace EterPharmaPro.Controllers.Configs
 
 		public ConfigsPageController()
 		{
-
-			//databaseProdutosDb.DatabaseProdutosLoaded += DatabaseProdutosDb_DatabaseProdutosLoaded;
+			EterCache.Instance.DatabaseProdutosDb.DatabaseProdutosLoaded += DatabaseProdutosDb_DatabaseProdutosLoaded;
 		}
 
 		private void DatabaseProdutosDb_DatabaseProdutosLoaded(bool complet)
@@ -21,91 +22,103 @@ namespace EterPharmaPro.Controllers.Configs
 			ReloadProd?.Invoke(this, new EventArgs());
 		}
 
-		public List<ProdutosModel> GetAllProdutos() => null;// databaseProdutosDb.produtos;
+		public List<ProdutosModel> GetAllProdutos() => EterCache.Instance.DatabaseProdutosDb.produtos;
 
 		public List<ProdutosModel> GetProdutos(object query, QueryProdutoEnum queryProdutoEnum)
 		{
 			if (string.IsNullOrEmpty(query.ToString()))
 			{
-				//return databaseProdutosDb.produtos;
+				return EterCache.Instance.DatabaseProdutosDb.produtos;
 			}
 			List<ProdutosModel> temp = null;
 
-			//switch (queryProdutoEnum)
-			//{
-			//	case QueryProdutoEnum.EAN:
-			//		temp = databaseProdutosDb.produtos.Where(p => p.EAN == (string)query).ToList();
-			//		break;
-			//	case QueryProdutoEnum.COD_INTERNO:
-			//		temp = databaseProdutosDb.produtos.Where(p => p.COD_PRODUTO == (string)query.ToString().PadLeft(6, '0')).ToList();
-			//		break;
-			//	case QueryProdutoEnum.DESCRICAO:
-			//		temp = databaseProdutosDb.produtos.Where(p => p.DESCRICAO_PRODUTO.Contains((string)query)).ToList();
-			//		break;
-			//	case QueryProdutoEnum.LABORATORIO:
-			//		temp = databaseProdutosDb.produtos.Where(p => p.LABORATORIO.Contains((string)query)).ToList();
-			//		break;
-			//	case QueryProdutoEnum.GRUPO:
-			//		temp = databaseProdutosDb.produtos.Where(p => p.GRUPO.Contains((string)query)).ToList();
-			//		break;
-			//}
+			switch (queryProdutoEnum)
+			{
+				case QueryProdutoEnum.EAN:
+					temp = EterCache.Instance.DatabaseProdutosDb.produtos.Where(p => p.EAN == (string)query).ToList();
+					break;
+				case QueryProdutoEnum.COD_INTERNO:
+					temp = EterCache.Instance.DatabaseProdutosDb.produtos.Where(p => p.COD_PRODUTO == (string)query.ToString().PadLeft(6, '0')).ToList();
+					break;
+				case QueryProdutoEnum.DESCRICAO:
+					temp = EterCache.Instance.DatabaseProdutosDb.produtos.Where(p => p.DESCRICAO_PRODUTO.Contains((string)query)).ToList();
+					break;
+				case QueryProdutoEnum.LABORATORIO:
+					temp = EterCache.Instance.DatabaseProdutosDb.produtos.Where(p => p.LABORATORIO.Contains((string)query)).ToList();
+					break;
+				case QueryProdutoEnum.GRUPO:
+					temp = EterCache.Instance.DatabaseProdutosDb.produtos.Where(p => p.GRUPO.Contains((string)query)).ToList();
+					break;
+			}
 
 			return temp;
 		}
 
-		public void RefreshProd() { } // databaseProdutosDb.Refresh();
+		public void RefreshProd() => EterCache.Instance.DatabaseProdutosDb.Refresh();
 
 		public async Task<bool> UpdateUser(UserDbModel userModel)
 		{
-			//try
-			//{
-			//	await eterDb.ActionDb.UPDATE(userModel, connection, transaction);
-
-			//	transaction.Commit();
-			//	return true;
-			//}
-			//catch (Exception ex)
-			//{
-			//	transaction.Rollback();
-			//	ex.ErrorGet();
-			return false;
-			//}
+			try
+			{
+				await EterCache.Instance.EterDb.UserService.UpdateAsync(userModel);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+				return false;
+			}
 		}
 
 		public async Task<bool> CreateUser(UserDbModel userModel)
 		{
-			//try
-			//{
-			//	await eterDb.ActionDb.INSERT(userModel, connection, transaction);
+			try
+			{
+				await EterCache.Instance.EterDb.UserService.AddAsync(userModel);
 
-			//	transaction.Commit();
-			//	return true;
-			//}
-			//catch (Exception ex)
-			//{
-			//	transaction.Rollback();
-			//	ex.ErrorGet();
-			return false;
-			//}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+				return false;
+			}
 		}
 
 		public async Task<List<PositionDbModel>> GetAllFuncao()
 		{
-			return null;// await eterDb.ActionDb.GETFIELDS<FuncaoDbModel>(new QueryWhereModel());
+			return EterCache.Instance.EterDb.PositionService.GetAllAsync().Result.ToList();
 		}
 
 		public async Task<DataTable> GetAllUser()
 		{
 			DataTable dataTable = Create();
 
-			//var tempU = await eterDb.ActionDb.GETFIELDS<UserModel>(new QueryWhereModel());
-			//var tempF = await eterDb.ActionDb.GETFIELDS<FuncaoDbModel>(new QueryWhereModel());
 
-			//tempU.ForEach((data) => data.FUNCAO_NAME = tempF.FirstOrDefault(x => x.ID == Convert.ToUInt32(data.FUNCAO)).NOME);
+			//List<UserDbModel> temoUsers = EterCache.Instance.EterDb.UserService.GetAllAsync(null,i=>i.Position).Result.ToList();
 
-			//foreach (var item in tempU)
+
+			foreach (var item in EterCache.Instance.EterDb.UserService.GetAllAsync(null, i => i.Position).Result)
+			{
+				dataTable.Rows.Add(
+					item.ID, item.ID_LOJA.ToString().PadLeft(4, '0'),
+					item.NOME,
+					item.Position.NOME,
+					item.STATUS,
+					item.CREATE_AT?.ToShortDateString(),
+					item.UPDATE_AT?.ToShortDateString());
+			}
+
+
+			//foreach (var item in temoUsers)
 			//{
-			//	dataTable.Rows.Add(item.ID, item.ID_LOJA.ToString().PadLeft(4, '0'), item.NOME, item.FUNCAO_NAME, item.STATUS, item.CREATE?.ToShortDateString(), item.UPDATE?.ToShortDateString());
+			//	dataTable.Rows.Add(
+			//		item.ID, item.ID_LOJA.ToString().PadLeft(4, '0'), 
+			//		item.NOME, 
+			//		item.Position.NOME, 
+			//		item.STATUS, 
+			//		item.CREATE_AT?.ToShortDateString(), 
+			//		item.UPDATE_AT?.ToShortDateString());
 			//}
 
 			return dataTable;
@@ -124,10 +137,7 @@ namespace EterPharmaPro.Controllers.Configs
 			return tabela;
 		}
 
-		public async Task<UserDbModel> GetUser(object value)
-		{
-			return null;// (await eterDb.ActionDb.GETFIELDS<UserModel>(new QueryWhereModel().SetWhere("ID", value))).FirstOrDefault();
-		}
+		public async Task<UserDbModel> GetUser(long? value) => EterCache.Instance.EterDb.UserService.GetByAsync(f => f.ID == value).Result;
 
 		public ProdutosModel GetProdutoCC(object tempCod)
 		{

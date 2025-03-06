@@ -1,4 +1,5 @@
-﻿using EterPharmaPro.Models;
+﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Models;
 using System.Data;
 
 namespace EterPharmaPro.Views.Manipulados
@@ -6,7 +7,7 @@ namespace EterPharmaPro.Views.Manipulados
 	public partial class ReportManipulacao : Form
 	{
 
-		private List<ManipulacaoModel> manipulacaoModelsBusca;
+		private List<ManipulationDbModel> manipulacaoModelsBusca;
 		public ReportManipulacao()
 		{
 			InitializeComponent();
@@ -27,7 +28,7 @@ namespace EterPharmaPro.Views.Manipulados
 			//RefreshGrid(manipulacaoModelsBusca);
 		}
 
-		private void RefreshGrid(List<ManipulacaoModel> query)
+		private void RefreshGrid(List<ManipulationDbModel> query)
 		{
 			//ListViewItem item = null;
 			//listView1.Items.Clear();
@@ -47,7 +48,7 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private void dateTimePicker_dataBusca_ValueChanged(object sender, EventArgs e)
 		{
-			RefreshGrid(manipulacaoModelsBusca.Where(x => x.DADOSATENDIMENTO.DATA?.ToShortDateString() == dateTimePicker_dataBusca.Value.ToShortDateString()).ToList());
+			// RefreshGrid(manipulacaoModelsBusca.Where(x => x.DADOSATENDIMENTO.DATA?.ToShortDateString() == dateTimePicker_dataBusca.Value.ToShortDateString()).ToList());
 		}
 
 		private async void eDITARToolStripMenuItem_Click(object sender, EventArgs e)

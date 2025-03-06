@@ -386,35 +386,35 @@ namespace EterPharmaPro.Utils.Extencions
 		{
 			try
 			{
-				//object[] tempEnd;
-				//int retList;
-				//if (clienteModels.Count > 1)
-				//{
-				//	tempEnd = new object[clienteModels.Count];
-				//	for (int i = 0; i < tempEnd.Length; i++)
-				//	{
-				//		tempEnd[i] = new object[2]
-				//		{
-				//			i,
-				//			"CLIENTE: " + clienteModels[i].NOME + $" | TOTAL DE ENDEREÇOS: {(((List<EnderecoClienteDbModel>)clienteModels[i].ENDERECO != null) ? ((List<AddressClienteDbModel>)clienteModels[i].ID).Count : 0)}"
-				//		};
-				//	}
-				//	retList = InputList.Show(tempEnd, "Clientes");
-				//	if (retList == -1)
-				//	{
-				//		return null;
-				//	}
-				//	ClienteDbModel tempSelect = clienteModels[retList];
-				//	tempSelect.ENDERECO = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
-				//	return tempSelect;
+				object[] tempEnd;
+				int retList;
+				if (clienteModels.Count > 1)
+				{
+					tempEnd = new object[clienteModels.Count];
+					for (int i = 0; i < tempEnd.Length; i++)
+					{
+						tempEnd[i] = new object[2]
+						{
+							i,
+							"CLIENTE: " + clienteModels[i].NOME + $" | TOTAL DE ENDEREÇOS: {clienteModels[i].AddressCliente.Count})"
+						};
+					}
+					retList = InputList.Show(tempEnd, "Clientes");
+					if (retList == -1)
+					{
+						return null;
+					}
+					ClientDbModel tempSelect = clienteModels[retList];
+					//tempSelect.AddressCliente.Add = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
+					return tempSelect;
 
-				//}
-				//else
-				//{
-				//	ClienteDbModel tempSelect = clienteModels[0];
-				//	tempSelect.ENDERECO = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
-				//	return tempSelect;
-				//}
+				}
+				else
+				{
+					ClientDbModel tempSelect = clienteModels[0];
+					//tempSelect.ENDERECO = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
+					return tempSelect;
+				}
 			}
 			catch (Exception ex)
 			{

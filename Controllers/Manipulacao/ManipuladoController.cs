@@ -1,7 +1,7 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
+using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Infrastructure.Services;
-using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
 
 namespace EterPharmaPro.Controllers.Manipulacao
@@ -16,51 +16,40 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			manipuladoService = new ManipuladoService();
 		}
 
-		public async Task<List<ClientDbModel>> GetCliente(string query = null, TypeDoc typeDoc = TypeDoc.NONE)
+		public async Task<List<ClientDbModel>> GetCliente(string query) => EterCache.Instance.EterDb.ClientService.GetAllAsync((!string.IsNullOrEmpty(query) ? f => f.CPF == query || f.RG == query : null), i => i.AddressCliente).Result.ToList();
+
+		public async Task<bool> PrintDocManipulado(ManipulationDbModel model, EnumManipulado enumManipulado, bool edit = false)
 		{
-			List<ClientDbModel> dadosCliente = new List<ClientDbModel>();
-			//switch (typeDoc)
+
+			model.UserModel = await EterCache.Instance.EterDb.UserService.GetByAsync(f => f.ID == model.ATEN_LOJA);
+			model.Situation = await EterCache.Instance.EterDb.SituationService.GetByAsync(f => f.ID == model.ID_SITUCAO);
+			model.Payment = await EterCache.Instance.EterDb.PaymentService.GetByAsync(f => f.ID == model.ID_FORMAPAGAMENTO);
+			model.DeliveryMethod = await EterCache.Instance.EterDb.DeliveryMethodService.GetByAsync(f => f.ID == model.ID_MODOENTREGA);
+
+			//try
 			//{
-			//	case TypeDoc.CPF:
-			//		dadosCliente = await eterDb.ActionDb.GETFIELDS<ClienteDbModel>(new QueryWhereModel().SetWhere("CPF", query));
-			//		break;
-			//	case TypeDoc.RG:
-			//		dadosCliente = await eterDb.ActionDb.GETFIELDS<ClienteDbModel>(new QueryWhereModel().SetWhere("RG", query));
-			//		break;
-			//	default:
-			//		dadosCliente = await eterDb.ActionDb.GETFIELDS<ClienteDbModel>(new QueryWhereModel());
-			//		break;
+			//	switch (enumManipulado)
+			//	{
+			//		case EnumManipulado.P_80:
+			//			manipuladoService.PrintDocManipulado80mm(model);
+			//			break;
+			//		case EnumManipulado.A4:
+			//			manipuladoService.PrintDocManipuladoA4(model);
+			//			break;
+			//	}
 			//}
-
-
-			//for (int i = 0; i < dadosCliente.Count; i++)
+			//catch (Exception ex)
 			//{
-			//	dadosCliente[i].ENDERECO = await eterDb.ActionDb.GETFIELDS<EnderecoClienteDbModel>(new QueryWhereModel().SetWhere("CLIENTE_ID", dadosCliente[i].ID));
+			//	ex.ErrorGet();
 			//}
-			return dadosCliente;
-		}
-
-		public async Task<bool> PrintDocManipulado(ManipulacaoModel model, EnumManipulado enumManipulado, bool edit = false)
-		{
+			model.Situation = null;
+			model.Payment = null;
+			model.DeliveryMethod = null;
+			model.UserModel = null;
 			try
 			{
-				switch (enumManipulado)
-				{
-					case EnumManipulado.P_80:
-						manipuladoService.PrintDocManipulado80mm(model);
-						break;
-					case EnumManipulado.A4:
-						manipuladoService.PrintDocManipuladoA4(model);
-						break;
-				}
-			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
-
-			try
-			{
+				/// verificar a questao de existente
+				await EterCache.Instance.EterDb.ManipulationService.AddOrUpdateAsync(model);
 
 				//(long? IDC, long? IDE) = await eterDb.EterDbController.RegisterCliente((ClienteDbModel)model.DADOSCLIENTE);
 
@@ -117,91 +106,28 @@ namespace EterPharmaPro.Controllers.Manipulacao
 				ex.ErrorGet();
 				return false;
 			}
-
-			return false;
-
-		}
-
-		public async Task<List<ManipulacaoModel>> GetManipulacaoFromUser(object idUser)
-		{
-
-			List<ManipulacaoModel> manipulacaoModels = new List<ManipulacaoModel>();
-			//try
-			//{
-
-			//	List<ManipulacaoDbModel> tempM = await eterDb.ActionDb.GETFIELDS<ManipulacaoDbModel>(new QueryWhereModel().SetWhere("ATEN_LOJA", idUser));
-
-
-			//	for (int i = 0; i < tempM.Count; i++)
-			//	{
-			//		ManipulacaoModel temp = new ManipulacaoModel().ConvertDb(tempM[i]);
-			//		DadosClienteManipulacao dadosClienteManipulacao = (DadosClienteManipulacao)temp.DADOSCLIENTE;
-
-			//		temp.DADOSATENDIMENTO.ATEN_LOJA_NAME = (await eterDb.ActionDb.GETFIELDS<UserModel>(new QueryWhereModel().SetWhere("ID", temp.DADOSATENDIMENTO.ATEN_LOJA))).FirstOrDefault().NOME;
-
-			//		temp.DADOSCLIENTE = (await eterDb.ActionDb.GETFIELDS<ClienteDbModel>(new QueryWhereModel().SetWhere("ID", tempM[i].CLIENTE_ID))).FirstOrDefault().NOME;
-			//		manipulacaoModels.Add(temp);
-			//	}
-
-
-
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-
-			//}
-			return manipulacaoModels;
-
-
-		}
-		public async Task<ManipulacaoModel> GetManipulacao(object id)
-		{
-
-			//try
-			//{
-
-			//	ManipulacaoDbModel tempM = (await eterDb.ActionDb.GETFIELDS<ManipulacaoDbModel>(new QueryWhereModel().SetWhere("ID", id))).FirstOrDefault();
-
-			//	ManipulacaoModel temp = new ManipulacaoModel().ConvertDb(tempM);
-			//	DadosClienteManipulacao dadosClienteManipulacao = (DadosClienteManipulacao)temp.DADOSCLIENTE;
-
-			//	temp.DADOSCLIENTE = (await eterDb.ActionDb.GETFIELDS<ClienteDbModel>(new QueryWhereModel().SetWhere("ID", tempM.CLIENTE_ID))).FirstOrDefault();
-
-			//	((ClienteDbModel)temp.DADOSCLIENTE).ENDERECO = (await eterDb.ActionDb.GETFIELDS<EnderecoClienteDbModel>(new QueryWhereModel().SetWhere("ID", tempM.ENDERECO_ID))).FirstOrDefault();
-
-			//	temp.MEDICAMENTOS = await eterDb.ActionDb.GETFIELDS<MedicamentosManipuladosDbModal>(new QueryWhereModel().SetWhere("MANIPULADOS_ID", tempM.ID));
-
-
-			//	return temp;
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-
-			//}
-			return null;
-
-
-		}
-
-		public async Task<bool> DeleteManipulacao(int temp)
-		{
-			//try
-			//{
-			//	await eterDb.ActionDb.DELETE<ManipulacaoDbModel>(new QueryDeleteModel().SetWhere("ID", temp), connection, transaction);
-
-			//	transaction.Commit();
-			//	return true;
-			//}
-			//catch (Exception ex)
-			//{
-			//	transaction.Rollback();
-			//	ex.ErrorGet();
-			//	return false;
-			//}
-
 			return false;
 		}
+
+		public async Task<List<ManipulationDbModel>> GetManipulacaoFromUser(long? idUser) => EterCache.Instance.EterDb.ManipulationService.GetAllAsync(f => f.ATEN_LOJA == idUser, i => i.AddressCliente, i => i.MedManipulation, i => i.Client).Result.ToList();
+
+		public async Task<ManipulationDbModel> GetManipulacao(long? id) => EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == id, i => i.AddressCliente, i => i.MedManipulation, i => i.Client).Result;
+
+		public async Task<bool> DeleteManipulacao(long? id)
+		{
+			try
+			{
+				await EterCache.Instance.EterDb.ManipulationService.RemoveAsync((int)id);
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+				return false;
+			}
+		}
+
+		public async Task<List<ClientDbModel>> GetAllClient() => EterCache.Instance.EterDb.ClientService.GetAllAsync(null, i => i.AddressCliente).Result.ToList();
 	}
 }

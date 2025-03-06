@@ -145,7 +145,7 @@ namespace EterPharmaPro.Views.LoteControlado
 					return;
 				}
 
-				if (AddressClienteDbModel != null)
+				if (AddressClienteDbModel != null && !string.IsNullOrEmpty(textBox_end.Text))
 				{
 					AddressClienteDbModel.NUMBER = Convert.ToInt32(ExtensionsDefault.ReturnInt(ExtrairNumero(textBox_end.Text)));
 				}
@@ -157,6 +157,7 @@ namespace EterPharmaPro.Views.LoteControlado
 					};
 				}
 
+
 				if (ClienteModel is null)
 				{
 					ClienteModel = new ClientDbModel
@@ -166,15 +167,9 @@ namespace EterPharmaPro.Views.LoteControlado
 						PHONE = textBox_cel.Text.ReturnInt(),
 
 						AddressCliente = new List<AddressClienteDbModel> { AddressClienteDbModel },
+						MedControl = medicamentosControladoDbModels
 					};
 				}
-				//if (ClienteModel.ENDERECO is null || ((EnderecoClienteDbModel)ClienteModel.ENDERECO).ENDERECO.Trim().Replace(" ", null) != textBox_end.Text.Trim().Replace(" ", null))
-				//{
-				//	ClienteModel.ENDERECO = new EnderecoClienteDbModel
-				//	{
-				//		ENDERECO = textBox_end.Text
-				//	};
-				//}
 
 				if (await controladosController.FinishAsync(ClienteModel))
 				{
@@ -194,7 +189,7 @@ namespace EterPharmaPro.Views.LoteControlado
 				if (listView1.SelectedItems.Count > 0)
 				{
 					int temp = listView1.SelectedItems[0].Index;
-					if (MessageBox.Show("Deseja excluir esse item ?\n" + listView1.SelectedItems[0]?.SubItems[0].Text, "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK && temp >= 0)
+					if (MessageBox.Show("Deseja excluir esse item ?\n" + listView1.SelectedItems[0]?.SubItems[1].Text, "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK && temp >= 0)
 					{
 						medicamentosControladoDbModels.RemoveAt(temp);
 						RefreshListViwe(temp, ListViewActionsEnum.REMOVE);
@@ -214,7 +209,7 @@ namespace EterPharmaPro.Views.LoteControlado
 				case ListViewActionsEnum.ADD:
 					MedControlDbModel tempDataAdd = data as MedControlDbModel;
 
-					ListViewItem item = new ListViewItem(tempDataAdd.CODIGO?.ToString());
+					ListViewItem item = new ListViewItem(tempDataAdd.CODIGO?.ToString().PadLeft(4, '0'));
 					item.SubItems.Add(tempDataAdd.NAME_M);
 					item.SubItems.Add(tempDataAdd.QTD.ToString());
 					item.SubItems.Add(tempDataAdd.VALIDADE?.ToShortDateString());

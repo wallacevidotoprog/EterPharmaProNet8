@@ -1,5 +1,7 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Controllers.Configs;
+using EterPharmaPro.Core;
+using EterPharmaPro.Models;
 using EterPharmaPro.Properties;
 using EterPharmaPro.Utils.Extencions;
 
@@ -10,7 +12,8 @@ namespace EterPharmaPro.Views.Configuracoes
 	{
 		private bool isNew = false;
 		private bool isEdit;
-		UserDbModel userModel = null;
+		private UserDbModel userModel = null;
+		private List<PositionDbModel> positionModel = null;
 
 		private readonly ConfigsPageController configsPageController;
 		public User(ConfigsPageController configsPageController)
@@ -41,10 +44,11 @@ namespace EterPharmaPro.Views.Configuracoes
 			{
 				userModel = userModel ?? new UserDbModel();
 
-				userModel.ID_LOJA = Convert.ToUInt32(textBox_id.Text.ReturnInt());
+
+				userModel.ID_LOJA = !string.IsNullOrEmpty(textBox_id.Text) ? Convert.ToUInt32(textBox_id.Text.ReturnInt()) : RenerateID();
 				userModel.NOME = textBox_nome.Text.ToUpper();
 				userModel.PASS = string.IsNullOrEmpty(textBox_pass.Text) ? null : textBox_pass.Text;
-				//userModel.FUNCAO = Convert.ToInt32(comboBox_funcao.SelectedValue);
+				userModel.ID_FUNCAO = positionModel.FirstOrDefault(x => x.ID == Convert.ToInt32(comboBox_funcao.SelectedValue)).ID;
 				userModel.STATUS = eSwitchControl_stats.Checked;
 
 
@@ -68,6 +72,27 @@ namespace EterPharmaPro.Views.Configuracoes
 			}
 		}
 
+		private long? RenerateID()
+		{
+			List<long?> ids = EterCache.Instance.EterDb.UserService.GetAllAsync().Result.Select(x => x.ID_LOJA).ToList();
+
+
+			while (true)
+			{
+				long? id = GeneteID();
+				if (!ids.Contains(id))
+				{
+					return id;
+				}
+			}
+
+		}
+		private long? GeneteID()
+		{
+			Random random = new Random();
+			return Convert.ToUInt32(random.Next(1, 9999));
+		}
+
 		private void toolStripButton_cancel_Click(object sender, EventArgs e)
 		{
 			userModel = null;
@@ -81,20 +106,22 @@ namespace EterPharmaPro.Views.Configuracoes
 
 		private async void User_Load(object sender, EventArgs e)
 		{
-			//comboBox_funcao.CBListUserFuncao(await configsPageController.GetAllFuncao());
+			positionModel = EterCache.Instance.EterDb.PositionService.GetAllAsync().Result.ToList();
+
+			comboBox_funcao.CBListGeneric(positionModel.Select(x => new ViewCbModel { ID = x.ID, NAME = x.NOME ?? "Err" }).ToList());
 			dataGridView_user.DataSource = await configsPageController.GetAllUser();
 		}
 
 		private async void dataGridView_user_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
-			userModel = await configsPageController.GetUser(dataGridView_user.Rows[e.RowIndex].Cells[0].Value);
+			userModel = await configsPageController.GetUser(Convert.ToUInt32(dataGridView_user.Rows[e.RowIndex].Cells[0].Value));
 
 			if (userModel is null) { return; }
 
 			textBox_id.Text = userModel.ID_LOJA.ToString();
 			textBox_nome.Text = userModel.NOME;
 			textBox_pass.Text = userModel.PASS;
-			//comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexFuncaoCB(userModel.FUNCAO);
+			comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexCbGeneric(userModel.Position.ID);
 			eSwitchControl_stats.Checked = userModel.STATUS;
 
 			isEdit = true;
