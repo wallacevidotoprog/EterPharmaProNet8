@@ -1,11 +1,12 @@
 ﻿using EterPharmaPro.Controllers;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Utils.Extencions;
+using EterPharmaPro.Views.IMPRESSOS;
 using EterPharmaPro.Views.LoteControlado;
 using EterPharmaPro.Views.Remanejo;
 using EterPharmaPro.Views.ReqNota;
 
-namespace EterPharmaPro.Views
+namespace EterPharmaPro.Views.IMPRESSOES
 {
 	public partial class IMPRESSOS : Form
 	{
@@ -69,11 +70,8 @@ namespace EterPharmaPro.Views
 		private void cONTROLEDEREQNOTAToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new ControleReqNota());
 
 
-		private void pROMOÇÃOToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void TagValidade(object sender, EventArgs e) => OpenForm(new TagViewer());
+
+		private void pROMOÇÃOToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new PromocaoTag());
 	}
 }

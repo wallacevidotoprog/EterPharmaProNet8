@@ -3,6 +3,7 @@ using EterPharmaPro.Infrastructure.Services.DbProdutos;
 using EterPharmaPro.Utils.Extencions;
 using EterPharmaPro.Views;
 using EterPharmaPro.Views.Configuracoes;
+using EterPharmaPro.Views.IMPRESSOES;
 using EterPharmaPro.Views.Manipulados;
 using EterPharmaPro.Views.Validade;
 

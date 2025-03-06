@@ -2,6 +2,7 @@
 using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Infrastructure.Services;
+using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
 
 namespace EterPharmaPro.Controllers.Manipulacao
@@ -10,10 +11,16 @@ namespace EterPharmaPro.Controllers.Manipulacao
 	{
 
 		private readonly ManipuladoService manipuladoService;
+		public readonly PermissoesController permissoesReport;
 
 		public ManipuladoController()
 		{
 			manipuladoService = new ManipuladoService();
+
+			permissoesReport = new PermissoesController(new PermissionModel
+			{
+				DELETE = new PermissionsEnum[] { PermissionsEnum.Dev, PermissionsEnum.Admin, PermissionsEnum.Gerente, PermissionsEnum.Supervisor }
+			});
 		}
 
 		public async Task<List<ClientDbModel>> GetCliente(string query) => EterCache.Instance.EterDb.ClientService.GetAllAsync((!string.IsNullOrEmpty(query) ? f => f.CPF == query || f.RG == query : null), i => i.AddressCliente).Result.ToList();
@@ -48,58 +55,21 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			model.UserModel = null;
 			try
 			{
-				/// verificar a questao de existente
+				ClientDbModel client = model.Client;
+				client.AddressCliente = new List<AddressClienteDbModel> { model.AddressCliente };
+
+				model.AddressCliente = null;
+				model.Client = null;
+
+				client = await EterCache.Instance.EterDb.ClientService.AddOrUpdateAsync(client);
+
+				model.ID_CLIENTE = client.ID;
+				model.ID_ENDERECO = client.AddressCliente.FirstOrDefault().ID;
+
 				await EterCache.Instance.EterDb.ManipulationService.AddOrUpdateAsync(model);
 
-				//(long? IDC, long? IDE) = await eterDb.EterDbController.RegisterCliente((ClienteDbModel)model.DADOSCLIENTE);
 
-				//model.DADOSCLIENTE = new DadosClienteManipulacao { ID_CLIENTE = IDC, ID_ENDERECO = IDE };
-
-				//using (var connection = new SQLiteConnection(eterDb.DatabaseConnection))
-				//{
-				//	await connection.OpenAsync().ConfigureAwait(false);
-				//	using (var transaction = connection.BeginTransaction())
-				//	{
-				//		try
-				//		{
-
-
-				//			if (edit)
-				//			{
-				//				await eterDb.ActionDb.DELETE<MedicamentosManipuladosDbModal>(new QueryDeleteModel().SetWhere("ID", model.ID), connection, transaction);
-				//				await eterDb.ActionDb.UPDATE(model, connection, transaction);
-
-				//				((List<MedicamentosManipuladosDbModal>)model.MEDICAMENTOS).ForEach(m => m.MANIPULADOS_ID = model.ID);
-
-				//				foreach (var medicamento in (List<MedicamentosManipuladosDbModal>)model.MEDICAMENTOS)
-				//				{
-				//					await eterDb.ActionDb.INSERT(medicamento, connection, transaction);
-				//				}
-				//			}
-				//			else
-				//			{
-				//				var temp = new ManipulacaoDbModel().Convert(model);
-				//				long? tempCM = await eterDb.ActionDb.INSERT(temp, connection, transaction);
-
-				//				((List<MedicamentosManipuladosDbModal>)model.MEDICAMENTOS).ForEach(m => m.MANIPULADOS_ID = tempCM);
-
-				//				foreach (var medicamento in (List<MedicamentosManipuladosDbModal>)model.MEDICAMENTOS)
-				//				{
-				//					await eterDb.ActionDb.INSERT(medicamento, connection, transaction);
-				//				}
-				//			}
-
-				//			transaction.Commit();
-				//			return true;
-				//		}
-				//		catch (Exception ex)
-				//		{
-				//			transaction.Rollback();
-				//			ex.ErrorGet();
-				//			return false;
-				//		}
-				//	}
-				//}
+				return true;
 			}
 			catch (Exception ex)
 			{
@@ -109,7 +79,15 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			return false;
 		}
 
-		public async Task<List<ManipulationDbModel>> GetManipulacaoFromUser(long? idUser) => EterCache.Instance.EterDb.ManipulationService.GetAllAsync(f => f.ATEN_LOJA == idUser, i => i.AddressCliente, i => i.MedManipulation, i => i.Client).Result.ToList();
+		public async Task<List<ManipulationDbModel>> GetManipulacaoFromUser(long? idUser) => EterCache.Instance.EterDb.ManipulationService.GetAllAsync(f => f.ATEN_LOJA == idUser,
+			i => i.AddressCliente,
+			i => i.MedManipulation,
+			i => i.Client,
+			i => i.UserModel,
+			i => i.Payment,
+			i => i.DeliveryMethod,
+			i => i.Situation
+			).Result.ToList();
 
 		public async Task<ManipulationDbModel> GetManipulacao(long? id) => EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == id, i => i.AddressCliente, i => i.MedManipulation, i => i.Client).Result;
 

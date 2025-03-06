@@ -13,6 +13,7 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private ManipulationDbModel manipulados;
 		private List<ClientDbModel> clientDbModels;
+		private ClientDbModel clientSearch;
 
 		private bool edit = false;
 
@@ -70,6 +71,8 @@ namespace EterPharmaPro.Views.Manipulados
 			comboBox_pag.SelectedIndex = -1;
 			comboBox_modo.SelectedIndex = -1;
 			textBox_valorT.Text = "0,00";
+			clientSearch = null;
+			clientDbModels = null;
 
 		}
 
@@ -101,9 +104,9 @@ namespace EterPharmaPro.Views.Manipulados
 					dataGridView_medicamentos.Rows.Add(item.NAME_M);
 				}
 				textBox_obsGeral.Text = manipulados?.OBSGERAL;
-				comboBox_situacao.SelectedIndex = comboBox_situacao.ReturnIndexCbGeneric(manipulados.Situation.ID);
-				comboBox_pag.SelectedIndex = comboBox_pag.ReturnIndexCbGeneric(manipulados.Payment.ID);
-				comboBox_modo.SelectedIndex = comboBox_modo.ReturnIndexCbGeneric(manipulados.DeliveryMethod.ID);
+				comboBox_situacao.SelectedIndex = comboBox_situacao.ReturnIndexCbGeneric(manipulados.ID_SITUCAO);
+				comboBox_pag.SelectedIndex = comboBox_pag.ReturnIndexCbGeneric(manipulados.ID_FORMAPAGAMENTO);
+				comboBox_modo.SelectedIndex = comboBox_modo.ReturnIndexCbGeneric(manipulados.ID_MODOENTREGA);
 				textBox_valorT.Text = manipulados.VALORFINAL?.ToString("F2");
 
 				if (true)
@@ -150,6 +153,10 @@ namespace EterPharmaPro.Views.Manipulados
 				{
 					return;
 				}
+				///////////////////////////// -------------------------- ARRUMAR 
+				clientSearch = tempSelect;
+				clientSearch.AddressCliente = new List<AddressClienteDbModel> { tempSelect.AddressCliente.FirstOrDefault() };
+
 				textBox_cpf.Text = tempSelect?.CPF.ReturnFormation(FormatationEnum.CPF);
 				textBox_rg.Text = tempSelect?.RG.ReturnFormation(FormatationEnum.RG);
 				textBox_nomeC.Text = tempSelect?.NOME;
@@ -219,19 +226,15 @@ namespace EterPharmaPro.Views.Manipulados
 					,
 					Client = new ClientDbModel
 					{
-						ID = edit ? manipulados.Client.ID : null,
+						ID = edit ? manipulados.Client.ID : clientSearch != null ? clientSearch.ID : null,
 						CPF = textBox_cpf.Text.ReturnInt(),
 						RG = textBox_rg.Text.ReturnInt(),
 						NOME = textBox_nomeC.Text,
-						PHONE = textBox5_tel.Text.ReturnInt(),
-						AddressCliente = new List<AddressClienteDbModel> {new AddressClienteDbModel
-						{
-							PLACE = textBox_log.Text,
-							OBSERVACAO = textBox_obsEnd.Text
-						} }
+						PHONE = textBox5_tel.Text.ReturnInt()
 					},
 					AddressCliente = new AddressClienteDbModel
 					{
+						ID = edit ? manipulados?.AddressCliente.ID : null,
 						PLACE = textBox_log.Text,
 						OBSERVACAO = textBox_obsEnd.Text
 					},

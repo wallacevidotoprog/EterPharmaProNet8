@@ -5,7 +5,7 @@ using EterPharmaPro.Models;
 using EterPharmaPro.Models.Tag;
 using EterPharmaPro.Utils.Extencions;
 
-namespace EterPharmaPro.Views
+namespace EterPharmaPro.Views.IMPRESSOES
 {
 	public partial class TagViewer : Form
 	{

@@ -1,4 +1,4 @@
-﻿namespace EterPharmaPro.Views
+﻿namespace EterPharmaPro.Views.IMPRESSOES
 {
 	partial class IMPRESSOS
 	{
@@ -36,8 +36,8 @@
 			toolStripDropDownButton_impressoes = new ToolStripDropDownButton();
 			lOTEVALIDAEToolStripMenuItem = new ToolStripMenuItem();
 			pROMOÇÃOToolStripMenuItem = new ToolStripMenuItem();
-			toolStripDropDownButton_gerencial = new ToolStripDropDownButton();
 			toolStripMenuItem_remanejo = new ToolStripMenuItem();
+			toolStripDropDownButton_gerencial = new ToolStripDropDownButton();
 			cONTROLEDEREQNOTAToolStripMenuItem = new ToolStripMenuItem();
 			panel_center = new Panel();
 			toolStrip_topMenu.SuspendLayout();
@@ -50,7 +50,7 @@
 			toolStrip_topMenu.Location = new Point(0, 0);
 			toolStrip_topMenu.Name = "toolStrip_topMenu";
 			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
-			toolStrip_topMenu.Size = new Size(933, 93);
+			toolStrip_topMenu.Size = new Size(1272, 93);
 			toolStrip_topMenu.TabIndex = 6;
 			toolStrip_topMenu.Text = "toolStrip1";
 			// 
@@ -93,14 +93,14 @@
 			// 
 			toolStripMenuItem1.Image = Properties.Resources.seta_direita;
 			toolStripMenuItem1.Name = "toolStripMenuItem1";
-			toolStripMenuItem1.Size = new Size(180, 22);
+			toolStripMenuItem1.Size = new Size(145, 22);
 			toolStripMenuItem1.Text = "LOTE VALIDAE";
 			toolStripMenuItem1.Click += lOTEVALIDAEToolStripMenuItem_Click;
 			// 
 			// toolStripDropDownButton_impressoes
 			// 
 			toolStripDropDownButton_impressoes.AutoSize = false;
-			toolStripDropDownButton_impressoes.DropDownItems.AddRange(new ToolStripItem[] { lOTEVALIDAEToolStripMenuItem, pROMOÇÃOToolStripMenuItem });
+			toolStripDropDownButton_impressoes.DropDownItems.AddRange(new ToolStripItem[] { lOTEVALIDAEToolStripMenuItem, pROMOÇÃOToolStripMenuItem, toolStripMenuItem_remanejo });
 			toolStripDropDownButton_impressoes.Font = new Font("Segoe UI", 8F);
 			toolStripDropDownButton_impressoes.Image = Properties.Resources.printer;
 			toolStripDropDownButton_impressoes.ImageAlign = ContentAlignment.BottomCenter;
@@ -126,14 +126,22 @@
 			// 
 			pROMOÇÃOToolStripMenuItem.Image = Properties.Resources.seta_direita;
 			pROMOÇÃOToolStripMenuItem.Name = "pROMOÇÃOToolStripMenuItem";
-			pROMOÇÃOToolStripMenuItem.Size = new Size(147, 22);
+			pROMOÇÃOToolStripMenuItem.Size = new Size(180, 22);
 			pROMOÇÃOToolStripMenuItem.Text = "PROMOÇÃO";
 			pROMOÇÃOToolStripMenuItem.Click += pROMOÇÃOToolStripMenuItem_Click;
+			// 
+			// toolStripMenuItem_remanejo
+			// 
+			toolStripMenuItem_remanejo.Image = (Image)resources.GetObject("toolStripMenuItem_remanejo.Image");
+			toolStripMenuItem_remanejo.Name = "toolStripMenuItem_remanejo";
+			toolStripMenuItem_remanejo.Size = new Size(180, 22);
+			toolStripMenuItem_remanejo.Text = "REMANEJO";
+			toolStripMenuItem_remanejo.Click += toolStripMenuItem_remanejo_Click;
 			// 
 			// toolStripDropDownButton_gerencial
 			// 
 			toolStripDropDownButton_gerencial.AutoSize = false;
-			toolStripDropDownButton_gerencial.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem_remanejo, cONTROLEDEREQNOTAToolStripMenuItem });
+			toolStripDropDownButton_gerencial.DropDownItems.AddRange(new ToolStripItem[] { cONTROLEDEREQNOTAToolStripMenuItem });
 			toolStripDropDownButton_gerencial.Font = new Font("Segoe UI", 8F);
 			toolStripDropDownButton_gerencial.Image = Properties.Resources.gerenciamento;
 			toolStripDropDownButton_gerencial.ImageAlign = ContentAlignment.BottomCenter;
@@ -146,14 +154,6 @@
 			toolStripDropDownButton_gerencial.TextAlign = ContentAlignment.BottomCenter;
 			toolStripDropDownButton_gerencial.TextImageRelation = TextImageRelation.ImageAboveText;
 			toolStripDropDownButton_gerencial.ToolTipText = "GERENCIAL";
-			// 
-			// toolStripMenuItem_remanejo
-			// 
-			toolStripMenuItem_remanejo.Image = (Image)resources.GetObject("toolStripMenuItem_remanejo.Image");
-			toolStripMenuItem_remanejo.Name = "toolStripMenuItem_remanejo";
-			toolStripMenuItem_remanejo.Size = new Size(207, 22);
-			toolStripMenuItem_remanejo.Text = "REMANEJO";
-			toolStripMenuItem_remanejo.Click += toolStripMenuItem_remanejo_Click;
 			// 
 			// cONTROLEDEREQNOTAToolStripMenuItem
 			// 
@@ -169,14 +169,14 @@
 			panel_center.Location = new Point(0, 93);
 			panel_center.Margin = new Padding(4, 3, 4, 3);
 			panel_center.Name = "panel_center";
-			panel_center.Size = new Size(933, 426);
+			panel_center.Size = new Size(1272, 478);
 			panel_center.TabIndex = 7;
 			// 
 			// IMPRESSOS
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(933, 519);
+			ClientSize = new Size(1272, 571);
 			Controls.Add(panel_center);
 			Controls.Add(toolStrip_topMenu);
 			Margin = new Padding(4, 3, 4, 3);
@@ -198,10 +198,10 @@
 		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_impressoes;
 		private System.Windows.Forms.ToolStripMenuItem lOTEVALIDAEToolStripMenuItem;
 		private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_gerencial;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_remanejo;
 		private System.Windows.Forms.ToolStripMenuItem cONTROLEDEREQNOTAToolStripMenuItem;
 		private ToolStripDropDownButton toolStripDropDownButton_carimbos;
 		private ToolStripMenuItem toolStripMenuItem1;
 		private ToolStripMenuItem pROMOÇÃOToolStripMenuItem;
+		private ToolStripMenuItem toolStripMenuItem_remanejo;
 	}
 }
