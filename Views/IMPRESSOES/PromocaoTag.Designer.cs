@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PromocaoTag));
 			toolStrip_topMenu = new ToolStrip();
 			toolStripButton_print = new ToolStripButton();
 			toolStripSeparator1 = new ToolStripSeparator();
@@ -37,6 +36,9 @@
 			ePictureBox_default = new EterPharmaPro.Utils.eControl.ePictureBox();
 			ePictureBox_fidelidade = new EterPharmaPro.Utils.eControl.ePictureBox();
 			splitContainer1 = new SplitContainer();
+			groupBox = new GroupBox();
+			panel1 = new Panel();
+			ePictureBox_add = new EterPharmaPro.Utils.eControl.ePictureBox();
 			groupBox2 = new GroupBox();
 			label_LgValor2 = new Label();
 			label_LgValor1 = new Label();
@@ -44,13 +46,18 @@
 			label_valor1 = new Label();
 			label_nameProduct = new Label();
 			pictureBox1 = new PictureBox();
+			panel_listPrints = new Panel();
 			toolStrip_topMenu.SuspendLayout();
 			groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).BeginInit();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+			splitContainer1.Panel1.SuspendLayout();
 			splitContainer1.Panel2.SuspendLayout();
 			splitContainer1.SuspendLayout();
+			groupBox.SuspendLayout();
+			panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_add).BeginInit();
 			groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
@@ -118,6 +125,7 @@
 			// 
 			// ePictureBox_default
 			// 
+			ePictureBox_default.Image = Properties.Resources.PromoOne;
 			ePictureBox_default.Location = new Point(612, 22);
 			ePictureBox_default.Name = "ePictureBox_default";
 			ePictureBox_default.Size = new Size(100, 86);
@@ -128,6 +136,7 @@
 			// 
 			// ePictureBox_fidelidade
 			// 
+			ePictureBox_fidelidade.Image = Properties.Resources.PromoFd;
 			ePictureBox_fidelidade.Location = new Point(506, 22);
 			ePictureBox_fidelidade.Name = "ePictureBox_fidelidade";
 			ePictureBox_fidelidade.Size = new Size(100, 86);
@@ -142,12 +151,50 @@
 			splitContainer1.Location = new Point(0, 114);
 			splitContainer1.Name = "splitContainer1";
 			// 
+			// splitContainer1.Panel1
+			// 
+			splitContainer1.Panel1.Controls.Add(groupBox);
+			splitContainer1.Panel1.Controls.Add(panel1);
+			// 
 			// splitContainer1.Panel2
 			// 
 			splitContainer1.Panel2.Controls.Add(groupBox2);
 			splitContainer1.Size = new Size(1293, 600);
 			splitContainer1.SplitterDistance = 430;
 			splitContainer1.TabIndex = 13;
+			// 
+			// groupBox
+			// 
+			groupBox.Controls.Add(panel_listPrints);
+			groupBox.Dock = DockStyle.Fill;
+			groupBox.Location = new Point(0, 50);
+			groupBox.Name = "groupBox";
+			groupBox.Size = new Size(430, 550);
+			groupBox.TabIndex = 1;
+			groupBox.TabStop = false;
+			groupBox.Text = "IMPRESSÕES";
+			// 
+			// panel1
+			// 
+			panel1.Controls.Add(ePictureBox_add);
+			panel1.Dock = DockStyle.Top;
+			panel1.Location = new Point(0, 0);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(430, 50);
+			panel1.TabIndex = 0;
+			// 
+			// ePictureBox_add
+			// 
+			ePictureBox_add.Dock = DockStyle.Left;
+			ePictureBox_add.Image = Properties.Resources.arquivo__1_;
+			ePictureBox_add.Location = new Point(0, 0);
+			ePictureBox_add.Name = "ePictureBox_add";
+			ePictureBox_add.Size = new Size(50, 50);
+			ePictureBox_add.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_add.TabIndex = 1;
+			ePictureBox_add.TabStop = false;
+			ePictureBox_add.ToolTipText = "Adicionar Página";
+			ePictureBox_add.Click += ePictureBox_add_Click;
 			// 
 			// groupBox2
 			// 
@@ -227,13 +274,22 @@
 			// pictureBox1
 			// 
 			pictureBox1.Dock = DockStyle.Fill;
-			pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+			pictureBox1.Image = Properties.Resources.PromoFd;
 			pictureBox1.Location = new Point(3, 19);
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.Size = new Size(849, 557);
 			pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 			pictureBox1.TabIndex = 3;
 			pictureBox1.TabStop = false;
+			// 
+			// panel_listPrints
+			// 
+			panel_listPrints.AutoScroll = true;
+			panel_listPrints.Dock = DockStyle.Fill;
+			panel_listPrints.Location = new Point(3, 19);
+			panel_listPrints.Name = "panel_listPrints";
+			panel_listPrints.Size = new Size(424, 528);
+			panel_listPrints.TabIndex = 0;
 			// 
 			// PromocaoTag
 			// 
@@ -250,9 +306,13 @@
 			groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).EndInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).EndInit();
+			splitContainer1.Panel1.ResumeLayout(false);
 			splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
 			splitContainer1.ResumeLayout(false);
+			groupBox.ResumeLayout(false);
+			panel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)ePictureBox_add).EndInit();
 			groupBox2.ResumeLayout(false);
 			groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -277,5 +337,9 @@
 		private Label label_valor1;
 		private Label label_nameProduct;
 		private PictureBox pictureBox1;
+		private Panel panel1;
+		private Utils.eControl.ePictureBox ePictureBox_add;
+		private GroupBox groupBox;
+		private Panel panel_listPrints;
 	}
 }
