@@ -1,6 +1,6 @@
 ﻿namespace EterPharmaPro.Utils.eControl
 {
-	partial class ePanelPromocaoFd
+	partial class ePanelPromocaoControl
 	{
 		/// <summary> 
 		/// Variável de designer necessária.

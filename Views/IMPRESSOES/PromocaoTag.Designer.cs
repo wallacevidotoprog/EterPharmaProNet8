@@ -35,26 +35,26 @@
 			groupBox1 = new GroupBox();
 			ePictureBox_default = new EterPharmaPro.Utils.eControl.ePictureBox();
 			ePictureBox_fidelidade = new EterPharmaPro.Utils.eControl.ePictureBox();
-			splitContainer1 = new SplitContainer();
+			splitContainer_Control = new SplitContainer();
 			groupBox = new GroupBox();
+			panel_listPrints = new Panel();
 			panel1 = new Panel();
 			ePictureBox_add = new EterPharmaPro.Utils.eControl.ePictureBox();
 			groupBox2 = new GroupBox();
-			label_LgValor2 = new Label();
-			label_LgValor1 = new Label();
-			label_valor2 = new Label();
-			label_valor1 = new Label();
-			label_nameProduct = new Label();
+			label_valor2 = new TextBox();
+			label_valor1 = new TextBox();
+			label_LgValor2 = new TextBox();
+			label_LgValor1 = new TextBox();
+			label_nameProduct = new TextBox();
 			pictureBox1 = new PictureBox();
-			panel_listPrints = new Panel();
 			toolStrip_topMenu.SuspendLayout();
 			groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).BeginInit();
-			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-			splitContainer1.Panel1.SuspendLayout();
-			splitContainer1.Panel2.SuspendLayout();
-			splitContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)splitContainer_Control).BeginInit();
+			splitContainer_Control.Panel1.SuspendLayout();
+			splitContainer_Control.Panel2.SuspendLayout();
+			splitContainer_Control.SuspendLayout();
 			groupBox.SuspendLayout();
 			panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_add).BeginInit();
@@ -90,6 +90,7 @@
 			toolStripButton_print.TextAlign = ContentAlignment.BottomCenter;
 			toolStripButton_print.TextImageRelation = TextImageRelation.ImageAboveText;
 			toolStripButton_print.ToolTipText = "Imprimir Tags de validade";
+			toolStripButton_print.Click += toolStripButton_print_Click;
 			// 
 			// toolStripSeparator1
 			// 
@@ -122,6 +123,7 @@
 			groupBox1.Size = new Size(1293, 114);
 			groupBox1.TabIndex = 12;
 			groupBox1.TabStop = false;
+			groupBox1.Text = "LAYOUT ";
 			// 
 			// ePictureBox_default
 			// 
@@ -133,6 +135,7 @@
 			ePictureBox_default.TabIndex = 1;
 			ePictureBox_default.TabStop = false;
 			ePictureBox_default.ToolTipText = "Padrão Único";
+			ePictureBox_default.Click += SetSchema;
 			// 
 			// ePictureBox_fidelidade
 			// 
@@ -144,24 +147,26 @@
 			ePictureBox_fidelidade.TabIndex = 0;
 			ePictureBox_fidelidade.TabStop = false;
 			ePictureBox_fidelidade.ToolTipText = "CLiente Fidelidade";
+			ePictureBox_fidelidade.Click += SetSchema;
 			// 
-			// splitContainer1
+			// splitContainer_Control
 			// 
-			splitContainer1.Dock = DockStyle.Fill;
-			splitContainer1.Location = new Point(0, 114);
-			splitContainer1.Name = "splitContainer1";
+			splitContainer_Control.Dock = DockStyle.Fill;
+			splitContainer_Control.Enabled = false;
+			splitContainer_Control.Location = new Point(0, 114);
+			splitContainer_Control.Name = "splitContainer_Control";
 			// 
-			// splitContainer1.Panel1
+			// splitContainer_Control.Panel1
 			// 
-			splitContainer1.Panel1.Controls.Add(groupBox);
-			splitContainer1.Panel1.Controls.Add(panel1);
+			splitContainer_Control.Panel1.Controls.Add(groupBox);
+			splitContainer_Control.Panel1.Controls.Add(panel1);
 			// 
-			// splitContainer1.Panel2
+			// splitContainer_Control.Panel2
 			// 
-			splitContainer1.Panel2.Controls.Add(groupBox2);
-			splitContainer1.Size = new Size(1293, 600);
-			splitContainer1.SplitterDistance = 430;
-			splitContainer1.TabIndex = 13;
+			splitContainer_Control.Panel2.Controls.Add(groupBox2);
+			splitContainer_Control.Size = new Size(1293, 600);
+			splitContainer_Control.SplitterDistance = 430;
+			splitContainer_Control.TabIndex = 13;
 			// 
 			// groupBox
 			// 
@@ -173,6 +178,15 @@
 			groupBox.TabIndex = 1;
 			groupBox.TabStop = false;
 			groupBox.Text = "IMPRESSÕES";
+			// 
+			// panel_listPrints
+			// 
+			panel_listPrints.AutoScroll = true;
+			panel_listPrints.Dock = DockStyle.Fill;
+			panel_listPrints.Location = new Point(3, 19);
+			panel_listPrints.Name = "panel_listPrints";
+			panel_listPrints.Size = new Size(424, 528);
+			panel_listPrints.TabIndex = 0;
 			// 
 			// panel1
 			// 
@@ -198,10 +212,10 @@
 			// 
 			// groupBox2
 			// 
-			groupBox2.Controls.Add(label_LgValor2);
-			groupBox2.Controls.Add(label_LgValor1);
 			groupBox2.Controls.Add(label_valor2);
 			groupBox2.Controls.Add(label_valor1);
+			groupBox2.Controls.Add(label_LgValor2);
+			groupBox2.Controls.Add(label_LgValor1);
 			groupBox2.Controls.Add(label_nameProduct);
 			groupBox2.Controls.Add(pictureBox1);
 			groupBox2.Location = new Point(3, 6);
@@ -211,65 +225,72 @@
 			groupBox2.TabStop = false;
 			groupBox2.Text = "MODELO VISUAL";
 			// 
-			// label_LgValor2
-			// 
-			label_LgValor2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			label_LgValor2.AutoSize = true;
-			label_LgValor2.BackColor = Color.Yellow;
-			label_LgValor2.Font = new Font("Arial", 20F, FontStyle.Bold);
-			label_LgValor2.Location = new Point(474, 397);
-			label_LgValor2.Name = "label_LgValor2";
-			label_LgValor2.Size = new Size(289, 32);
-			label_LgValor2.TabIndex = 5;
-			label_LgValor2.Text = "NOME DO PRODUTO";
-			// 
-			// label_LgValor1
-			// 
-			label_LgValor1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			label_LgValor1.AutoSize = true;
-			label_LgValor1.BackColor = Color.Yellow;
-			label_LgValor1.Font = new Font("Arial", 20F, FontStyle.Bold);
-			label_LgValor1.Location = new Point(73, 397);
-			label_LgValor1.Name = "label_LgValor1";
-			label_LgValor1.Size = new Size(289, 32);
-			label_LgValor1.TabIndex = 6;
-			label_LgValor1.Text = "NOME DO PRODUTO";
-			// 
 			// label_valor2
 			// 
-			label_valor2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			label_valor2.AutoSize = true;
 			label_valor2.BackColor = Color.Yellow;
+			label_valor2.BorderStyle = BorderStyle.None;
+			label_valor2.Enabled = false;
 			label_valor2.Font = new Font("Arial", 45F, FontStyle.Bold);
 			label_valor2.Location = new Point(459, 327);
 			label_valor2.Name = "label_valor2";
-			label_valor2.Size = new Size(338, 70);
-			label_valor2.TabIndex = 7;
+			label_valor2.Size = new Size(321, 69);
+			label_valor2.TabIndex = 11;
 			label_valor2.Text = "R$ 999,999";
+			label_valor2.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label_valor1
 			// 
-			label_valor1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			label_valor1.AutoSize = true;
 			label_valor1.BackColor = Color.Yellow;
+			label_valor1.BorderStyle = BorderStyle.None;
+			label_valor1.Enabled = false;
 			label_valor1.Font = new Font("Arial", 45F, FontStyle.Bold);
 			label_valor1.Location = new Point(52, 327);
 			label_valor1.Name = "label_valor1";
-			label_valor1.Size = new Size(338, 70);
-			label_valor1.TabIndex = 8;
+			label_valor1.Size = new Size(321, 69);
+			label_valor1.TabIndex = 11;
 			label_valor1.Text = "R$ 999,999";
+			label_valor1.TextAlign = HorizontalAlignment.Center;
+			// 
+			// label_LgValor2
+			// 
+			label_LgValor2.BackColor = Color.Yellow;
+			label_LgValor2.BorderStyle = BorderStyle.None;
+			label_LgValor2.Enabled = false;
+			label_LgValor2.Font = new Font("Arial", 20F, FontStyle.Bold);
+			label_LgValor2.Location = new Point(459, 400);
+			label_LgValor2.Name = "label_LgValor2";
+			label_LgValor2.Size = new Size(321, 31);
+			label_LgValor2.TabIndex = 10;
+			label_LgValor2.Text = "DESCRIÇÃO";
+			label_LgValor2.TextAlign = HorizontalAlignment.Center;
+			label_LgValor2.Visible = false;
+			// 
+			// label_LgValor1
+			// 
+			label_LgValor1.BackColor = Color.Yellow;
+			label_LgValor1.BorderStyle = BorderStyle.None;
+			label_LgValor1.Enabled = false;
+			label_LgValor1.Font = new Font("Arial", 20F, FontStyle.Bold);
+			label_LgValor1.Location = new Point(69, 400);
+			label_LgValor1.Name = "label_LgValor1";
+			label_LgValor1.Size = new Size(321, 31);
+			label_LgValor1.TabIndex = 10;
+			label_LgValor1.Text = "DESCRIÇÃO";
+			label_LgValor1.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label_nameProduct
 			// 
-			label_nameProduct.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			label_nameProduct.AutoSize = true;
 			label_nameProduct.BackColor = Color.Yellow;
+			label_nameProduct.BorderStyle = BorderStyle.None;
+			label_nameProduct.Enabled = false;
 			label_nameProduct.Font = new Font("Arial", 20F, FontStyle.Bold);
-			label_nameProduct.Location = new Point(289, 217);
+			label_nameProduct.Location = new Point(6, 217);
+			label_nameProduct.Multiline = true;
 			label_nameProduct.Name = "label_nameProduct";
-			label_nameProduct.Size = new Size(289, 32);
-			label_nameProduct.TabIndex = 4;
+			label_nameProduct.Size = new Size(843, 63);
+			label_nameProduct.TabIndex = 9;
 			label_nameProduct.Text = "NOME DO PRODUTO";
+			label_nameProduct.TextAlign = HorizontalAlignment.Center;
 			// 
 			// pictureBox1
 			// 
@@ -282,34 +303,26 @@
 			pictureBox1.TabIndex = 3;
 			pictureBox1.TabStop = false;
 			// 
-			// panel_listPrints
-			// 
-			panel_listPrints.AutoScroll = true;
-			panel_listPrints.Dock = DockStyle.Fill;
-			panel_listPrints.Location = new Point(3, 19);
-			panel_listPrints.Name = "panel_listPrints";
-			panel_listPrints.Size = new Size(424, 528);
-			panel_listPrints.TabIndex = 0;
-			// 
 			// PromocaoTag
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1384, 714);
-			Controls.Add(splitContainer1);
+			Controls.Add(splitContainer_Control);
 			Controls.Add(groupBox1);
 			Controls.Add(toolStrip_topMenu);
 			Name = "PromocaoTag";
 			Text = "PromocaoTag";
+			Load += PromocaoTag_Load;
 			toolStrip_topMenu.ResumeLayout(false);
 			toolStrip_topMenu.PerformLayout();
 			groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).EndInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).EndInit();
-			splitContainer1.Panel1.ResumeLayout(false);
-			splitContainer1.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
-			splitContainer1.ResumeLayout(false);
+			splitContainer_Control.Panel1.ResumeLayout(false);
+			splitContainer_Control.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)splitContainer_Control).EndInit();
+			splitContainer_Control.ResumeLayout(false);
 			groupBox.ResumeLayout(false);
 			panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)ePictureBox_add).EndInit();
@@ -329,17 +342,17 @@
 		private GroupBox groupBox1;
 		private Utils.eControl.ePictureBox ePictureBox_fidelidade;
 		private Utils.eControl.ePictureBox ePictureBox_default;
-		private SplitContainer splitContainer1;
+		private SplitContainer splitContainer_Control;
 		private GroupBox groupBox2;
-		private Label label_LgValor2;
-		private Label label_LgValor1;
-		private Label label_valor2;
-		private Label label_valor1;
-		private Label label_nameProduct;
 		private PictureBox pictureBox1;
 		private Panel panel1;
 		private Utils.eControl.ePictureBox ePictureBox_add;
 		private GroupBox groupBox;
 		private Panel panel_listPrints;
+		private TextBox label_nameProduct;
+		private TextBox label_LgValor1;
+		private TextBox label_LgValor2;
+		private TextBox label_valor1;
+		private TextBox label_valor2;
 	}
 }

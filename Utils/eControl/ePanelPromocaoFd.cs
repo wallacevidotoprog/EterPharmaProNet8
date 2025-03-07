@@ -4,23 +4,26 @@ using System.Globalization;
 
 namespace EterPharmaPro.Utils.eControl
 {
-	public partial class ePanelPromocaoFd : UserControl
+	public partial class ePanelPromocaoControl : UserControl
 	{
 		public event EventHandler<int> Btn_update;
 		public event EventHandler<int> Btn_delete;
 
 		public ePanelPromocaoModel model;
-		public ePanelPromocaoFd(ePanelPromocaoModel model)
+
+		public ePanelPromocaoControl(ePanelPromocaoModel model)
 		{
 			this.model = model;
+
 			InitializeComponent();
+
+
 
 			ePictureBox_update.Click += EPictureBox_update_Click;
 			ePictureBox_delete.Click += EPictureBox_delete_Click;
 
 
 			Refresh();
-
 		}
 
 		public void Refresh()
