@@ -32,7 +32,7 @@
 			toolStripButton_print = new ToolStripButton();
 			toolStripSeparator1 = new ToolStripSeparator();
 			toolStripButton_clear = new ToolStripButton();
-			groupBox1 = new GroupBox();
+			groupBox_layout = new GroupBox();
 			ePictureBox_default = new EterPharmaPro.Utils.eControl.ePictureBox();
 			ePictureBox_fidelidade = new EterPharmaPro.Utils.eControl.ePictureBox();
 			splitContainer_Control = new SplitContainer();
@@ -48,7 +48,7 @@
 			label_nameProduct = new TextBox();
 			pictureBox1 = new PictureBox();
 			toolStrip_topMenu.SuspendLayout();
-			groupBox1.SuspendLayout();
+			groupBox_layout.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).BeginInit();
 			((System.ComponentModel.ISupportInitialize)splitContainer_Control).BeginInit();
@@ -112,18 +112,19 @@
 			toolStripButton_clear.TextAlign = ContentAlignment.BottomCenter;
 			toolStripButton_clear.TextImageRelation = TextImageRelation.ImageAboveText;
 			toolStripButton_clear.ToolTipText = "LIMPAR";
+			toolStripButton_clear.Click += toolStripButton_clear_Click;
 			// 
-			// groupBox1
+			// groupBox_layout
 			// 
-			groupBox1.Controls.Add(ePictureBox_default);
-			groupBox1.Controls.Add(ePictureBox_fidelidade);
-			groupBox1.Dock = DockStyle.Top;
-			groupBox1.Location = new Point(0, 0);
-			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(1293, 114);
-			groupBox1.TabIndex = 12;
-			groupBox1.TabStop = false;
-			groupBox1.Text = "LAYOUT ";
+			groupBox_layout.Controls.Add(ePictureBox_default);
+			groupBox_layout.Controls.Add(ePictureBox_fidelidade);
+			groupBox_layout.Dock = DockStyle.Top;
+			groupBox_layout.Location = new Point(0, 0);
+			groupBox_layout.Name = "groupBox_layout";
+			groupBox_layout.Size = new Size(1293, 114);
+			groupBox_layout.TabIndex = 12;
+			groupBox_layout.TabStop = false;
+			groupBox_layout.Text = "LAYOUT ";
 			// 
 			// ePictureBox_default
 			// 
@@ -152,7 +153,6 @@
 			// splitContainer_Control
 			// 
 			splitContainer_Control.Dock = DockStyle.Fill;
-			splitContainer_Control.Enabled = false;
 			splitContainer_Control.Location = new Point(0, 114);
 			splitContainer_Control.Name = "splitContainer_Control";
 			// 
@@ -167,6 +167,7 @@
 			splitContainer_Control.Size = new Size(1293, 600);
 			splitContainer_Control.SplitterDistance = 430;
 			splitContainer_Control.TabIndex = 13;
+			splitContainer_Control.Visible = false;
 			// 
 			// groupBox
 			// 
@@ -309,14 +310,14 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1384, 714);
 			Controls.Add(splitContainer_Control);
-			Controls.Add(groupBox1);
+			Controls.Add(groupBox_layout);
 			Controls.Add(toolStrip_topMenu);
 			Name = "PromocaoTag";
 			Text = "PromocaoTag";
 			Load += PromocaoTag_Load;
 			toolStrip_topMenu.ResumeLayout(false);
 			toolStrip_topMenu.PerformLayout();
-			groupBox1.ResumeLayout(false);
+			groupBox_layout.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)ePictureBox_default).EndInit();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_fidelidade).EndInit();
 			splitContainer_Control.Panel1.ResumeLayout(false);
@@ -339,7 +340,7 @@
 		private ToolStripButton toolStripButton_print;
 		private ToolStripSeparator toolStripSeparator1;
 		private ToolStripButton toolStripButton_clear;
-		private GroupBox groupBox1;
+		private GroupBox groupBox_layout;
 		private Utils.eControl.ePictureBox ePictureBox_fidelidade;
 		private Utils.eControl.ePictureBox ePictureBox_default;
 		private SplitContainer splitContainer_Control;

@@ -132,6 +132,8 @@ namespace EterPharmaPro.Views.IMPRESSOS
 
 		private void SetSchema(object sender, EventArgs e)
 		{
+			ePanelsList = ePanelsList ?? new List<(ePanelPromocaoModel model, ePanelPromocaoControl control)>();
+
 			if (ePanelsList.Count > 0)
 			{
 				MessageBox.Show("Existe item no campo de impressões, para mudar o esquema você precisa limpar a lista.", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -141,21 +143,23 @@ namespace EterPharmaPro.Views.IMPRESSOS
 			{
 				case "ePictureBox_fidelidade":
 					fieldPrintScheme = FieldPrintSchemeEnum.FIDELITY;
-					splitContainer_Control.Enabled = true;
+					splitContainer_Control.Visible = true;
 					label_valor2.Visible = true;
 					label_LgValor2.Visible = true;
 					label_valor1.Location = new Point(52, 327);
 					label_LgValor1.Location = new Point(69, 400);
 					pictureBox1.Image = Properties.Resources.PromoFd;
+					groupBox_layout.Visible = false;
 					break;
 				case "ePictureBox_default":
 					fieldPrintScheme = FieldPrintSchemeEnum.DEFAULT;
-					splitContainer_Control.Enabled = true;
+					splitContainer_Control.Visible = true;
 					label_valor2.Visible = false;
 					label_LgValor2.Visible = false;
 					label_valor1.Location = new Point(258, 327);
 					label_LgValor1.Location = new Point(275, 400);
 					pictureBox1.Image = Properties.Resources.PromoOne;
+					groupBox_layout.Visible = false;
 					break;
 				default:
 					break;
@@ -170,6 +174,15 @@ namespace EterPharmaPro.Views.IMPRESSOS
 				tagPromotionService.PrintToPdf();
 			}
 		}
+
+		private void toolStripButton_clear_Click(object sender, EventArgs e)
+		{
+			splitContainer_Control.Visible = false;
+			fieldPrintScheme = FieldPrintSchemeEnum.NONE;
+			ePanelsList = null;
+			groupBox_layout.Visible = true;
+
+		}
 	}
 
 
@@ -177,6 +190,6 @@ namespace EterPharmaPro.Views.IMPRESSOS
 
 	public enum FieldPrintSchemeEnum
 	{
-		DEFAULT, FIDELITY
+		DEFAULT, FIDELITY, NONE
 	}
 }

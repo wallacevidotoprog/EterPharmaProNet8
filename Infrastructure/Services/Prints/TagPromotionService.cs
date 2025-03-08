@@ -2,6 +2,7 @@
 using EterPharmaPro.Views.IMPRESSOS;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Globalization;
 
@@ -29,10 +30,9 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 
 		private void SetPaper()
 		{
-			// Configurar o tamanho de página para A4
-			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169); // Dimensões em décimos de polegada (210mm x 297mm)
-
-			// Definir as margens conforme especificado em cm (convertido para pontos)
+			
+			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169); 
+			
 			float superior = 2.54f * 72 / 2.54f;
 			float esquerda = 3.17f * 72 / 2.54f;
 			float inferior = 2.54f * 72 / 2.54f;
@@ -40,7 +40,7 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 
 			printDocument.DefaultPageSettings.Margins = new Margins((int)esquerda, (int)superior, (int)direita, (int)inferior);
 
-			// Registrar o evento PrintPage
+			
 			printDocument.PrintPage += new PrintPageEventHandler(PrintPage);
 		}
 
@@ -51,11 +51,11 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 				throw new ArgumentNullException("Model Nula: EterPharmaPro.Infrastructure.Services.Prints.TagPromotionService.PrintToPdf");
 				return;
 			}
-			// Criar o documento PDF
+			
 			pdfDocument = new PdfDocument();
 			pdfDocument.Info.Title = $"TAG PROMOÇÃO {DateTime.Now.ToString("dd-MM-yyyyy HHmmss")}";
 
-			int itemsPerPage = 2; // Número de etiquetas por página
+			int itemsPerPage = 2; 
 			int totalPages = (int)Math.Ceiling((double)model.Count / itemsPerPage);
 			int modelCount = model.Count - 1;
 			int modelCurrent = 0;
@@ -68,23 +68,21 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 				tempCurrent[1] = modelCurrent <= modelCount ? model[modelCurrent] : null;
 				modelCurrent++;
 
-				// Criar uma página no PDF
+
 				PdfPage pdfPage = pdfDocument.AddPage();
 				gfx = XGraphics.FromPdfPage(pdfPage);
 
-				// Gerar conteúdo e salvar como PDF
+
 				PrintPage(null, null);
 				tempCurrent = null;
 			}
-			// Caminho do arquivo PDF na área de trabalho
+
 			string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 			string pdfFilePath = Path.Combine(desktopPath, $"{pdfDocument.Info.Title}.pdf");
 
-			// Salvar o PDF no caminho especificado
 			pdfDocument.Save(pdfFilePath);
 
-			// Opcional: Informar que o PDF foi gerado
-			//MessageBox.Show("PDF salvo com sucesso em: " + pdfFilePath);
+			Process.Start(new ProcessStartInfo(pdfFilePath) { UseShellExecute = true });
 		}
 
 		private void PrintPage(object sender, PrintPageEventArgs e)

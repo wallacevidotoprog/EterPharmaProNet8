@@ -1,6 +1,7 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Controllers;
 using EterPharmaPro.Infrastructure.Services.DbProdutos;
+using EterPharmaPro.Models;
 using System.Threading.Tasks;
 
 namespace EterPharmaPro.Core
@@ -25,6 +26,8 @@ namespace EterPharmaPro.Core
 		public DatabaseProdutosDb DatabaseProdutosDb { get; set; }
 
 		public EterDbController EterDbController { get; set; }
+
+		public SettingsAppModel SettingsApp { get; set; }
 
 
 		public async Task RefreshUserDbModel()
