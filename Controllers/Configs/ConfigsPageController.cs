@@ -4,6 +4,7 @@ using EterPharmaPro.Enums;
 using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
 using System.Data;
+using System.Drawing.Printing;
 
 namespace EterPharmaPro.Controllers.Configs
 {
@@ -146,5 +147,7 @@ namespace EterPharmaPro.Controllers.Configs
 
 			return GetProdutos(tempCod.ToString(), queryProdutoEnum).FirstOrDefault();
 		}
+
+		public List<string> NamePrists() => PrinterSettings.InstalledPrinters.Cast<string>().ToList();
 	}
 }
