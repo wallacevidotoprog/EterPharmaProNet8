@@ -246,8 +246,10 @@ namespace EterPharmaPro.Views.Manipulados
 					VALORFINAL = Convert.ToDecimal(textBox_valorT.Text)
 				};
 
+				EnumManipulado enumManipulado = SelectPrint.Show();
+				if (enumManipulado == EnumManipulado.NONE) return;
 
-				if (await manipuladoController.PrintDocManipulado(manipulacaoModel, EnumManipulado.P_80, edit))
+				if (await manipuladoController.PrintDocManipulado(manipulacaoModel, enumManipulado, edit))
 				{
 					if (edit)
 					{

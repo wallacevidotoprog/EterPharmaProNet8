@@ -1,12 +1,12 @@
 namespace EterPharmaPro.Infrastructure.Services
 {
-	public class IniFile
+	public class IniFileOLD
 	{
 		private readonly string path;
 
 		private readonly Dictionary<string, Dictionary<string, string>> data;
 
-		public IniFile(string path)
+		public IniFileOLD(string path)
 		{
 			this.path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
 			data = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);

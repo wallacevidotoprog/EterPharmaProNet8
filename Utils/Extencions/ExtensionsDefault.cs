@@ -495,6 +495,15 @@ namespace EterPharmaPro.Utils.Extencions
 			return -1;
 		}
 
+		public static string PadRightWrite(string text, int totalWidth)
+		{
+			if (text.Length >= totalWidth)
+			{
+				return text.Substring(0, totalWidth);
+			}
+			return text.PadRight(totalWidth);
+		}
+
 	}
 
 

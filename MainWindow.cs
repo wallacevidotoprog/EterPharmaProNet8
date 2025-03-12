@@ -80,5 +80,9 @@ namespace EterPharmaPro
 
 		private void tAGToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new TagViewer());
 
+		private void toolStripButton2_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

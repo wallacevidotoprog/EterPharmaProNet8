@@ -10,7 +10,7 @@ namespace EterPharmaPro.Infrastructure.Services.DbProdutos
 		public ToolStripProgressBar _progressBar { get; private set; }
 		private FileSystemWatcher _fileSystemWatcher;
 		private DateTime _lastReadTime;
-		private IniFile ini;
+
 
 		public List<ProdutosModel> produtos;
 		CancellationToken cancellationToken;
@@ -24,7 +24,7 @@ namespace EterPharmaPro.Infrastructure.Services.DbProdutos
 		{
 			try
 			{
-				ini = new IniFile("config.ini");
+
 				//InitWatch();
 			}
 			catch (Exception ex)
@@ -38,24 +38,24 @@ namespace EterPharmaPro.Infrastructure.Services.DbProdutos
 			Init();
 		}
 
-		private void InitWatch()
-		{
-			_fileSystemWatcher = new FileSystemWatcher(ini.Read("IMPORTPRODUT", "FILE_WATCH"));
-			_fileSystemWatcher.Filter = "*.xlsx";
-			_fileSystemWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite | NotifyFilters.Size;
-			_fileSystemWatcher.EnableRaisingEvents = true;
+		//private void InitWatch()
+		//{
+		//	_fileSystemWatcher = new FileSystemWatcher(ini.Read("IMPORTPRODUT", "FILE_WATCH"));
+		//	_fileSystemWatcher.Filter = "*.xlsx";
+		//	_fileSystemWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite | NotifyFilters.Size;
+		//	_fileSystemWatcher.EnableRaisingEvents = true;
 
-			_fileSystemWatcher.Changed += _fileSystemWatcher_Changed;
-			_fileSystemWatcher.Created += _fileSystemWatcher_Changed;
-		}
+		//	_fileSystemWatcher.Changed += _fileSystemWatcher_Changed;
+		//	_fileSystemWatcher.Created += _fileSystemWatcher_Changed;
+		//}
 
-		private void _fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
-		{
-			if (e.Name.StartsWith(ini.Read("IMPORTPRODUT", "FILENAME_WATCH")))
-			{
-				MessageBox.Show(e.FullPath);
-			}
-		}
+		//private void _fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+		//{
+		//	if (e.Name.StartsWith(ini.Read("IMPORTPRODUT", "FILENAME_WATCH")))
+		//	{
+		//		MessageBox.Show(e.FullPath);
+		//	}
+		//}
 
 
 		private void Init()

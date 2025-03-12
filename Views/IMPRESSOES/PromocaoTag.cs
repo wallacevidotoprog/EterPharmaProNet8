@@ -170,6 +170,8 @@ namespace EterPharmaPro.Views.IMPRESSOS
 		{
 			if (ePanelsList.Count > 0 && fieldPrintScheme != null)
 			{
+				//var tagPromotion = new TagPromotionService2(ePanelsList.Select(x => x.model).ToList(), fieldPrintScheme);
+				//tagPromotion.ShowPrintPreview();
 				tagPromotionService = new TagPromotionService(ePanelsList.Select(x => x.model).ToList(), fieldPrintScheme);
 				tagPromotionService.PrintToPdf();
 			}

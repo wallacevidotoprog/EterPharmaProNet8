@@ -1,4 +1,5 @@
 ﻿using EterPharmaPro.Models;
+using EterPharmaPro.Views;
 using EterPharmaPro.Views.IMPRESSOS;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
@@ -28,11 +29,21 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 			SetPaper();
 		}
 
+		public void ShowPrintPreview()
+		{
+			using (PrintPreviewDialog previewDialog = new PrintPreviewDialog())
+			{
+				previewDialog.Document = printDocument;
+				previewDialog.WindowState = FormWindowState.Maximized; // Abre em tela cheia
+				previewDialog.ShowDialog();
+			}
+		}
+
 		private void SetPaper()
 		{
-			
-			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169); 
-			
+
+			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169);
+
 			float superior = 2.54f * 72 / 2.54f;
 			float esquerda = 3.17f * 72 / 2.54f;
 			float inferior = 2.54f * 72 / 2.54f;
@@ -40,7 +51,7 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 
 			printDocument.DefaultPageSettings.Margins = new Margins((int)esquerda, (int)superior, (int)direita, (int)inferior);
 
-			
+
 			printDocument.PrintPage += new PrintPageEventHandler(PrintPage);
 		}
 
@@ -51,11 +62,11 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 				throw new ArgumentNullException("Model Nula: EterPharmaPro.Infrastructure.Services.Prints.TagPromotionService.PrintToPdf");
 				return;
 			}
-			
+
 			pdfDocument = new PdfDocument();
 			pdfDocument.Info.Title = $"TAG PROMOÇÃO {DateTime.Now.ToString("dd-MM-yyyyy HHmmss")}";
 
-			int itemsPerPage = 2; 
+			int itemsPerPage = 2;
 			int totalPages = (int)Math.Ceiling((double)model.Count / itemsPerPage);
 			int modelCount = model.Count - 1;
 			int modelCurrent = 0;
@@ -78,8 +89,9 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 			}
 
 			string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-			string pdfFilePath = Path.Combine(desktopPath, $"{pdfDocument.Info.Title}.pdf");
 
+			string pdfFilePath = Path.Combine(desktopPath, $"{pdfDocument.Info.Title}.pdf");
+			
 			pdfDocument.Save(pdfFilePath);
 
 			Process.Start(new ProcessStartInfo(pdfFilePath) { UseShellExecute = true });
@@ -139,5 +151,83 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 			gfx.DrawString(text43, font_subtitle, XBrushes.Black, new XRect(marginLeft, marginTop, pdfDocument.Pages[0].Width - 2 * marginLeft, 0), XStringFormats.Center);
 		}
 
+	}
+
+	public class TagPromotionService2
+	{
+		private PrintDocument printDocument = new PrintDocument();
+		private readonly List<ePanelPromocaoModel> model;
+		private readonly FieldPrintSchemeEnum printSchemeEnum;
+		private ePanelPromocaoModel[] tempCurrent = null;
+		private int modelCurrent = 0;
+
+		public TagPromotionService2(List<ePanelPromocaoModel> model, FieldPrintSchemeEnum printSchemeEnum)
+		{
+			this.model = model;
+			this.printSchemeEnum = printSchemeEnum;
+			SetPaper();
+		}
+
+		public void ShowPrintPreview()
+		{
+			PrintPreviewForm previewForm = new PrintPreviewForm(printDocument,model);
+			previewForm.ShowDialog();
+			
+		}
+
+		private void SetPaper()
+		{
+			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169);
+			printDocument.DefaultPageSettings.Margins = new Margins(50, 50, 50, 50);
+			printDocument.PrintPage += new PrintPageEventHandler(PrintPage);
+		}
+
+		public void Print()
+		{
+			if (model == null || model.Count == 0)
+				throw new ArgumentNullException("Model Nula");
+
+			modelCurrent = 0;
+			printDocument.Print();
+		}
+
+		private void PrintPage(object sender, PrintPageEventArgs e)
+		{
+			Graphics gfx = e.Graphics;
+			Font fontTitle = new Font("Arial Black", 20);
+			Font fontPrice = new Font("Arial Black", 45);
+			Font fontSubtitle = new Font("Arial", 20);
+
+			float marginLeft = e.MarginBounds.Left;
+			float marginTop = e.MarginBounds.Top;
+			float spacing = 30;
+			int itemsPerPage = 2;
+			int count = 0;
+
+			while (modelCurrent < model.Count && count < itemsPerPage)
+			{
+				ePanelPromocaoModel item = model[modelCurrent];
+				modelCurrent++;
+				count++;
+
+				gfx.DrawString(item.PRODUTO, fontTitle, Brushes.Black, marginLeft, marginTop);
+				marginTop += spacing + 50;
+
+				string textPrice = printSchemeEnum == FieldPrintSchemeEnum.DEFAULT ?
+					string.Format(CultureInfo.CurrentCulture, "{0:C2}", Convert.ToDecimal(item.VALOR1)) :
+					$"{string.Format(CultureInfo.CurrentCulture, "{0:C2}", Convert.ToDecimal(item.VALOR1))}   " +
+					$"{string.Format(CultureInfo.CurrentCulture, "{0:C2}", Convert.ToDecimal(item.VALOR2))}";
+				gfx.DrawString(textPrice, fontPrice, Brushes.Black, marginLeft, marginTop);
+				marginTop += spacing + 30;
+
+				string textDesc = printSchemeEnum == FieldPrintSchemeEnum.DEFAULT ?
+					item.DESC1 :
+					$"{item.DESC1}                      {item.DESC2}";
+				gfx.DrawString(textDesc, fontSubtitle, Brushes.Black, marginLeft, marginTop);
+				marginTop += 290;
+			}
+
+			e.HasMorePages = modelCurrent < model.Count;
+		}
 	}
 }

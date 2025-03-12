@@ -33,22 +33,22 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			model.Payment = await EterCache.Instance.EterDb.PaymentService.GetByAsync(f => f.ID == model.ID_FORMAPAGAMENTO);
 			model.DeliveryMethod = await EterCache.Instance.EterDb.DeliveryMethodService.GetByAsync(f => f.ID == model.ID_MODOENTREGA);
 
-			//try
-			//{
-			//	switch (enumManipulado)
-			//	{
-			//		case EnumManipulado.P_80:
-			//			manipuladoService.PrintDocManipulado80mm(model);
-			//			break;
-			//		case EnumManipulado.A4:
-			//			manipuladoService.PrintDocManipuladoA4(model);
-			//			break;
-			//	}
-			//}
-			//catch (Exception ex)
-			//{
-			//	ex.ErrorGet();
-			//}
+			try
+			{
+				switch (enumManipulado)
+				{
+					case EnumManipulado.P_80:						
+						manipuladoService.PrintDocManipulado80mm(model);
+						break;
+					case EnumManipulado.A4:
+						manipuladoService.PrintDocManipuladoA4(model);
+						break;
+				}
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
 			model.Situation = null;
 			model.Payment = null;
 			model.DeliveryMethod = null;

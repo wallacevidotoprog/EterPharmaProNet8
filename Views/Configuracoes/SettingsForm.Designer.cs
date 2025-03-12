@@ -46,8 +46,7 @@
 			sets = new DataGridViewComboBoxColumn();
 			tabPage2 = new TabPage();
 			panel3 = new Panel();
-			ePictureBox1 = new EterPharmaPro.Utils.eControl.ePictureBox();
-			ePictureBox2 = new EterPharmaPro.Utils.eControl.ePictureBox();
+			ePictureBox_save = new EterPharmaPro.Utils.eControl.ePictureBox();
 			groupBox1.SuspendLayout();
 			panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_saveNameStore).BeginInit();
@@ -59,8 +58,7 @@
 			tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dataGridView_prints).BeginInit();
 			panel3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)ePictureBox1).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ePictureBox2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_save).BeginInit();
 			SuspendLayout();
 			// 
 			// groupBox1
@@ -108,6 +106,7 @@
 			textBox_store.Size = new Size(264, 23);
 			textBox_store.TabIndex = 0;
 			textBox_store.TextAlign = HorizontalAlignment.Center;
+			textBox_store.Validating += TextBoxEdit;
 			// 
 			// ePictureBox_saveNameStore
 			// 
@@ -156,6 +155,7 @@
 			ePictureBox_add.TabIndex = 1;
 			ePictureBox_add.TabStop = false;
 			ePictureBox_add.ToolTipText = "Adicionar";
+			ePictureBox_add.Click += ePictureBox_add_Click;
 			// 
 			// ePictureBox_remove
 			// 
@@ -235,12 +235,14 @@
 			dataGridView_prints.Size = new Size(706, 443);
 			dataGridView_prints.TabIndex = 5;
 			dataGridView_prints.CellValueChanged += dataGridView_prints_CellValueChanged;
+			dataGridView_prints.EditingControlShowing += dataGridView_prints_EditingControlShowing;
 			// 
 			// name
 			// 
 			name.FillWeight = 30F;
 			name.HeaderText = "NAME";
 			name.Name = "name";
+			name.ReadOnly = true;
 			// 
 			// sets
 			// 
@@ -261,39 +263,26 @@
 			// 
 			// panel3
 			// 
-			panel3.Controls.Add(ePictureBox1);
-			panel3.Controls.Add(ePictureBox2);
+			panel3.Controls.Add(ePictureBox_save);
 			panel3.Dock = DockStyle.Top;
 			panel3.Location = new Point(3, 19);
 			panel3.Name = "panel3";
 			panel3.Size = new Size(720, 50);
 			panel3.TabIndex = 4;
 			// 
-			// ePictureBox1
+			// ePictureBox_save
 			// 
-			ePictureBox1.Cursor = Cursors.Hand;
-			ePictureBox1.Dock = DockStyle.Left;
-			ePictureBox1.Image = Properties.Resources.mais;
-			ePictureBox1.Location = new Point(0, 0);
-			ePictureBox1.Name = "ePictureBox1";
-			ePictureBox1.Size = new Size(50, 50);
-			ePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-			ePictureBox1.TabIndex = 1;
-			ePictureBox1.TabStop = false;
-			ePictureBox1.ToolTipText = "Adicionar";
-			// 
-			// ePictureBox2
-			// 
-			ePictureBox2.Cursor = Cursors.Hand;
-			ePictureBox2.Dock = DockStyle.Right;
-			ePictureBox2.Image = Properties.Resources.remover;
-			ePictureBox2.Location = new Point(670, 0);
-			ePictureBox2.Name = "ePictureBox2";
-			ePictureBox2.Size = new Size(50, 50);
-			ePictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-			ePictureBox2.TabIndex = 0;
-			ePictureBox2.TabStop = false;
-			ePictureBox2.ToolTipText = "Remover";
+			ePictureBox_save.Cursor = Cursors.Hand;
+			ePictureBox_save.Dock = DockStyle.Right;
+			ePictureBox_save.Image = Properties.Resources.salve;
+			ePictureBox_save.Location = new Point(670, 0);
+			ePictureBox_save.Name = "ePictureBox_save";
+			ePictureBox_save.Size = new Size(50, 50);
+			ePictureBox_save.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_save.TabIndex = 0;
+			ePictureBox_save.TabStop = false;
+			ePictureBox_save.ToolTipText = "Remover";
+			ePictureBox_save.Click += ePictureBox_saveNameStore_Click;
 			// 
 			// SettingsForm
 			// 
@@ -304,6 +293,7 @@
 			Controls.Add(groupBox1);
 			Name = "SettingsForm";
 			Text = "SettingsForm";
+			FormClosing += SettingsForm_FormClosing;
 			Load += SettingsForm_Load;
 			groupBox1.ResumeLayout(false);
 			panel2.ResumeLayout(false);
@@ -317,8 +307,7 @@
 			tabPage1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)dataGridView_prints).EndInit();
 			panel3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)ePictureBox1).EndInit();
-			((System.ComponentModel.ISupportInitialize)ePictureBox2).EndInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_save).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -335,13 +324,12 @@
 		private Utils.eControl.ePictureBox ePictureBox_saveNameStore;
 		private GroupBox groupBox_config;
 		private Panel panel3;
-		private Utils.eControl.ePictureBox ePictureBox1;
-		private Utils.eControl.ePictureBox ePictureBox2;
+		private Utils.eControl.ePictureBox ePictureBox_save;
 		private DataGridView dataGridView_prints;
-		private DataGridViewTextBoxColumn name;
-		private DataGridViewComboBoxColumn sets;
 		private TabControl tabControl1;
 		private TabPage tabPage1;
 		private TabPage tabPage2;
+		private DataGridViewTextBoxColumn name;
+		private DataGridViewComboBoxColumn sets;
 	}
 }

@@ -1,12 +1,9 @@
+using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Models.Print;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
+using EterPharmaPro.Views;
 using System.Drawing.Printing;
-using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace EterPharmaPro.Infrastructure.Services
 {
@@ -16,13 +13,11 @@ namespace EterPharmaPro.Infrastructure.Services
 
 		private PrintPreviewDialog printPreviewDialog;
 
-		private IniFile ini;
-
 		private List<TextPrintFormaterModel> linesToPrint = new List<TextPrintFormaterModel>();
 
 		public RawPrinterHelper()
 		{
-			ini = new IniFile("config.ini");
+
 			printDocument = new PrintDocument();
 			printDocument.DefaultPageSettings.PaperSize = new PaperSize("80mm Thermal Printer", 290, 0);
 			printDocument.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
@@ -30,7 +25,7 @@ namespace EterPharmaPro.Infrastructure.Services
 			printPreviewDialog.ClientSize = new Size(700, 700);
 			printPreviewDialog.Document = printDocument;
 			printDocument.PrintPage += PrintPage;
-		}	
+		}
 
 		public void AddLine(TextPrintFormaterModel printFormater)
 		{
@@ -41,11 +36,14 @@ namespace EterPharmaPro.Infrastructure.Services
 		{
 			Print();
 		}
-
+		public void ShowPrintPreview()
+		{
+			PrintPreviewForm previewForm = new PrintPreviewForm(printDocument);
+			previewForm.ShowDialog();
+		}
 		private void Print()
 		{
-			printDocument.PrinterSettings.PrinterName = ini.Read("IMPRESSORAS", "DYNAMIC");
-			printDocument.Print();
+			printDocument.PrinterSettings.PrinterName = EterCache.Instance.SettingsApp.settingsPoint.PRINT_TERMAL; printDocument.Print();
 		}
 
 		private void PrintPage(object sender, PrintPageEventArgs e)
@@ -57,7 +55,7 @@ namespace EterPharmaPro.Infrastructure.Services
 			float pageHeight = e.MarginBounds.Height;
 			float linhaAtual = topMargin;
 
-			string TITLE = "REDE CENTRAL LOJA 15";
+			string TITLE = $"REDE CENTRAL LOJA {EterCache.Instance.SettingsApp.NUMBERSTORE.ToString().PadLeft(2, '0')}";
 			SizeF stringSize = e.Graphics.MeasureString(TITLE, GetFont(FormatTextPrintEnum.Header));
 			e.Graphics.DrawString(TITLE, GetFont(FormatTextPrintEnum.Header), Brushes.Black, leftMargin + (pageWidth - stringSize.Width) / 2f, 0f);
 			linhaAtual += GetFont(FormatTextPrintEnum.Header).GetHeight() + 10f;
