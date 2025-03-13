@@ -1,6 +1,7 @@
 using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Infrastructure.Services.Prints;
+using EterPharmaPro.Interfaces;
 using EterPharmaPro.Models.Print;
 using EterPharmaPro.Utils.Extencions;
 using System.Globalization;
@@ -210,14 +211,14 @@ namespace EterPharmaPro.Infrastructure.Services
 				fontStyle = FormatTextPrintEnum.Header
 			});
 			printerHelper.AddLine(new TextPrintFormaterModel());
-			
+
 			printerHelper.PrintDocument();
 		}
 
 		public void PrintDocManipuladoA4(ManipulationDbModel model)
 		{
-			ManipulationA4Print manipulationA4Print = new ManipulationA4Print(model);
-			manipulationA4Print.ShowPrintPreview();
+			IPrint print = new ManipulationA4Print(model);
+			print.ShowPrintPreview();
 
 		}
 	}

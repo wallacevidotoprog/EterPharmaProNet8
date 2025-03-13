@@ -1,39 +1,26 @@
 ﻿using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Core;
-using EterPharmaPro.Views;
 using System.Drawing.Printing;
 using System.Globalization;
 using System.Text;
 
 namespace EterPharmaPro.Infrastructure.Services.Prints
 {
-	public class ManipulationA4Print
+	public class ManipulationA4Print : PrintResopitoryGeneric
 	{
-		private PrintDocument printDocument;
-		private PrintPreviewDialog printPreviewDialog;
 		private readonly ManipulationDbModel model;
 
 		public ManipulationA4Print(ManipulationDbModel model)
 		{
 			this.model = model;
-			printDocument = new PrintDocument();
-			printPreviewDialog = new PrintPreviewDialog
-			{
-				Document = printDocument
-			};
 
 			printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
-			printPreviewDialog.Document = printDocument;
 
 			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 810, 900);
 			printDocument.DefaultPageSettings.Margins = new Margins(20, 30, 20, 20);
 			printDocument.DocumentName = $"Manipulação {DateTime.Now.ToString("dd-MM-yyyy (HH mm ss)")}";
 		}
-		public void ShowPrintPreview()
-		{
-			PrintPreviewForm previewForm = new PrintPreviewForm(printDocument);
-			previewForm.ShowDialog();
-		}
+
 		private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
 		{
 

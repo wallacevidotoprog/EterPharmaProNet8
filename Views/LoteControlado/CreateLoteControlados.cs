@@ -158,18 +158,15 @@ namespace EterPharmaPro.Views.LoteControlado
 				}
 
 
-				if (ClienteModel is null)
-				{
-					ClienteModel = new ClientDbModel
-					{
-						RG = textBox_rg.GetText.ReturnInt(),
-						NOME = textBox_nome.Text,
-						PHONE = textBox_cel.Text.ReturnInt(),
+				ClienteModel = ClienteModel ?? new ClientDbModel();
 
-						AddressCliente = new List<AddressClienteDbModel> { AddressClienteDbModel },
-						MedControl = medicamentosControladoDbModels
-					};
-				}
+				ClienteModel.RG = textBox_rg.GetText.ReturnInt();
+				ClienteModel.NOME = textBox_nome.Text;
+				ClienteModel.PHONE = textBox_cel.Text.ReturnInt();
+				ClienteModel.AddressCliente = new List<AddressClienteDbModel> { AddressClienteDbModel };
+				ClienteModel.MedControl = medicamentosControladoDbModels;
+
+
 
 				if (await controladosController.FinishAsync(ClienteModel))
 				{

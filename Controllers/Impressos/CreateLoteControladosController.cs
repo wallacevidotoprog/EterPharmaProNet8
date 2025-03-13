@@ -72,7 +72,7 @@ namespace EterPharmaPro.Controllers.CarimboLoteValidade
 				List<MedControlDbModel> medControl = clienteModel.MedControl.ToList();
 				clienteModel.MedControl = null;
 
-				var tempResultC = await EterCache.Instance.EterDb.ClientService.AddAsync(clienteModel);
+				var tempResultC = await EterCache.Instance.EterDb.ClientService.AddOrUpdateAsync(clienteModel);
 
 				medControl = medControl.Select(x =>
 				{

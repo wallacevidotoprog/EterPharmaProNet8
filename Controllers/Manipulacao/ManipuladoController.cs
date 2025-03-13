@@ -37,7 +37,7 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			{
 				switch (enumManipulado)
 				{
-					case EnumManipulado.P_80:						
+					case EnumManipulado.P_80:
 						manipuladoService.PrintDocManipulado80mm(model);
 						break;
 					case EnumManipulado.A4:
@@ -55,18 +55,49 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			model.UserModel = null;
 			try
 			{
+
 				ClientDbModel client = model.Client;
-				client.AddressCliente = new List<AddressClienteDbModel> { model.AddressCliente };
+				AddressClienteDbModel address = model.AddressCliente;
+
 
 				model.AddressCliente = null;
 				model.Client = null;
 
-				client = await EterCache.Instance.EterDb.ClientService.AddOrUpdateAsync(client);
+
+
+				if (client.ID != null && (await EterCache.Instance.EterDb.ClientService.GetByAsync(f => f.ID == client.ID) != null))
+				{
+					client = await EterCache.Instance.EterDb.ClientService.UpdateAsync(client);
+				}
+				else
+				{
+					client = await EterCache.Instance.EterDb.ClientService.AddAsync(client);
+				}
+
+				if (address.ID != null && (await EterCache.Instance.EterDb.AddressService.GetByAsync(f => f.ID == client.ID) != null))
+				{
+					address = await EterCache.Instance.EterDb.AddressService.UpdateAsync(address);
+				}
+				else
+				{
+					address = await EterCache.Instance.EterDb.AddressService.AddAsync(address);
+				}
+
+
 
 				model.ID_CLIENTE = client.ID;
-				model.ID_ENDERECO = client.AddressCliente.FirstOrDefault().ID;
+				model.ID_ENDERECO = address.ID;
 
-				await EterCache.Instance.EterDb.ManipulationService.AddOrUpdateAsync(model);
+				if (model.ID != null && (await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == client.ID) != null))
+				{
+					model = await EterCache.Instance.EterDb.ManipulationService.UpdateAsync(model);
+				}
+				else
+				{
+					model = await EterCache.Instance.EterDb.ManipulationService.AddAsync(model);
+				}
+
+
 
 
 				return true;
