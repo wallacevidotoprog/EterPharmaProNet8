@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TagViewer));
 			toolStripButton_print = new ToolStripButton();
 			toolStrip_topMenu = new ToolStrip();
 			toolStripSeparator1 = new ToolStripSeparator();
@@ -53,6 +54,7 @@
 			label1 = new Label();
 			textBox_produto = new TextBox();
 			label5 = new Label();
+			toolStripButton1 = new ToolStripButton();
 			toolStrip_topMenu.SuspendLayout();
 			groupBox1.SuspendLayout();
 			groupBox3.SuspendLayout();
@@ -84,7 +86,7 @@
 			// 
 			toolStrip_topMenu.BackColor = Color.WhiteSmoke;
 			toolStrip_topMenu.Dock = DockStyle.Right;
-			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_print, toolStripSeparator1, toolStripButton_clear });
+			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_print, toolStripSeparator1, toolStripButton_clear, toolStripButton1 });
 			toolStrip_topMenu.Location = new Point(1047, 0);
 			toolStrip_topMenu.Name = "toolStrip_topMenu";
 			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
@@ -226,7 +228,7 @@
 			groupBox2.Name = "groupBox2";
 			groupBox2.Padding = new Padding(4, 3, 4, 3);
 			groupBox2.Size = new Size(1039, 115);
-			groupBox2.TabIndex = 7;
+			groupBox2.TabIndex = 0;
 			groupBox2.TabStop = false;
 			// 
 			// pictureBox_addItem
@@ -251,7 +253,7 @@
 			numericUpDown_qtd.Margin = new Padding(4, 3, 4, 3);
 			numericUpDown_qtd.Name = "numericUpDown_qtd";
 			numericUpDown_qtd.Size = new Size(61, 33);
-			numericUpDown_qtd.TabIndex = 24;
+			numericUpDown_qtd.TabIndex = 3;
 			numericUpDown_qtd.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// label4
@@ -275,7 +277,7 @@
 			textBox_new.Margin = new Padding(4, 3, 4, 3);
 			textBox_new.Name = "textBox_new";
 			textBox_new.Size = new Size(159, 33);
-			textBox_new.TabIndex = 21;
+			textBox_new.TabIndex = 2;
 			textBox_new.KeyPress += textBox_old_KeyPress;
 			textBox_new.Validated += textBox_old_Validated;
 			// 
@@ -300,7 +302,7 @@
 			textBox_old.Margin = new Padding(4, 3, 4, 3);
 			textBox_old.Name = "textBox_old";
 			textBox_old.Size = new Size(162, 33);
-			textBox_old.TabIndex = 21;
+			textBox_old.TabIndex = 1;
 			textBox_old.KeyPress += textBox_old_KeyPress;
 			textBox_old.Validated += textBox_old_Validated;
 			// 
@@ -326,7 +328,7 @@
 			dateTimePicker_data.Margin = new Padding(4, 3, 4, 3);
 			dateTimePicker_data.Name = "dateTimePicker_data";
 			dateTimePicker_data.Size = new Size(162, 33);
-			dateTimePicker_data.TabIndex = 19;
+			dateTimePicker_data.TabIndex = 4;
 			// 
 			// label1
 			// 
@@ -349,7 +351,7 @@
 			textBox_produto.Margin = new Padding(4, 3, 4, 3);
 			textBox_produto.Name = "textBox_produto";
 			textBox_produto.Size = new Size(354, 33);
-			textBox_produto.TabIndex = 13;
+			textBox_produto.TabIndex = 0;
 			textBox_produto.KeyDown += textBox_produto_KeyDown;
 			// 
 			// label5
@@ -362,6 +364,16 @@
 			label5.Size = new Size(107, 25);
 			label5.TabIndex = 14;
 			label5.Text = "PRODUTO:";
+			// 
+			// toolStripButton1
+			// 
+			toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+			toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+			toolStripButton1.ImageTransparentColor = Color.Magenta;
+			toolStripButton1.Name = "toolStripButton1";
+			toolStripButton1.Size = new Size(88, 20);
+			toolStripButton1.Text = "toolStripButton1";
+			toolStripButton1.Click += toolStripButton1_Click;
 			// 
 			// TagViewer
 			// 
@@ -414,5 +426,6 @@
 		private Utils.eControl.ePictureBox pictureBox_addItem;
 		private System.Windows.Forms.ToolStripButton toolStripButton_clear;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private ToolStripButton toolStripButton1;
 	}
 }

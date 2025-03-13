@@ -1,5 +1,6 @@
 ﻿using EterPharmaPro.Controllers.Configs;
 using EterPharmaPro.Infrastructure.Services.Prints;
+using EterPharmaPro.Interfaces;
 using EterPharmaPro.Models;
 using EterPharmaPro.Utils.eControl;
 using EterPharmaPro.Utils.Extencions;
@@ -14,7 +15,7 @@ namespace EterPharmaPro.Views.IMPRESSOS
 		private ImputTagPromocao ImputTagPromocao;
 		private List<(ePanelPromocaoModel model, ePanelPromocaoControl control)> ePanelsList;
 		private FieldPrintSchemeEnum fieldPrintScheme;
-		private TagPromotionService tagPromotionService;
+		private IPrint tagPromotionService;
 		public PromocaoTag()
 		{
 			configsPageController = new ConfigsPageController();
@@ -173,7 +174,7 @@ namespace EterPharmaPro.Views.IMPRESSOS
 				//var tagPromotion = new TagPromotionService2(ePanelsList.Select(x => x.model).ToList(), fieldPrintScheme);
 				//tagPromotion.ShowPrintPreview();
 				tagPromotionService = new TagPromotionService(ePanelsList.Select(x => x.model).ToList(), fieldPrintScheme);
-				tagPromotionService.PrintToPdf();
+				tagPromotionService.ShowPrintPreview();
 			}
 		}
 
@@ -184,6 +185,43 @@ namespace EterPharmaPro.Views.IMPRESSOS
 			ePanelsList = null;
 			groupBox_layout.Visible = true;
 
+		}
+
+		private void ePictureBox1_Click(object sender, EventArgs e)
+		{
+			tagPromotionService = new TagPromotionService(new List<ePanelPromocaoModel>
+			{
+				new ePanelPromocaoModel{PRODUTO="TESTE 1",VALOR1=11,DESC1="APARTIR",VALOR2=1,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 2",VALOR1=33,DESC1="APARTIR",VALOR2=3,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},new ePanelPromocaoModel{PRODUTO="TESTE 1",VALOR1=11,DESC1="APARTIR",VALOR2=1,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 2",VALOR1=33,DESC1="APARTIR",VALOR2=3,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},new ePanelPromocaoModel{PRODUTO="TESTE 1",VALOR1=11,DESC1="APARTIR",VALOR2=1,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 2",VALOR1=33,DESC1="APARTIR",VALOR2=3,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},new ePanelPromocaoModel{PRODUTO="TESTE 1",VALOR1=11,DESC1="APARTIR",VALOR2=1,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 2",VALOR1=33,DESC1="APARTIR",VALOR2=3,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"},
+				new ePanelPromocaoModel{PRODUTO="TESTE 3",VALOR1=44,DESC1="APARTIR",VALOR2=4,DESC2="APARTIR"}
+			}, FieldPrintSchemeEnum.FIDELITY);
+			tagPromotionService.ShowPrintPreview();
 		}
 	}
 

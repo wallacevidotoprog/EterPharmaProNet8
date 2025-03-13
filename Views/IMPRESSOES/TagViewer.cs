@@ -1,6 +1,7 @@
 ﻿using EterPharmaPro.Controllers.Configs;
 using EterPharmaPro.Enums;
-using EterPharmaPro.Infrastructure.Services;
+using EterPharmaPro.Infrastructure.Services.Prints;
+using EterPharmaPro.Interfaces;
 using EterPharmaPro.Models;
 using EterPharmaPro.Models.Tag;
 using EterPharmaPro.Utils.Extencions;
@@ -20,17 +21,17 @@ namespace EterPharmaPro.Views.IMPRESSOES
 			InitializeComponent();
 			configsPageController = new ConfigsPageController();
 
-			printTagVal = new PrintTagValityService();
+			//printTagVal = new PrintTagValityService();
 			printTagPriceModels = new List<PrintTagPriceModel>();
 		}
 
 		private void ePictureBox_gerar_Click(object sender, EventArgs e)
 		{
-			for (int i = 0; i < printTagPriceModels.Count; i++)
-			{
-				printTagVal.Add(printTagPriceModels[i]);
-			}
-			printTagVal.Print();
+			//for (int i = 0; i < printTagPriceModels.Count; i++)
+			//{
+			//	printTagVal.Add(printTagPriceModels[i]);
+			//}
+			//printTagVal.Print();
 		}
 
 		private void dataGridView_validade_RowValidated(object sender, DataGridViewCellEventArgs e)
@@ -169,7 +170,7 @@ namespace EterPharmaPro.Views.IMPRESSOES
 
 		private void toolStripButton_clear_Click(object sender, EventArgs e)
 		{
-			printTagVal = new PrintTagValityService();
+			//printTagVal = new PrintTagValityService();
 			printTagPriceModels = new List<PrintTagPriceModel>();
 			textBox_produto.Clear();
 			textBox_old.Clear();
@@ -177,6 +178,32 @@ namespace EterPharmaPro.Views.IMPRESSOES
 			numericUpDown_qtd.Value = 1m;
 			textBox_produto.Focus();
 			dataGridView_validade.Rows.Clear();
+		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+
+			produtoCurrent = configsPageController.GetProdutos("69", QueryProdutoEnum.COD_INTERNO).FirstOrDefault();
+			var temp = new PrintTagPriceModel
+			{
+				PRODUTO = produtoCurrent,
+				NAME_ITEM = textBox_produto.Text,
+				OLD_PRICE = Convert.ToDecimal(50f),
+				NEW_PRICE = Convert.ToDecimal(20f),
+				DATE_VALITY = dateTimePicker_data.Value,
+				TAG = new TableTagValidityModal(SizeTableTagEnum.PEQUENA)
+			};
+			for (int i = 0; i < 20; i++)
+			{
+				printTagPriceModels.Add(temp);
+			}
+			printTagPriceModels.Add(temp);
+
+
+			IPrint print = new PrintTagValityService(printTagPriceModels);
+			print.ShowPrintPreview();
+
+
 		}
 	}
 }

@@ -363,6 +363,16 @@ namespace EterPharmaPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap left_arrow {
+            get {
+                object obj = ResourceManager.GetObject("left-arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap limpar_limpo__1_ {
             get {
                 object obj = ResourceManager.GetObject("limpar-limpo (1)", resourceCulture);
@@ -496,6 +506,16 @@ namespace EterPharmaPro.Properties {
         internal static System.Drawing.Bitmap remover {
             get {
                 object obj = ResourceManager.GetObject("remover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap right_arrow {
+            get {
+                object obj = ResourceManager.GetObject("right-arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

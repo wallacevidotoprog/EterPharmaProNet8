@@ -1,7 +1,6 @@
 using EterPharmaPro.Core;
 using EterPharmaPro.Enums;
 using EterPharmaPro.Models.Print;
-using EterPharmaPro.Views;
 using System.Drawing.Printing;
 using System.Text;
 
@@ -35,11 +34,6 @@ namespace EterPharmaPro.Infrastructure.Services
 		public void PrintDocument()
 		{
 			Print();
-		}
-		public void ShowPrintPreview()
-		{
-			PrintPreviewForm previewForm = new PrintPreviewForm(printDocument);
-			previewForm.ShowDialog();
 		}
 		private void Print()
 		{

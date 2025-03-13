@@ -13,9 +13,9 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 		public ManipulationA4Print(ManipulationDbModel model)
 		{
 			this.model = model;
-
+			totalPages = 1;
 			printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
-
+			printDocument.totalPages = totalPages;
 			printDocument.DefaultPageSettings.PaperSize = new PaperSize("A4", 810, 900);
 			printDocument.DefaultPageSettings.Margins = new Margins(20, 30, 20, 20);
 			printDocument.DocumentName = $"Manipulação {DateTime.Now.ToString("dd-MM-yyyy (HH mm ss)")}";

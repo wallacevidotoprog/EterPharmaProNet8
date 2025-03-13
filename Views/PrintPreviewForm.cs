@@ -1,30 +1,39 @@
 ﻿using EterPharmaPro.Core;
+using EterPharmaPro.Utils.Events;
+using EterPharmaPro.Utils.Subclasse;
+using System.Diagnostics;
 using System.Drawing.Printing;
 
 namespace EterPharmaPro.Views
 {
 	public partial class PrintPreviewForm : Form
 	{
-		private readonly PrintDocument printDocument;
-		public readonly object dados;
+		private readonly ePrintDocument printDocument;
 		private TrackBar trackBar_zoom = new TrackBar();
-		public PrintPreviewForm(PrintDocument printDocument, object dados)
-		{
-			InitializeComponent();
-			this.dados = dados;
-			this.printDocument = printDocument;
-			printPreviewControl_preview.Document = printDocument;
-			printPreviewControl_preview.Zoom = 3f;
-		}
 
-
-
-		public PrintPreviewForm(PrintDocument printDocument)
+		public PrintPreviewForm(ePrintDocument printDocument)
 		{
 			InitializeComponent();
 			this.printDocument = printDocument;
 			printPreviewControl_preview.Document = printDocument;
 			printPreviewControl_preview.Zoom = 1f;
+			printPreviewControl_preview.UseAntiAlias = true;
+			printPreviewControl_preview.AutoZoom = true;
+
+			printDocument.PagesCount += PrintDocument_PagesCount;
+
+			ConfigurarZoom();
+		}
+
+		private void PrintDocument_PagesCount(object? sender, CountPagesEventArgs e)
+		{
+			//printPreviewControl_preview.Rows = printDocument.totalPages;
+
+			int columns = (int)Math.Ceiling(Math.Sqrt(printDocument.totalPages)); // Aproxima pela raiz quadrada
+			int rows = (int)Math.Ceiling((double)printDocument.totalPages / columns); // Distribui nas linhas
+
+			printPreviewControl_preview.Rows = rows;
+			printPreviewControl_preview.Columns = columns;
 		}
 
 		private void toolStripButton_save_Click(object sender, EventArgs e)
@@ -38,14 +47,23 @@ namespace EterPharmaPro.Views
 
 			if (saveDialog.ShowDialog() == DialogResult.OK)
 			{
-				using (PrintDialog pd = new PrintDialog())
-				{
-					pd.Document = printDocument;
-					pd.PrinterSettings.PrinterName = "Microsoft Print to PDF";
-					pd.PrinterSettings.PrintFileName = saveDialog.FileName;
-					pd.PrinterSettings.PrintToFile = true;
 
+				try
+				{
+					printDocument.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+					printDocument.PrinterSettings.PrintFileName = saveDialog.FileName;
+					printDocument.PrinterSettings.PrintToFile = true;
+
+					// Define um PrintController para capturar corretamente as páginas
+					printDocument.PrintController = new StandardPrintController();
 					printDocument.Print();
+
+					Process.Start(new ProcessStartInfo(saveDialog.FileName) { UseShellExecute = true });
+					MessageBox.Show("Salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"Erro ao salvar PDF: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -71,5 +89,30 @@ namespace EterPharmaPro.Views
 				MessageBox.Show($"Erro ao imprimir: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		protected override void OnFormClosed(FormClosedEventArgs e)
+		{
+			base.OnFormClosed(e);
+			if (printDocument != null)
+			{
+				printDocument.Dispose();
+			}
+		}
+
+		private void ConfigurarZoom()
+		{
+			trackBar_zoom.Minimum = 1;  // 10% de zoom
+			trackBar_zoom.Maximum = 20; // 200% de zoom
+			trackBar_zoom.Value = 10;   // Começa com 100%
+			trackBar_zoom.TickFrequency = 1;
+			trackBar_zoom.Dock = DockStyle.Bottom;
+
+			trackBar_zoom.Scroll += (s, e) =>
+			{
+				printPreviewControl_preview.Zoom = trackBar_zoom.Value / 10.0; // Converte para 0.1 - 2.0
+			};
+
+			this.Controls.Add(trackBar_zoom);
+		}
+
 	}
 }

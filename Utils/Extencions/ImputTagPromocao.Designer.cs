@@ -64,7 +64,7 @@
 			textBox_busca.Margin = new Padding(4, 3, 4, 3);
 			textBox_busca.Name = "textBox_busca";
 			textBox_busca.Size = new Size(780, 33);
-			textBox_busca.TabIndex = 15;
+			textBox_busca.TabIndex = 0;
 			textBox_busca.KeyDown += textBox_busca_KeyDown;
 			// 
 			// groupBox1
@@ -84,7 +84,7 @@
 			groupBox1.Location = new Point(0, 0);
 			groupBox1.Name = "groupBox1";
 			groupBox1.Size = new Size(800, 327);
-			groupBox1.TabIndex = 17;
+			groupBox1.TabIndex = 0;
 			groupBox1.TabStop = false;
 			// 
 			// ePictureBox_send
@@ -111,7 +111,7 @@
 			comboBox_TV2.Margin = new Padding(4, 3, 4, 3);
 			comboBox_TV2.Name = "comboBox_TV2";
 			comboBox_TV2.Size = new Size(380, 33);
-			comboBox_TV2.TabIndex = 17;
+			comboBox_TV2.TabIndex = 4;
 			// 
 			// comboBox_TV1
 			// 
@@ -125,7 +125,7 @@
 			comboBox_TV1.Margin = new Padding(4, 3, 4, 3);
 			comboBox_TV1.Name = "comboBox_TV1";
 			comboBox_TV1.Size = new Size(380, 33);
-			comboBox_TV1.TabIndex = 17;
+			comboBox_TV1.TabIndex = 3;
 			// 
 			// textBox_V2
 			// 
@@ -136,7 +136,7 @@
 			textBox_V2.Margin = new Padding(4, 3, 4, 3);
 			textBox_V2.Name = "textBox_V2";
 			textBox_V2.Size = new Size(380, 33);
-			textBox_V2.TabIndex = 15;
+			textBox_V2.TabIndex = 2;
 			textBox_V2.KeyPress += textBox_V1_KeyPress;
 			// 
 			// label2
@@ -170,7 +170,7 @@
 			textBox_V1.Margin = new Padding(4, 3, 4, 3);
 			textBox_V1.Name = "textBox_V1";
 			textBox_V1.Size = new Size(380, 33);
-			textBox_V1.TabIndex = 15;
+			textBox_V1.TabIndex = 1;
 			textBox_V1.KeyPress += textBox_V1_KeyPress;
 			// 
 			// label4

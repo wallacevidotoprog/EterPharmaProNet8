@@ -34,8 +34,15 @@
 			toolStripButton_save = new ToolStripButton();
 			toolStripSeparator2 = new ToolStripSeparator();
 			toolStripButton_print = new ToolStripButton();
+			panel2 = new Panel();
+			ePictureBox_nextPage = new EterPharmaPro.Utils.eControl.ePictureBox();
+			ePictureBox_previus = new EterPharmaPro.Utils.eControl.ePictureBox();
+			textBox_viewCountPages = new TextBox();
 			printPreviewControl_preview = new PrintPreviewControl();
 			toolStrip_menu.SuspendLayout();
+			panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_nextPage).BeginInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_previus).BeginInit();
 			SuspendLayout();
 			// 
 			// toolStrip_menu
@@ -92,13 +99,59 @@
 			toolStripButton_print.ToolTipText = "IMPRIMIR";
 			toolStripButton_print.Click += toolStripButton_print_Click;
 			// 
+			// panel2
+			// 
+			panel2.Controls.Add(ePictureBox_nextPage);
+			panel2.Controls.Add(ePictureBox_previus);
+			panel2.Dock = DockStyle.Top;
+			panel2.Location = new Point(0, 34);
+			panel2.Name = "panel2";
+			panel2.Size = new Size(106, 50);
+			panel2.TabIndex = 1;
+			// 
+			// ePictureBox_nextPage
+			// 
+			ePictureBox_nextPage.Dock = DockStyle.Right;
+			ePictureBox_nextPage.Image = Properties.Resources.right_arrow;
+			ePictureBox_nextPage.Location = new Point(56, 0);
+			ePictureBox_nextPage.Name = "ePictureBox_nextPage";
+			ePictureBox_nextPage.Size = new Size(50, 50);
+			ePictureBox_nextPage.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_nextPage.TabIndex = 1;
+			ePictureBox_nextPage.TabStop = false;
+			ePictureBox_nextPage.ToolTipText = null;
+			// 
+			// ePictureBox_previus
+			// 
+			ePictureBox_previus.Dock = DockStyle.Left;
+			ePictureBox_previus.Image = Properties.Resources.left_arrow;
+			ePictureBox_previus.Location = new Point(0, 0);
+			ePictureBox_previus.Name = "ePictureBox_previus";
+			ePictureBox_previus.Size = new Size(50, 50);
+			ePictureBox_previus.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_previus.TabIndex = 0;
+			ePictureBox_previus.TabStop = false;
+			ePictureBox_previus.ToolTipText = null;
+			// 
+			// textBox_viewCountPages
+			// 
+			textBox_viewCountPages.Dock = DockStyle.Top;
+			textBox_viewCountPages.Font = new Font("Segoe UI", 15F);
+			textBox_viewCountPages.Location = new Point(0, 0);
+			textBox_viewCountPages.Name = "textBox_viewCountPages";
+			textBox_viewCountPages.Size = new Size(106, 34);
+			textBox_viewCountPages.TabIndex = 0;
+			textBox_viewCountPages.Text = "0/0";
+			textBox_viewCountPages.TextAlign = HorizontalAlignment.Center;
+			// 
 			// printPreviewControl_preview
 			// 
+			printPreviewControl_preview.AccessibleRole = AccessibleRole.Grip;
 			printPreviewControl_preview.Dock = DockStyle.Fill;
 			printPreviewControl_preview.Location = new Point(0, 93);
 			printPreviewControl_preview.Name = "printPreviewControl_preview";
 			printPreviewControl_preview.Size = new Size(800, 357);
-			printPreviewControl_preview.TabIndex = 5;
+			printPreviewControl_preview.TabIndex = 6;
 			// 
 			// PrintPreviewForm
 			// 
@@ -114,6 +167,9 @@
 			WindowState = FormWindowState.Maximized;
 			toolStrip_menu.ResumeLayout(false);
 			toolStrip_menu.PerformLayout();
+			panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)ePictureBox_nextPage).EndInit();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_previus).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -126,5 +182,9 @@
 		private ToolStripButton toolStripButton_print;
 		private ToolStripSeparator toolStripSeparator2;
 		private PrintPreviewControl printPreviewControl_preview;
+		private TextBox textBox_viewCountPages;
+		private Panel panel2;
+		private Utils.eControl.ePictureBox ePictureBox_previus;
+		private Utils.eControl.ePictureBox ePictureBox_nextPage;
 	}
 }
