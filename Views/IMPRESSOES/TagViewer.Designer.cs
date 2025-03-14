@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TagViewer));
 			toolStripButton_print = new ToolStripButton();
 			toolStrip_topMenu = new ToolStrip();
 			toolStripSeparator1 = new ToolStripSeparator();
@@ -54,7 +53,6 @@
 			label1 = new Label();
 			textBox_produto = new TextBox();
 			label5 = new Label();
-			toolStripButton1 = new ToolStripButton();
 			toolStrip_topMenu.SuspendLayout();
 			groupBox1.SuspendLayout();
 			groupBox3.SuspendLayout();
@@ -86,7 +84,7 @@
 			// 
 			toolStrip_topMenu.BackColor = Color.WhiteSmoke;
 			toolStrip_topMenu.Dock = DockStyle.Right;
-			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_print, toolStripSeparator1, toolStripButton_clear, toolStripButton1 });
+			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_print, toolStripSeparator1, toolStripButton_clear });
 			toolStrip_topMenu.Location = new Point(1047, 0);
 			toolStrip_topMenu.Name = "toolStrip_topMenu";
 			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
@@ -365,16 +363,6 @@
 			label5.TabIndex = 14;
 			label5.Text = "PRODUTO:";
 			// 
-			// toolStripButton1
-			// 
-			toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-			toolStripButton1.ImageTransparentColor = Color.Magenta;
-			toolStripButton1.Name = "toolStripButton1";
-			toolStripButton1.Size = new Size(88, 20);
-			toolStripButton1.Text = "toolStripButton1";
-			toolStripButton1.Click += toolStripButton1_Click;
-			// 
 			// TagViewer
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -426,6 +414,5 @@
 		private Utils.eControl.ePictureBox pictureBox_addItem;
 		private System.Windows.Forms.ToolStripButton toolStripButton_clear;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private ToolStripButton toolStripButton1;
 	}
 }

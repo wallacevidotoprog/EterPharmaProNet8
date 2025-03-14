@@ -169,6 +169,7 @@
 			ePictureBox_remove.TabIndex = 0;
 			ePictureBox_remove.TabStop = false;
 			ePictureBox_remove.ToolTipText = "Remover";
+			ePictureBox_remove.Click += ePictureBox_remove_Click;
 			// 
 			// button_hostname
 			// 

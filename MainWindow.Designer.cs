@@ -41,18 +41,17 @@
 			toolStripButton_conf = new ToolStripButton();
 			toolStripSeparator3 = new ToolStripSeparator();
 			toolStripDropDownButton_impressos = new ToolStripButton();
-			toolStripButton_delivery = new ToolStripButton();
+			toolStripSeparator4 = new ToolStripSeparator();
 			statusStrip_notify = new StatusStrip();
 			toolStripProgressBar_status = new ToolStripProgressBar();
 			panel_center = new Panel();
-			toolStripButton2 = new ToolStripButton();
 			toolStrip_menu.SuspendLayout();
 			statusStrip_notify.SuspendLayout();
 			SuspendLayout();
 			// 
 			// toolStrip_menu
 			// 
-			toolStrip_menu.Items.AddRange(new ToolStripItem[] { toolStripSeparator1, toolStripButton_manipulacao, toolStripSeparator2, toolStripButton1, toolStripButton_conf, toolStripSeparator3, toolStripDropDownButton_impressos, toolStripButton_delivery, toolStripButton2 });
+			toolStrip_menu.Items.AddRange(new ToolStripItem[] { toolStripSeparator1, toolStripButton_manipulacao, toolStripSeparator2, toolStripButton1, toolStripButton_conf, toolStripSeparator3, toolStripDropDownButton_impressos, toolStripSeparator4 });
 			toolStrip_menu.Location = new Point(0, 0);
 			toolStrip_menu.Name = "toolStrip_menu";
 			toolStrip_menu.RenderMode = ToolStripRenderMode.Professional;
@@ -151,6 +150,7 @@
 			toolStripButton_conf.TextAlign = ContentAlignment.BottomCenter;
 			toolStripButton_conf.TextImageRelation = TextImageRelation.ImageAboveText;
 			toolStripButton_conf.ToolTipText = "CONFIGURAÇÕES";
+			toolStripButton_conf.Visible = false;
 			toolStripButton_conf.Click += toolStripButton_conf_Click;
 			// 
 			// toolStripSeparator3
@@ -175,22 +175,10 @@
 			toolStripDropDownButton_impressos.ToolTipText = "IMPRESSOS";
 			toolStripDropDownButton_impressos.Click += toolStripDropDownButton_impressos_Click;
 			// 
-			// toolStripButton_delivery
+			// toolStripSeparator4
 			// 
-			toolStripButton_delivery.AutoSize = false;
-			toolStripButton_delivery.Enabled = false;
-			toolStripButton_delivery.Font = new Font("Segoe UI", 8F);
-			toolStripButton_delivery.Image = Properties.Resources.bicicleta_de_entrega;
-			toolStripButton_delivery.ImageAlign = ContentAlignment.BottomCenter;
-			toolStripButton_delivery.ImageScaling = ToolStripItemImageScaling.None;
-			toolStripButton_delivery.ImageTransparentColor = Color.Magenta;
-			toolStripButton_delivery.Name = "toolStripButton_delivery";
-			toolStripButton_delivery.Size = new Size(90, 90);
-			toolStripButton_delivery.Tag = "";
-			toolStripButton_delivery.Text = "ENTREGA";
-			toolStripButton_delivery.TextAlign = ContentAlignment.BottomCenter;
-			toolStripButton_delivery.TextImageRelation = TextImageRelation.ImageAboveText;
-			toolStripButton_delivery.ToolTipText = "ENTREGA";
+			toolStripSeparator4.Name = "toolStripSeparator4";
+			toolStripSeparator4.Size = new Size(6, 93);
 			// 
 			// statusStrip_notify
 			// 
@@ -216,16 +204,6 @@
 			panel_center.Name = "panel_center";
 			panel_center.Size = new Size(1105, 520);
 			panel_center.TabIndex = 6;
-			// 
-			// toolStripButton2
-			// 
-			toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-			toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-			toolStripButton2.ImageTransparentColor = Color.Magenta;
-			toolStripButton2.Name = "toolStripButton2";
-			toolStripButton2.Size = new Size(23, 90);
-			toolStripButton2.Text = "toolStripButton2";
-			toolStripButton2.Click += toolStripButton2_Click;
 			// 
 			// MainWindow
 			// 
@@ -267,8 +245,7 @@
 		private System.Windows.Forms.StatusStrip statusStrip_notify;
 		private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar_status;
 		private System.Windows.Forms.Panel panel_center;
-		private System.Windows.Forms.ToolStripButton toolStripButton_delivery;
-		private ToolStripButton toolStripButton2;
+		private ToolStripSeparator toolStripSeparator4;
 	}
 }
 

@@ -1,6 +1,7 @@
 ﻿using EterLibrary.Application.Services;
 using EterLibrary.Domain.Entities.DbModels;
 using EterLibrary.Domain.Interfaces;
+using EterLibrary.Infrastructure;
 
 namespace EterPharmaPro.Core
 {
@@ -32,6 +33,13 @@ namespace EterPharmaPro.Core
 
 		public EterDb()
 		{
+
+			using(var context = new DatabaseContext())
+			{
+				DatabaseInitializer.Initialize(context);
+			}
+
+
 			UserService = new UserService();
 			CategoryService = new CategoryService();
 			ValityService = new ValityService();

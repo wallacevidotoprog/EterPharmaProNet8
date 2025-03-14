@@ -1,4 +1,5 @@
 ﻿using EterPharmaPro.Models.Tag;
+using EterPharmaPro.Utils.Extencions;
 using System.Drawing.Printing;
 
 namespace EterPharmaPro.Infrastructure.Services.Prints
@@ -7,11 +8,13 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 	{
 		private List<PrintTagPriceModel> printTagPreceModel;
 		private Font headerFont;
+		private Font headerFont2;
 		private Font cellFont;
+		private Font cellFont2;
 		private Font cellFontBold;
 		private int currentItemIndex;
-		private float tableWidth = 200;
-		private float tableHeight = 160;
+		private float tableWidth = 180;
+		private float tableHeight = 190;
 		private float marginX;
 		private float marginY;
 		private float pageWidth;
@@ -25,8 +28,11 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 			currentItemIndex = 0;
 
 			headerFont = new Font("Courier New", 9, FontStyle.Bold);
+			headerFont2 = new Font("Courier New", 8, FontStyle.Bold);
 			cellFont = new Font("Courier New", 9, FontStyle.Regular);
+			cellFont2 = new Font("Courier New", 9, FontStyle.Strikeout);
 			cellFontBold = new Font("Courier New", 8, FontStyle.Bold);
+
 
 
 			printDocument.DefaultPageSettings.Margins = new Margins(20, 30, 20, 20);
@@ -36,14 +42,27 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 
 		}
 
+		private int CountPages(int values)
+		{
+			try
+			{
+				return (int)Math.Ceiling((double)values / 20);
+			}
+			catch (Exception ex)
+			{
+				ex.ErrorGet();
+			}
+			return 1;
+		}
+
 		private void PrintPage(object sender, PrintPageEventArgs e)
 		{
 			pageWidth = e.MarginBounds.Width;
 			marginX = e.MarginBounds.Left;
 			marginY = e.MarginBounds.Top;
-			totalPages = 1;
+			totalPages = CountPages(printTagPreceModel.Count);
 			Graphics g = e.Graphics;
-			//float pageWidth = e.PageBounds.Width - marginX * 2;
+
 			tablesPerRow = (int)(pageWidth / (tableWidth + 10));
 			float x = marginX, y = marginY;
 			int tablesPrinted = 0;
@@ -75,54 +94,44 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 		private void DrawTable(Graphics g, PrintTagPriceModel model, float x, float y)
 		{
 			Pen borderPen = new Pen(Color.Black, 2);
-			float cellHeight = 18;
-			float cellPadding = 1;
-			y += 10;
+			float cellHeight = 30;
+			float cellPadding = 0;
+
 			StringFormat centerFormat = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-			StringFormat LeftFormat = new StringFormat { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Far };
-			RectangleF tableRect = new RectangleF(x, y, tableWidth, tableHeight);
+			StringFormat LeftFormat = new StringFormat { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far };
+			//RectangleF tableRect = new RectangleF(x, y, tableWidth, tableHeight);
 
 			// Desenha a borda da tabela
 			g.DrawRectangle(borderPen, x, y, tableWidth, tableHeight);
 
+
+			y += 10;
 			// Ajuste para quebra de linha
 			RectangleF headerRect = new RectangleF(x, y, tableWidth, cellHeight);
 			g.DrawString("PRODUTO COM DESCONTO ESPECIAL", headerFont, Brushes.Black, headerRect, centerFormat);
 
+			y += 5;
 			RectangleF subHeaderRect = new RectangleF(x, y + cellHeight, tableWidth, cellHeight);
-			g.DrawString("(PRÓXIMO AO VENCIMENTO)", headerFont, Brushes.Black, subHeaderRect, centerFormat);
+			g.DrawString("(PRÓXIMO AO VENCIMENTO)", headerFont2, Brushes.Black, subHeaderRect, centerFormat);
 
+			y += 5;
 			RectangleF nameRect = new RectangleF(x, y + cellHeight * 2, tableWidth, cellHeight);
-			g.DrawString(model.PRODUTO.DESCRICAO_PRODUTO.ToUpper(), headerFont, Brushes.Black, nameRect, centerFormat);
+			g.DrawString(model.NAME_ITEM.ToUpper(), headerFont, Brushes.Black, nameRect, centerFormat);
 
 
-			//RectangleF oldPriceLabelRect = new RectangleF(x, y + cellHeight * 3, tableWidth, cellHeight);
-			//g.DrawString("DE: R$", cellFont, Brushes.Black, oldPriceLabelRect, LeftFormat);
 
-			//RectangleF oldPriceValueRect = new RectangleF(x + tableWidth, y + cellHeight * 3, tableWidth, cellHeight);
-			//g.DrawString(model.OLD_PRICE.ToString("F2"), cellFontBold, Brushes.Red, oldPriceValueRect, LeftFormat);
-
-			//RectangleF newPriceLabelRect = new RectangleF(x, y + cellHeight * 4, tableWidth, cellHeight);
-			//g.DrawString("POR: R$", cellFont, Brushes.Black, newPriceLabelRect, LeftFormat);
-
-			//RectangleF newPriceValueRect = new RectangleF(x + tableWidth, y + cellHeight * 4, tableWidth, cellHeight);
-			//g.DrawString(model.NEW_PRICE.ToString("F2"), cellFontBold, Brushes.Red, newPriceValueRect, LeftFormat);
-
-			//RectangleF validityLabelRect = new RectangleF(x, y + cellHeight * 5, tableWidth, cellHeight);
-			//g.DrawString("VALIDADE:", cellFont, Brushes.Black, validityLabelRect, LeftFormat);
-
-			//RectangleF validityValueRect = new RectangleF(x + tableWidth, y + cellHeight * 5, tableWidth, cellHeight);
-			//g.DrawString(model.DATE_VALITY.ToShortDateString(), cellFontBold, Brushes.Red, validityValueRect, LeftFormat);
+			y += 20;
 
 
-			g.DrawString("DE: R$", cellFont, Brushes.Black, x + cellPadding, y + cellHeight * 3);
-			g.DrawString(model.OLD_PRICE.ToString("F2"), cellFontBold, Brushes.Red, x + tableWidth - 50, y + cellHeight * 3);
+			g.DrawString("DE: R$", cellFont2, Brushes.Black, x + cellPadding, y + cellHeight * 3);
+			g.DrawString(model.OLD_PRICE.ToString("F2"), cellFont2, Brushes.Red, x + tableWidth - 45, y + cellHeight * 3);
+			y -= 10;
 
 			g.DrawString("POR: R$", cellFont, Brushes.Black, x + cellPadding, y + cellHeight * 4);
-			g.DrawString(model.NEW_PRICE.ToString("F2"), cellFontBold, Brushes.Red, x + tableWidth - 50, y + cellHeight * 4);
-
+			g.DrawString(model.NEW_PRICE.ToString("F2"), cellFontBold, Brushes.Red, x + tableWidth - 40, y + cellHeight * 4);
+			y -= 10;
 			g.DrawString("VALIDADE:", cellFont, Brushes.Black, x + cellPadding, y + cellHeight * 5);
-			g.DrawString(model.DATE_VALITY.ToShortDateString(), cellFontBold, Brushes.Red, x + tableWidth - 70, y + cellHeight * 5);
+			g.DrawString(model.DATE_VALITY.ToShortDateString(), cellFontBold, Brushes.Red, x + tableWidth - 75, y + cellHeight * 5);
 		}
 	}
 }

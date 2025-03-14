@@ -16,6 +16,8 @@ namespace EterPharmaPro
 			InitializeComponent();
 
 			EterCache.Instance.DatabaseProdutosDb = new DatabaseProdutosDb(toolStripProgressBar_status);
+
+
 		}
 		private void MainWindow_Load(object sender, EventArgs e)
 		{
@@ -27,10 +29,17 @@ namespace EterPharmaPro
 			AcesUser acesUser = new AcesUser();
 			acesUser.ShowDialog();
 
-			if (acesUser.exit) this.Close();
+			if (acesUser.exit)
+			{
+				Application.Exit();
+				this.Close();
+				return;
+			}
 
 
 			if (!acesUser.loginSucced) SetLogin();
+
+			toolStripButton_conf.Visible = EterCache.Instance.UserDbModel?.Position?.PERMISSION == 1 || EterCache.Instance.UserDbModel?.Position?.PERMISSION == 2;
 
 			this.Text = $"ETER PHARMA PRO [ {EterCache.Instance.UserDbModel?.ID_LOJA?.ToString().PadRight(4, '0')} - {EterCache.Instance.UserDbModel?.NOME} - {EterCache.Instance.UserDbModel?.Position?.NOME} ]";
 		}
@@ -69,7 +78,6 @@ namespace EterPharmaPro
 
 		private void gERARVALIDADEDOMÊSToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new CreateValidade());
 
-
 		private void toolStripDropDownButton_impressos_Click(object sender, EventArgs e) => OpenForm(new IMPRESSOS());
 
 		private void toolStripButton_conf_Click(object sender, EventArgs e) => OpenForm(new ConfigsPage());
@@ -78,11 +86,6 @@ namespace EterPharmaPro
 
 		private void rELATÓRIOToolStripMenuItem1_Click(object sender, EventArgs e) => OpenForm(new ReportManipulacao());
 
-		private void tAGToolStripMenuItem_Click(object sender, EventArgs e) => OpenForm(new TagViewer());
 
-		private void toolStripButton2_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

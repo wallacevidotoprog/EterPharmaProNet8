@@ -74,6 +74,7 @@ namespace EterPharmaPro.Views.Configuracoes
 		{
 			listBox_list.SelectedIndex = store_current;
 		}
+
 		private void GetPrints(int Index)
 		{
 			dataGridView_prints.Rows.Clear();
@@ -196,6 +197,7 @@ namespace EterPharmaPro.Views.Configuracoes
 				comboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
 			}
 		}
+
 		private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (dataGridView_prints.CurrentCell != null)
@@ -241,5 +243,15 @@ namespace EterPharmaPro.Views.Configuracoes
 			}
 		}
 
+		private void ePictureBox_remove_Click(object sender, EventArgs e)
+		{
+			if (selectedIndex != -1)
+			{
+				SettingsPoint tempS = EterCache.Instance.SettingsApp?.POINTS[selectedIndex];
+				EterCache.Instance.SettingsApp?.POINTS.Remove(tempS);
+				listBox_list.Items.RemoveAt(selectedIndex);
+				EditChange(true);
+			}
+		}
 	}
 }

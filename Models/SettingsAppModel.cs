@@ -42,10 +42,11 @@ namespace EterPharmaPro.Models
 
 		public async Task<bool> SaveAsync()
 		{
-			return await SetSettings.SerializeToXmlFileAsync(this);
+			bool temp = await SetSettings.SerializeToXmlFileAsync(this);
 			SetProps();
+			return temp;
 		}
-		
+
 
 	}
 

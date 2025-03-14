@@ -28,374 +28,351 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.toolStrip_topMenu = new System.Windows.Forms.ToolStrip();
-			this.toolStripButton_send = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton_new_save = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton_cancel = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.groupBox_create = new System.Windows.Forms.GroupBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.eSwitchControl_stats = new EterPharmaPro.Utils.eControl.eSwitchControl();
-			this.label3 = new System.Windows.Forms.Label();
-			this.comboBox_funcao = new System.Windows.Forms.ComboBox();
-			this.textBox_id = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.textBox_pass = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.textBox_nome = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.dataGridView_user = new System.Windows.Forms.DataGridView();
-			this.dataGridViewCheckBoxImageColumn1 = new EterPharmaPro.Utils.Extencions.DataGridViewCheckBoxImageColumn();
-			this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ID_LOJA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.stats = new EterPharmaPro.Utils.Extencions.DataGridViewCheckBoxImageColumn();
-			this.criado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ATT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.toolStrip_topMenu.SuspendLayout();
-			this.groupBox_create.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).BeginInit();
-			this.SuspendLayout();
+			toolStrip_topMenu = new ToolStrip();
+			toolStripButton_new_save = new ToolStripButton();
+			toolStripButton_cancel = new ToolStripButton();
+			toolStripSeparator1 = new ToolStripSeparator();
+			groupBox_create = new GroupBox();
+			label2 = new Label();
+			eSwitchControl_stats = new EterPharmaPro.Utils.eControl.eSwitchControl();
+			label3 = new Label();
+			comboBox_funcao = new ComboBox();
+			textBox_id = new TextBox();
+			label6 = new Label();
+			textBox_pass = new TextBox();
+			label1 = new Label();
+			textBox_nome = new TextBox();
+			label4 = new Label();
+			dataGridView_user = new DataGridView();
+			dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+			ID_LOJA = new DataGridViewTextBoxColumn();
+			dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+			dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+			stats = new EterPharmaPro.Utils.Extencions.DataGridViewCheckBoxImageColumn();
+			criado = new DataGridViewTextBoxColumn();
+			ATT = new DataGridViewTextBoxColumn();
+			dataGridViewCheckBoxImageColumn1 = new EterPharmaPro.Utils.Extencions.DataGridViewCheckBoxImageColumn();
+			toolStrip_topMenu.SuspendLayout();
+			groupBox_create.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView_user).BeginInit();
+			SuspendLayout();
 			// 
 			// toolStrip_topMenu
 			// 
-			this.toolStrip_topMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.toolStrip_topMenu.Dock = System.Windows.Forms.DockStyle.Right;
-			this.toolStrip_topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_send,
-            this.toolStripButton_new_save,
-            this.toolStripButton_cancel,
-            this.toolStripSeparator1});
-			this.toolStrip_topMenu.Location = new System.Drawing.Point(909, 0);
-			this.toolStrip_topMenu.Name = "toolStrip_topMenu";
-			this.toolStrip_topMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.toolStrip_topMenu.Size = new System.Drawing.Size(91, 583);
-			this.toolStrip_topMenu.TabIndex = 9;
-			this.toolStrip_topMenu.Text = "toolStrip1";
-			// 
-			// toolStripButton_send
-			// 
-			this.toolStripButton_send.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.toolStripButton_send.AutoSize = false;
-			this.toolStripButton_send.Font = new System.Drawing.Font("Segoe UI", 7F);
-			this.toolStripButton_send.Image = global::EterPharmaPro.Properties.Resources.inserir;
-			this.toolStripButton_send.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_send.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_send.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_send.Name = "toolStripButton_send";
-			this.toolStripButton_send.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_send.Tag = "";
-			this.toolStripButton_send.Text = "ENVIAR";
-			this.toolStripButton_send.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_send.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_send.ToolTipText = "Marcar como enviado";
+			toolStrip_topMenu.BackColor = Color.WhiteSmoke;
+			toolStrip_topMenu.Dock = DockStyle.Right;
+			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_new_save, toolStripButton_cancel, toolStripSeparator1 });
+			toolStrip_topMenu.Location = new Point(1076, 0);
+			toolStrip_topMenu.Name = "toolStrip_topMenu";
+			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
+			toolStrip_topMenu.Size = new Size(91, 673);
+			toolStrip_topMenu.TabIndex = 9;
+			toolStrip_topMenu.Text = "toolStrip1";
 			// 
 			// toolStripButton_new_save
 			// 
-			this.toolStripButton_new_save.AutoSize = false;
-			this.toolStripButton_new_save.Font = new System.Drawing.Font("Segoe UI", 7F);
-			this.toolStripButton_new_save.Image = global::EterPharmaPro.Properties.Resources.documento_new;
-			this.toolStripButton_new_save.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_new_save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_new_save.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_new_save.Name = "toolStripButton_new_save";
-			this.toolStripButton_new_save.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_new_save.Tag = "";
-			this.toolStripButton_new_save.Text = "NOVO";
-			this.toolStripButton_new_save.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_new_save.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_new_save.ToolTipText = " ";
-			this.toolStripButton_new_save.Click += new System.EventHandler(this.toolStripButton_new_save_Click);
+			toolStripButton_new_save.AutoSize = false;
+			toolStripButton_new_save.Font = new Font("Segoe UI", 7F);
+			toolStripButton_new_save.Image = Properties.Resources.documento_new;
+			toolStripButton_new_save.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_new_save.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_new_save.ImageTransparentColor = Color.Magenta;
+			toolStripButton_new_save.Name = "toolStripButton_new_save";
+			toolStripButton_new_save.Size = new Size(90, 90);
+			toolStripButton_new_save.Tag = "";
+			toolStripButton_new_save.Text = "NOVO";
+			toolStripButton_new_save.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_new_save.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_new_save.ToolTipText = " ";
+			toolStripButton_new_save.Click += toolStripButton_new_save_Click;
 			// 
 			// toolStripButton_cancel
 			// 
-			this.toolStripButton_cancel.AutoSize = false;
-			this.toolStripButton_cancel.Font = new System.Drawing.Font("Segoe UI", 7F);
-			this.toolStripButton_cancel.Image = global::EterPharmaPro.Properties.Resources.cancelar;
-			this.toolStripButton_cancel.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_cancel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_cancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_cancel.Name = "toolStripButton_cancel";
-			this.toolStripButton_cancel.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_cancel.Tag = "";
-			this.toolStripButton_cancel.Text = "CANCELAR";
-			this.toolStripButton_cancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_cancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_cancel.ToolTipText = "Cancelar";
-			this.toolStripButton_cancel.Visible = false;
-			this.toolStripButton_cancel.Click += new System.EventHandler(this.toolStripButton_cancel_Click);
+			toolStripButton_cancel.AutoSize = false;
+			toolStripButton_cancel.Font = new Font("Segoe UI", 7F);
+			toolStripButton_cancel.Image = Properties.Resources.cancelar;
+			toolStripButton_cancel.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_cancel.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_cancel.ImageTransparentColor = Color.Magenta;
+			toolStripButton_cancel.Name = "toolStripButton_cancel";
+			toolStripButton_cancel.Size = new Size(90, 90);
+			toolStripButton_cancel.Tag = "";
+			toolStripButton_cancel.Text = "CANCELAR";
+			toolStripButton_cancel.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_cancel.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_cancel.ToolTipText = "Cancelar";
+			toolStripButton_cancel.Visible = false;
+			toolStripButton_cancel.Click += toolStripButton_cancel_Click;
 			// 
 			// toolStripSeparator1
 			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(88, 6);
+			toolStripSeparator1.Name = "toolStripSeparator1";
+			toolStripSeparator1.Size = new Size(88, 6);
 			// 
 			// groupBox_create
 			// 
-			this.groupBox_create.Controls.Add(this.label2);
-			this.groupBox_create.Controls.Add(this.eSwitchControl_stats);
-			this.groupBox_create.Controls.Add(this.label3);
-			this.groupBox_create.Controls.Add(this.comboBox_funcao);
-			this.groupBox_create.Controls.Add(this.textBox_id);
-			this.groupBox_create.Controls.Add(this.label6);
-			this.groupBox_create.Controls.Add(this.textBox_pass);
-			this.groupBox_create.Controls.Add(this.label1);
-			this.groupBox_create.Controls.Add(this.textBox_nome);
-			this.groupBox_create.Controls.Add(this.label4);
-			this.groupBox_create.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox_create.Location = new System.Drawing.Point(0, 0);
-			this.groupBox_create.Name = "groupBox_create";
-			this.groupBox_create.Size = new System.Drawing.Size(909, 282);
-			this.groupBox_create.TabIndex = 25;
-			this.groupBox_create.TabStop = false;
-			this.groupBox_create.Visible = false;
+			groupBox_create.Controls.Add(label2);
+			groupBox_create.Controls.Add(eSwitchControl_stats);
+			groupBox_create.Controls.Add(label3);
+			groupBox_create.Controls.Add(comboBox_funcao);
+			groupBox_create.Controls.Add(textBox_id);
+			groupBox_create.Controls.Add(label6);
+			groupBox_create.Controls.Add(textBox_pass);
+			groupBox_create.Controls.Add(label1);
+			groupBox_create.Controls.Add(textBox_nome);
+			groupBox_create.Controls.Add(label4);
+			groupBox_create.Dock = DockStyle.Top;
+			groupBox_create.Location = new Point(0, 0);
+			groupBox_create.Margin = new Padding(4, 3, 4, 3);
+			groupBox_create.Name = "groupBox_create";
+			groupBox_create.Padding = new Padding(4, 3, 4, 3);
+			groupBox_create.Size = new Size(1076, 325);
+			groupBox_create.TabIndex = 25;
+			groupBox_create.TabStop = false;
+			groupBox_create.Visible = false;
 			// 
 			// label2
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(810, 213);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(71, 25);
-			this.label2.TabIndex = 25;
-			this.label2.Text = "STATS:";
+			label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			label2.AutoSize = true;
+			label2.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label2.Location = new Point(961, 246);
+			label2.Margin = new Padding(4, 0, 4, 0);
+			label2.Name = "label2";
+			label2.Size = new Size(71, 25);
+			label2.TabIndex = 25;
+			label2.Text = "STATS:";
 			// 
 			// eSwitchControl_stats
 			// 
-			this.eSwitchControl_stats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.eSwitchControl_stats.AutoSize = true;
-			this.eSwitchControl_stats.Checked = true;
-			this.eSwitchControl_stats.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.eSwitchControl_stats.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.eSwitchControl_stats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.eSwitchControl_stats.Location = new System.Drawing.Point(826, 241);
-			this.eSwitchControl_stats.MinimumSize = new System.Drawing.Size(45, 22);
-			this.eSwitchControl_stats.Name = "eSwitchControl_stats";
-			this.eSwitchControl_stats.OffBackColor = System.Drawing.Color.Black;
-			this.eSwitchControl_stats.OffToggleColor = System.Drawing.Color.White;
-			this.eSwitchControl_stats.OnBackColor = System.Drawing.Color.SeaGreen;
-			this.eSwitchControl_stats.OnToggleColor = System.Drawing.Color.White;
-			this.eSwitchControl_stats.Size = new System.Drawing.Size(45, 22);
-			this.eSwitchControl_stats.TabIndex = 24;
-			this.eSwitchControl_stats.UseVisualStyleBackColor = true;
+			eSwitchControl_stats.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			eSwitchControl_stats.AutoSize = true;
+			eSwitchControl_stats.Checked = true;
+			eSwitchControl_stats.CheckState = CheckState.Checked;
+			eSwitchControl_stats.Cursor = Cursors.Hand;
+			eSwitchControl_stats.FlatStyle = FlatStyle.Flat;
+			eSwitchControl_stats.Location = new Point(980, 278);
+			eSwitchControl_stats.Margin = new Padding(4, 3, 4, 3);
+			eSwitchControl_stats.MinimumSize = new Size(52, 25);
+			eSwitchControl_stats.Name = "eSwitchControl_stats";
+			eSwitchControl_stats.OffBackColor = Color.Black;
+			eSwitchControl_stats.OffToggleColor = Color.White;
+			eSwitchControl_stats.OnBackColor = Color.SeaGreen;
+			eSwitchControl_stats.OnToggleColor = Color.White;
+			eSwitchControl_stats.Size = new Size(52, 25);
+			eSwitchControl_stats.TabIndex = 24;
+			eSwitchControl_stats.UseVisualStyleBackColor = true;
 			// 
 			// label3
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(6, 16);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(35, 25);
-			this.label3.TabIndex = 17;
-			this.label3.Text = "ID:";
+			label3.AutoSize = true;
+			label3.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label3.Location = new Point(7, 18);
+			label3.Margin = new Padding(4, 0, 4, 0);
+			label3.Name = "label3";
+			label3.Size = new Size(35, 25);
+			label3.TabIndex = 17;
+			label3.Text = "ID:";
 			// 
 			// comboBox_funcao
 			// 
-			this.comboBox_funcao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox_funcao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox_funcao.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_funcao.FormattingEnabled = true;
-			this.comboBox_funcao.Items.AddRange(new object[] {
-            "EAN",
-            "COD INTERNO"});
-			this.comboBox_funcao.Location = new System.Drawing.Point(11, 236);
-			this.comboBox_funcao.Name = "comboBox_funcao";
-			this.comboBox_funcao.Size = new System.Drawing.Size(784, 33);
-			this.comboBox_funcao.TabIndex = 22;
+			comboBox_funcao.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			comboBox_funcao.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBox_funcao.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			comboBox_funcao.FormattingEnabled = true;
+			comboBox_funcao.Items.AddRange(new object[] { "EAN", "COD INTERNO" });
+			comboBox_funcao.Location = new Point(13, 272);
+			comboBox_funcao.Margin = new Padding(4, 3, 4, 3);
+			comboBox_funcao.Name = "comboBox_funcao";
+			comboBox_funcao.Size = new Size(930, 33);
+			comboBox_funcao.TabIndex = 22;
 			// 
 			// textBox_id
 			// 
-			this.textBox_id.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_id.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_id.Location = new System.Drawing.Point(11, 44);
-			this.textBox_id.MaxLength = 4;
-			this.textBox_id.Name = "textBox_id";
-			this.textBox_id.Size = new System.Drawing.Size(893, 33);
-			this.textBox_id.TabIndex = 16;
-			this.textBox_id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			textBox_id.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_id.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_id.Location = new Point(13, 51);
+			textBox_id.Margin = new Padding(4, 3, 4, 3);
+			textBox_id.MaxLength = 4;
+			textBox_id.Name = "textBox_id";
+			textBox_id.Size = new Size(1057, 33);
+			textBox_id.TabIndex = 16;
+			textBox_id.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label6
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(6, 208);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(91, 25);
-			this.label6.TabIndex = 23;
-			this.label6.Text = "FUNÇÃO";
+			label6.AutoSize = true;
+			label6.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(7, 240);
+			label6.Margin = new Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new Size(91, 25);
+			label6.TabIndex = 23;
+			label6.Text = "FUNÇÃO";
 			// 
 			// textBox_pass
 			// 
-			this.textBox_pass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_pass.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_pass.Location = new System.Drawing.Point(11, 172);
-			this.textBox_pass.Name = "textBox_pass";
-			this.textBox_pass.PasswordChar = '*';
-			this.textBox_pass.Size = new System.Drawing.Size(893, 33);
-			this.textBox_pass.TabIndex = 18;
-			this.textBox_pass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			textBox_pass.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_pass.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_pass.Location = new Point(13, 198);
+			textBox_pass.Margin = new Padding(4, 3, 4, 3);
+			textBox_pass.Name = "textBox_pass";
+			textBox_pass.PasswordChar = '*';
+			textBox_pass.Size = new Size(1057, 33);
+			textBox_pass.TabIndex = 18;
+			textBox_pass.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(6, 144);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(79, 25);
-			this.label1.TabIndex = 19;
-			this.label1.Text = "SENHA:";
+			label1.AutoSize = true;
+			label1.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label1.Location = new Point(7, 166);
+			label1.Margin = new Padding(4, 0, 4, 0);
+			label1.Name = "label1";
+			label1.Size = new Size(79, 25);
+			label1.TabIndex = 19;
+			label1.Text = "SENHA:";
 			// 
 			// textBox_nome
 			// 
-			this.textBox_nome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_nome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_nome.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_nome.Location = new System.Drawing.Point(11, 108);
-			this.textBox_nome.Name = "textBox_nome";
-			this.textBox_nome.Size = new System.Drawing.Size(893, 33);
-			this.textBox_nome.TabIndex = 18;
-			this.textBox_nome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			textBox_nome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_nome.CharacterCasing = CharacterCasing.Upper;
+			textBox_nome.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_nome.Location = new Point(13, 125);
+			textBox_nome.Margin = new Padding(4, 3, 4, 3);
+			textBox_nome.Name = "textBox_nome";
+			textBox_nome.Size = new Size(1057, 33);
+			textBox_nome.TabIndex = 18;
+			textBox_nome.TextAlign = HorizontalAlignment.Center;
 			// 
 			// label4
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(6, 80);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(74, 25);
-			this.label4.TabIndex = 19;
-			this.label4.Text = "NOME:";
+			label4.AutoSize = true;
+			label4.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label4.Location = new Point(7, 92);
+			label4.Margin = new Padding(4, 0, 4, 0);
+			label4.Name = "label4";
+			label4.Size = new Size(74, 25);
+			label4.TabIndex = 19;
+			label4.Text = "NOME:";
 			// 
 			// dataGridView_user
 			// 
-			this.dataGridView_user.AllowUserToAddRows = false;
-			this.dataGridView_user.AllowUserToDeleteRows = false;
-			this.dataGridView_user.AllowUserToResizeColumns = false;
-			this.dataGridView_user.AllowUserToResizeRows = false;
-			this.dataGridView_user.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView_user.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-			this.dataGridView_user.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-			this.dataGridView_user.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView_user.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.ID_LOJA,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.stats,
-            this.criado,
-            this.ATT});
-			this.dataGridView_user.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.dataGridView_user.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView_user.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.dataGridView_user.Location = new System.Drawing.Point(0, 282);
-			this.dataGridView_user.MultiSelect = false;
-			this.dataGridView_user.Name = "dataGridView_user";
-			this.dataGridView_user.ReadOnly = true;
-			this.dataGridView_user.RowHeadersVisible = false;
-			this.dataGridView_user.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-			this.dataGridView_user.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView_user.Size = new System.Drawing.Size(909, 301);
-			this.dataGridView_user.TabIndex = 26;
-			this.dataGridView_user.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_user_CellDoubleClick);
-			// 
-			// dataGridViewCheckBoxImageColumn1
-			// 
-			this.dataGridViewCheckBoxImageColumn1.DataPropertyName = "STATS";
-			this.dataGridViewCheckBoxImageColumn1.FillWeight = 25F;
-			this.dataGridViewCheckBoxImageColumn1.HeaderText = "STATS";
-			this.dataGridViewCheckBoxImageColumn1.Name = "dataGridViewCheckBoxImageColumn1";
-			this.dataGridViewCheckBoxImageColumn1.Width = 46;
+			dataGridView_user.AllowUserToAddRows = false;
+			dataGridView_user.AllowUserToDeleteRows = false;
+			dataGridView_user.AllowUserToResizeColumns = false;
+			dataGridView_user.AllowUserToResizeRows = false;
+			dataGridView_user.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridView_user.BackgroundColor = SystemColors.ButtonFace;
+			dataGridView_user.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+			dataGridView_user.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dataGridView_user.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, ID_LOJA, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, stats, criado, ATT });
+			dataGridView_user.Cursor = Cursors.Hand;
+			dataGridView_user.Dock = DockStyle.Fill;
+			dataGridView_user.GridColor = SystemColors.ActiveCaptionText;
+			dataGridView_user.Location = new Point(0, 325);
+			dataGridView_user.Margin = new Padding(4, 3, 4, 3);
+			dataGridView_user.MultiSelect = false;
+			dataGridView_user.Name = "dataGridView_user";
+			dataGridView_user.ReadOnly = true;
+			dataGridView_user.RowHeadersVisible = false;
+			dataGridView_user.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			dataGridView_user.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dataGridView_user.Size = new Size(1076, 348);
+			dataGridView_user.TabIndex = 26;
+			dataGridView_user.CellDoubleClick += dataGridView_user_CellDoubleClick;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
-			this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-			this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-			this.dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
-			this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-			this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-			this.dataGridViewTextBoxColumn1.ReadOnly = true;
-			this.dataGridViewTextBoxColumn1.Visible = false;
-			this.dataGridViewTextBoxColumn1.Width = 43;
+			dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+			dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+			dataGridViewTextBoxColumn1.FillWeight = 68.96552F;
+			dataGridViewTextBoxColumn1.HeaderText = "ID";
+			dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+			dataGridViewTextBoxColumn1.ReadOnly = true;
+			dataGridViewTextBoxColumn1.Visible = false;
 			// 
 			// ID_LOJA
 			// 
-			this.ID_LOJA.DataPropertyName = "ID_LOJA";
-			this.ID_LOJA.FillWeight = 50F;
-			this.ID_LOJA.HeaderText = "ID LOJA";
-			this.ID_LOJA.Name = "ID_LOJA";
-			this.ID_LOJA.ReadOnly = true;
+			ID_LOJA.DataPropertyName = "ID_LOJA";
+			ID_LOJA.FillWeight = 50F;
+			ID_LOJA.HeaderText = "ID LOJA";
+			ID_LOJA.Name = "ID_LOJA";
+			ID_LOJA.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
-			this.dataGridViewTextBoxColumn2.DataPropertyName = "NOME";
-			this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-			this.dataGridViewTextBoxColumn2.HeaderText = "NOME";
-			this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-			this.dataGridViewTextBoxColumn2.ReadOnly = true;
+			dataGridViewTextBoxColumn2.DataPropertyName = "NOME";
+			dataGridViewTextBoxColumn2.FillWeight = 200F;
+			dataGridViewTextBoxColumn2.HeaderText = "NOME";
+			dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+			dataGridViewTextBoxColumn2.ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
-			this.dataGridViewTextBoxColumn3.DataPropertyName = "FUNCAO";
-			this.dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
-			this.dataGridViewTextBoxColumn3.HeaderText = "FUNÇÃO";
-			this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-			this.dataGridViewTextBoxColumn3.ReadOnly = true;
+			dataGridViewTextBoxColumn3.DataPropertyName = "FUNCAO";
+			dataGridViewTextBoxColumn3.FillWeight = 193.1035F;
+			dataGridViewTextBoxColumn3.HeaderText = "FUNÇÃO";
+			dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+			dataGridViewTextBoxColumn3.ReadOnly = true;
 			// 
 			// stats
 			// 
-			this.stats.DataPropertyName = "STATS";
-			this.stats.FillWeight = 30F;
-			this.stats.HeaderText = "STATS";
-			this.stats.Name = "stats";
-			this.stats.ReadOnly = true;
+			stats.DataPropertyName = "STATS";
+			stats.FillWeight = 30F;
+			stats.HeaderText = "STATS";
+			stats.Name = "stats";
+			stats.ReadOnly = true;
 			// 
 			// criado
 			// 
-			this.criado.DataPropertyName = "CREATE";
-			this.criado.FillWeight = 50F;
-			this.criado.HeaderText = "CRIAÇÃO";
-			this.criado.Name = "criado";
-			this.criado.ReadOnly = true;
+			criado.DataPropertyName = "CREATE";
+			criado.FillWeight = 50F;
+			criado.HeaderText = "CRIAÇÃO";
+			criado.Name = "criado";
+			criado.ReadOnly = true;
 			// 
 			// ATT
 			// 
-			this.ATT.DataPropertyName = "UPDATE";
-			this.ATT.FillWeight = 50F;
-			this.ATT.HeaderText = "ATUALIZAÇÃO";
-			this.ATT.Name = "ATT";
-			this.ATT.ReadOnly = true;
+			ATT.DataPropertyName = "UPDATE";
+			ATT.FillWeight = 50F;
+			ATT.HeaderText = "ATUALIZAÇÃO";
+			ATT.Name = "ATT";
+			ATT.ReadOnly = true;
+			// 
+			// dataGridViewCheckBoxImageColumn1
+			// 
+			dataGridViewCheckBoxImageColumn1.DataPropertyName = "STATS";
+			dataGridViewCheckBoxImageColumn1.FillWeight = 25F;
+			dataGridViewCheckBoxImageColumn1.HeaderText = "STATS";
+			dataGridViewCheckBoxImageColumn1.Name = "dataGridViewCheckBoxImageColumn1";
+			dataGridViewCheckBoxImageColumn1.Width = 46;
 			// 
 			// User
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1000, 583);
-			this.Controls.Add(this.dataGridView_user);
-			this.Controls.Add(this.groupBox_create);
-			this.Controls.Add(this.toolStrip_topMenu);
-			this.Name = "User";
-			this.Text = "User";
-			this.Load += new System.EventHandler(this.User_Load);
-			this.toolStrip_topMenu.ResumeLayout(false);
-			this.toolStrip_topMenu.PerformLayout();
-			this.groupBox_create.ResumeLayout(false);
-			this.groupBox_create.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_user)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			ClientSize = new Size(1167, 673);
+			Controls.Add(dataGridView_user);
+			Controls.Add(groupBox_create);
+			Controls.Add(toolStrip_topMenu);
+			Margin = new Padding(4, 3, 4, 3);
+			Name = "User";
+			Text = "User";
+			Load += User_Load;
+			toolStrip_topMenu.ResumeLayout(false);
+			toolStrip_topMenu.PerformLayout();
+			groupBox_create.ResumeLayout(false);
+			groupBox_create.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView_user).EndInit();
+			ResumeLayout(false);
+			PerformLayout();
 
 		}
 
 		#endregion
 
 		private System.Windows.Forms.ToolStrip toolStrip_topMenu;
-		private System.Windows.Forms.ToolStripButton toolStripButton_send;
 		private System.Windows.Forms.ToolStripButton toolStripButton_new_save;
 		private System.Windows.Forms.ToolStripButton toolStripButton_cancel;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

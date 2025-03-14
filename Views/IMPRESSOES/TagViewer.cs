@@ -12,7 +12,7 @@ namespace EterPharmaPro.Views.IMPRESSOES
 	{
 
 		private List<PrintTagPriceModel> printTagPriceModels;
-		private PrintTagValityService printTagVal;
+		private IPrint print;
 		private ConfigsPageController configsPageController;
 		private ProdutosModel produtoCurrent;
 
@@ -27,11 +27,8 @@ namespace EterPharmaPro.Views.IMPRESSOES
 
 		private void ePictureBox_gerar_Click(object sender, EventArgs e)
 		{
-			//for (int i = 0; i < printTagPriceModels.Count; i++)
-			//{
-			//	printTagVal.Add(printTagPriceModels[i]);
-			//}
-			//printTagVal.Print();
+			print = new PrintTagValityService(printTagPriceModels);
+			print.ShowPrintPreview();
 		}
 
 		private void dataGridView_validade_RowValidated(object sender, DataGridViewCellEventArgs e)
@@ -146,7 +143,7 @@ namespace EterPharmaPro.Views.IMPRESSOES
 					printTagPriceModels.Add(new PrintTagPriceModel
 					{
 						PRODUTO = produtoCurrent,
-						NAME_ITEM = textBox_produto.Text,
+						NAME_ITEM = produtoCurrent?.DESCRICAO_PRODUTO ?? textBox_produto.Text,
 						OLD_PRICE = Convert.ToDecimal(textBox_old.Text),
 						NEW_PRICE = Convert.ToDecimal(textBox_new.Text),
 						DATE_VALITY = dateTimePicker_data.Value,
@@ -200,8 +197,7 @@ namespace EterPharmaPro.Views.IMPRESSOES
 			printTagPriceModels.Add(temp);
 
 
-			IPrint print = new PrintTagValityService(printTagPriceModels);
-			print.ShowPrintPreview();
+
 
 
 		}

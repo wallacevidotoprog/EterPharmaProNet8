@@ -26,7 +26,7 @@ namespace EterPharmaPro.Views.Configuracoes
 			toolStripButton_new_save.Image = Resources.salve;
 			toolStripButton_cancel.Visible = true;
 			groupBox_create.Visible = true;
-			toolStripButton_send.Visible = false;
+			//toolStripButton_send.Visible = false;
 		}
 
 		private void ClearFieldReq()
@@ -98,7 +98,7 @@ namespace EterPharmaPro.Views.Configuracoes
 			userModel = null;
 			toolStripButton_new_save.Image = Resources.documento_new;
 			toolStripButton_cancel.Visible = false;
-			toolStripButton_send.Visible = true;
+			//toolStripButton_send.Visible = true;
 			ClearFieldReq();
 			isNew = false;
 			isEdit = false;
@@ -120,7 +120,7 @@ namespace EterPharmaPro.Views.Configuracoes
 
 			textBox_id.Text = userModel.ID_LOJA.ToString();
 			textBox_nome.Text = userModel.NOME;
-			textBox_pass.Text = userModel.PASS;
+			//textBox_pass.Text = userModel.PASS;
 			comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexCbGeneric(userModel.Position.ID);
 			eSwitchControl_stats.Checked = userModel.STATUS;
 

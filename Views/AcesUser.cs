@@ -3,6 +3,7 @@ using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Core;
 using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Timer = System.Windows.Forms.Timer;
 
 namespace EterPharmaPro.Views
@@ -144,8 +145,9 @@ namespace EterPharmaPro.Views
 
 		private void ePictureBox_close_Click(object sender, EventArgs e)
 		{
-			exit = true;
-			this.Close();
+			pClose = exit = true;
+			
+			Application.Exit();
 		}
 	}
 }
