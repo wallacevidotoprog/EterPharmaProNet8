@@ -65,7 +65,7 @@ namespace EterPharmaPro.Infrastructure.Services
 			printerHelper.AddLine(new TextPrintFormaterModel
 			{
 				tilte = "NOME: ",
-				texto = model.UserModel.NOME,
+				texto = model.Client.NOME,
 				alignmentText = AlignmentTextPrintEnum.Left,
 				fontStyle = FormatTextPrintEnum.Default
 			});

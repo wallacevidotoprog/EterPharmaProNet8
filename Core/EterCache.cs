@@ -14,18 +14,17 @@ namespace EterPharmaPro.Core
 
 		private EterCache()
 		{
-			EterDb = new EterDb();
 			EterDbController = new EterDbController();
+			EterDb = new EterDb();
 			Task.Run(async () => await SetPropsSettingsAsync()).ConfigureAwait(false);
 		}
+		public EterDbController EterDbController { get; set; }
 
 		public EterDb EterDb { get; private set; }
 
 		public UserDbModel UserDbModel { get; set; }
 
 		public DatabaseProdutosDb DatabaseProdutosDb { get; set; }
-
-		public EterDbController EterDbController { get; set; }
 
 		public SettingsAppModel SettingsApp { get; set; }
 

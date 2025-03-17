@@ -61,6 +61,7 @@ namespace EterPharmaPro.Controllers.Configs
 		{
 			try
 			{
+
 				await EterCache.Instance.EterDb.UserService.UpdateAsync(userModel);
 				return true;
 			}

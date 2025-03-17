@@ -76,6 +76,7 @@ namespace EterPharmaPro.Controllers.Manipulacao
 
 				if (address.ID != null && (await EterCache.Instance.EterDb.AddressService.GetByAsync(f => f.ID == client.ID) != null))
 				{
+					address.ID_CLIENT = client.ID;
 					address = await EterCache.Instance.EterDb.AddressService.UpdateAsync(address);
 				}
 				else
@@ -88,6 +89,14 @@ namespace EterPharmaPro.Controllers.Manipulacao
 				model.ID_CLIENTE = client.ID;
 				model.ID_ENDERECO = address.ID;
 
+				var tempMeds = await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == model.ID,I=>I.MedManipulation);
+				if (tempMeds != null)
+				{
+					foreach (var item in tempMeds.MedManipulation)
+					{
+						await EterCache.Instance.EterDb.MedControlService.RemoveAsync((int)item.ID);
+					}
+				}
 				if (model.ID != null && (await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == client.ID) != null))
 				{
 					model = await EterCache.Instance.EterDb.ManipulationService.UpdateAsync(model);

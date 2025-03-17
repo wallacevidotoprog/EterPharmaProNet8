@@ -36,6 +36,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Utils\Extencions\GetAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Utils\Extencions\SelectPrint.cs">
       <SubType>Form</SubType>
     </Compile>

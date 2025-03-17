@@ -28,603 +28,651 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.toolStrip_topMenu = new System.Windows.Forms.ToolStrip();
-			this.toolStripButton_exit = new System.Windows.Forms.ToolStripButton();
-			this.toolStripDropDownButton_print = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton_clear = new System.Windows.Forms.ToolStripButton();
-			this.panel_center = new System.Windows.Forms.Panel();
-			this.groupBox7 = new System.Windows.Forms.GroupBox();
-			this.groupBox8 = new System.Windows.Forms.GroupBox();
-			this.textBox_valorT = new System.Windows.Forms.TextBox();
-			this.comboBox_modo = new System.Windows.Forms.ComboBox();
-			this.label13 = new System.Windows.Forms.Label();
-			this.comboBox_pag = new System.Windows.Forms.ComboBox();
-			this.label12 = new System.Windows.Forms.Label();
-			this.comboBox_situacao = new System.Windows.Forms.ComboBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.textBox_obsGeral = new System.Windows.Forms.TextBox();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.dataGridView_medicamentos = new System.Windows.Forms.DataGridView();
-			this.DADOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.textBox_obsEnd = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.textBox_log = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.textBox5_tel = new System.Windows.Forms.TextBox();
-			this.textBox_nomeC = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.textBox_rg = new System.Windows.Forms.TextBox();
-			this.label14 = new System.Windows.Forms.Label();
-			this.textBox_cpf = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.comboBox_user = new System.Windows.Forms.ComboBox();
-			this.textBox_atn = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.dateTimePicker_data = new System.Windows.Forms.DateTimePicker();
-			this.ePictureBox_search = new EterPharmaPro.Utils.eControl.ePictureBox();
-			this.toolStrip_topMenu.SuspendLayout();
-			this.panel_center.SuspendLayout();
-			this.groupBox7.SuspendLayout();
-			this.groupBox8.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			this.groupBox6.SuspendLayout();
-			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_medicamentos)).BeginInit();
-			this.groupBox3.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_search)).BeginInit();
-			this.SuspendLayout();
+			toolStrip_topMenu = new ToolStrip();
+			toolStripButton_exit = new ToolStripButton();
+			toolStripDropDownButton_print = new ToolStripButton();
+			toolStripButton_clear = new ToolStripButton();
+			panel_center = new Panel();
+			groupBox7 = new GroupBox();
+			groupBox8 = new GroupBox();
+			textBox_valorT = new TextBox();
+			comboBox_modo = new ComboBox();
+			label13 = new Label();
+			comboBox_pag = new ComboBox();
+			label12 = new Label();
+			comboBox_situacao = new ComboBox();
+			label11 = new Label();
+			groupBox1 = new GroupBox();
+			groupBox6 = new GroupBox();
+			textBox_obsGeral = new TextBox();
+			groupBox5 = new GroupBox();
+			dataGridView_medicamentos = new DataGridView();
+			DADOS = new DataGridViewTextBoxColumn();
+			groupBox3 = new GroupBox();
+			ePictureBox_search = new EterPharmaPro.Utils.eControl.ePictureBox();
+			groupBox4 = new GroupBox();
+			button_getAddress = new Button();
+			textBox_obsEnd = new TextBox();
+			label10 = new Label();
+			textBox_log = new TextBox();
+			label5 = new Label();
+			textBox5_tel = new TextBox();
+			textBox_nomeC = new TextBox();
+			label7 = new Label();
+			label4 = new Label();
+			textBox_rg = new TextBox();
+			label14 = new Label();
+			textBox_cpf = new TextBox();
+			label6 = new Label();
+			groupBox2 = new GroupBox();
+			comboBox_user = new ComboBox();
+			textBox_atn = new TextBox();
+			label3 = new Label();
+			label2 = new Label();
+			label1 = new Label();
+			dateTimePicker_data = new DateTimePicker();
+			toolStrip_topMenu.SuspendLayout();
+			panel_center.SuspendLayout();
+			groupBox7.SuspendLayout();
+			groupBox8.SuspendLayout();
+			groupBox1.SuspendLayout();
+			groupBox6.SuspendLayout();
+			groupBox5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)dataGridView_medicamentos).BeginInit();
+			groupBox3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_search).BeginInit();
+			groupBox4.SuspendLayout();
+			groupBox2.SuspendLayout();
+			SuspendLayout();
 			// 
 			// toolStrip_topMenu
 			// 
-			this.toolStrip_topMenu.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.toolStrip_topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_exit,
-            this.toolStripDropDownButton_print,
-            this.toolStripButton_clear});
-			this.toolStrip_topMenu.Location = new System.Drawing.Point(0, 0);
-			this.toolStrip_topMenu.Name = "toolStrip_topMenu";
-			this.toolStrip_topMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.toolStrip_topMenu.Size = new System.Drawing.Size(1100, 93);
-			this.toolStrip_topMenu.TabIndex = 4;
-			this.toolStrip_topMenu.Text = "toolStrip1";
+			toolStrip_topMenu.BackColor = Color.WhiteSmoke;
+			toolStrip_topMenu.Items.AddRange(new ToolStripItem[] { toolStripButton_exit, toolStripDropDownButton_print, toolStripButton_clear });
+			toolStrip_topMenu.Location = new Point(0, 0);
+			toolStrip_topMenu.Name = "toolStrip_topMenu";
+			toolStrip_topMenu.RenderMode = ToolStripRenderMode.Professional;
+			toolStrip_topMenu.Size = new Size(1283, 93);
+			toolStrip_topMenu.TabIndex = 4;
+			toolStrip_topMenu.Text = "toolStrip1";
 			// 
 			// toolStripButton_exit
 			// 
-			this.toolStripButton_exit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.toolStripButton_exit.AutoSize = false;
-			this.toolStripButton_exit.Font = new System.Drawing.Font("Segoe UI", 7F);
-			this.toolStripButton_exit.Image = global::EterPharmaPro.Properties.Resources.sair__1_;
-			this.toolStripButton_exit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_exit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_exit.Name = "toolStripButton_exit";
-			this.toolStripButton_exit.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_exit.Tag = "SAIR";
-			this.toolStripButton_exit.Text = "SAIR";
-			this.toolStripButton_exit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_exit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_exit.ToolTipText = "SAIR";
-			this.toolStripButton_exit.Click += new System.EventHandler(this.toolStripButton_sair_Click);
+			toolStripButton_exit.Alignment = ToolStripItemAlignment.Right;
+			toolStripButton_exit.AutoSize = false;
+			toolStripButton_exit.Font = new Font("Segoe UI", 7F);
+			toolStripButton_exit.Image = Properties.Resources.sair__1_;
+			toolStripButton_exit.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_exit.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_exit.ImageTransparentColor = Color.Magenta;
+			toolStripButton_exit.Name = "toolStripButton_exit";
+			toolStripButton_exit.Size = new Size(90, 90);
+			toolStripButton_exit.Tag = "SAIR";
+			toolStripButton_exit.Text = "SAIR";
+			toolStripButton_exit.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_exit.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_exit.ToolTipText = "SAIR";
+			toolStripButton_exit.Click += toolStripButton_sair_Click;
 			// 
 			// toolStripDropDownButton_print
 			// 
-			this.toolStripDropDownButton_print.AutoSize = false;
-			this.toolStripDropDownButton_print.Font = new System.Drawing.Font("Segoe UI", 8F);
-			this.toolStripDropDownButton_print.Image = global::EterPharmaPro.Properties.Resources.download__1_;
-			this.toolStripDropDownButton_print.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripDropDownButton_print.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripDropDownButton_print.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripDropDownButton_print.Name = "toolStripDropDownButton_print";
-			this.toolStripDropDownButton_print.Size = new System.Drawing.Size(90, 90);
-			this.toolStripDropDownButton_print.Tag = "";
-			this.toolStripDropDownButton_print.Text = "IMPRIMIR";
-			this.toolStripDropDownButton_print.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripDropDownButton_print.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripDropDownButton_print.ToolTipText = "IMPRIMIR";
-			this.toolStripDropDownButton_print.Click += new System.EventHandler(this.SavePrint);
+			toolStripDropDownButton_print.AutoSize = false;
+			toolStripDropDownButton_print.Font = new Font("Segoe UI", 8F);
+			toolStripDropDownButton_print.Image = Properties.Resources.download__1_;
+			toolStripDropDownButton_print.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripDropDownButton_print.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripDropDownButton_print.ImageTransparentColor = Color.Magenta;
+			toolStripDropDownButton_print.Name = "toolStripDropDownButton_print";
+			toolStripDropDownButton_print.Size = new Size(90, 90);
+			toolStripDropDownButton_print.Tag = "";
+			toolStripDropDownButton_print.Text = "IMPRIMIR";
+			toolStripDropDownButton_print.TextAlign = ContentAlignment.BottomCenter;
+			toolStripDropDownButton_print.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripDropDownButton_print.ToolTipText = "IMPRIMIR";
+			toolStripDropDownButton_print.Click += SavePrint;
 			// 
 			// toolStripButton_clear
 			// 
-			this.toolStripButton_clear.AutoSize = false;
-			this.toolStripButton_clear.Font = new System.Drawing.Font("Segoe UI", 8F);
-			this.toolStripButton_clear.Image = global::EterPharmaPro.Properties.Resources.limpar_limpo__1_;
-			this.toolStripButton_clear.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_clear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolStripButton_clear.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton_clear.Name = "toolStripButton_clear";
-			this.toolStripButton_clear.Size = new System.Drawing.Size(90, 90);
-			this.toolStripButton_clear.Tag = "";
-			this.toolStripButton_clear.Text = "LIMPAR";
-			this.toolStripButton_clear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			this.toolStripButton_clear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.toolStripButton_clear.ToolTipText = "Limpar formulário";
-			this.toolStripButton_clear.Click += new System.EventHandler(this.CleanAll);
+			toolStripButton_clear.AutoSize = false;
+			toolStripButton_clear.Font = new Font("Segoe UI", 8F);
+			toolStripButton_clear.Image = Properties.Resources.limpar_limpo__1_;
+			toolStripButton_clear.ImageAlign = ContentAlignment.BottomCenter;
+			toolStripButton_clear.ImageScaling = ToolStripItemImageScaling.None;
+			toolStripButton_clear.ImageTransparentColor = Color.Magenta;
+			toolStripButton_clear.Name = "toolStripButton_clear";
+			toolStripButton_clear.Size = new Size(90, 90);
+			toolStripButton_clear.Tag = "";
+			toolStripButton_clear.Text = "LIMPAR";
+			toolStripButton_clear.TextAlign = ContentAlignment.BottomCenter;
+			toolStripButton_clear.TextImageRelation = TextImageRelation.ImageAboveText;
+			toolStripButton_clear.ToolTipText = "Limpar formulário";
+			toolStripButton_clear.Click += CleanAll;
 			// 
 			// panel_center
 			// 
-			this.panel_center.AutoScroll = true;
-			this.panel_center.BackColor = System.Drawing.Color.WhiteSmoke;
-			this.panel_center.Controls.Add(this.groupBox7);
-			this.panel_center.Controls.Add(this.groupBox1);
-			this.panel_center.Controls.Add(this.groupBox3);
-			this.panel_center.Controls.Add(this.groupBox2);
-			this.panel_center.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel_center.Location = new System.Drawing.Point(0, 93);
-			this.panel_center.Name = "panel_center";
-			this.panel_center.Size = new System.Drawing.Size(1100, 611);
-			this.panel_center.TabIndex = 5;
+			panel_center.AutoScroll = true;
+			panel_center.BackColor = Color.WhiteSmoke;
+			panel_center.Controls.Add(groupBox7);
+			panel_center.Controls.Add(groupBox1);
+			panel_center.Controls.Add(groupBox3);
+			panel_center.Controls.Add(groupBox2);
+			panel_center.Dock = DockStyle.Fill;
+			panel_center.Location = new Point(0, 93);
+			panel_center.Margin = new Padding(4, 3, 4, 3);
+			panel_center.Name = "panel_center";
+			panel_center.Size = new Size(1283, 656);
+			panel_center.TabIndex = 5;
 			// 
 			// groupBox7
 			// 
-			this.groupBox7.Controls.Add(this.groupBox8);
-			this.groupBox7.Controls.Add(this.comboBox_modo);
-			this.groupBox7.Controls.Add(this.label13);
-			this.groupBox7.Controls.Add(this.comboBox_pag);
-			this.groupBox7.Controls.Add(this.label12);
-			this.groupBox7.Controls.Add(this.comboBox_situacao);
-			this.groupBox7.Controls.Add(this.label11);
-			this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox7.Location = new System.Drawing.Point(0, 519);
-			this.groupBox7.Name = "groupBox7";
-			this.groupBox7.Size = new System.Drawing.Size(1100, 91);
-			this.groupBox7.TabIndex = 5;
-			this.groupBox7.TabStop = false;
-			this.groupBox7.Text = "INFORMAÇÕES DE PAGAMENTO";
+			groupBox7.Controls.Add(groupBox8);
+			groupBox7.Controls.Add(comboBox_modo);
+			groupBox7.Controls.Add(label13);
+			groupBox7.Controls.Add(comboBox_pag);
+			groupBox7.Controls.Add(label12);
+			groupBox7.Controls.Add(comboBox_situacao);
+			groupBox7.Controls.Add(label11);
+			groupBox7.Dock = DockStyle.Top;
+			groupBox7.Location = new Point(0, 598);
+			groupBox7.Margin = new Padding(4, 3, 4, 3);
+			groupBox7.Name = "groupBox7";
+			groupBox7.Padding = new Padding(4, 3, 4, 3);
+			groupBox7.Size = new Size(1266, 105);
+			groupBox7.TabIndex = 5;
+			groupBox7.TabStop = false;
+			groupBox7.Text = "INFORMAÇÕES DE PAGAMENTO";
 			// 
 			// groupBox8
 			// 
-			this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox8.Controls.Add(this.textBox_valorT);
-			this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox8.Location = new System.Drawing.Point(854, 17);
-			this.groupBox8.Name = "groupBox8";
-			this.groupBox8.Size = new System.Drawing.Size(240, 70);
-			this.groupBox8.TabIndex = 10;
-			this.groupBox8.TabStop = false;
-			this.groupBox8.Text = "VALOR";
+			groupBox8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			groupBox8.Controls.Add(textBox_valorT);
+			groupBox8.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			groupBox8.Location = new Point(979, 20);
+			groupBox8.Margin = new Padding(4, 3, 4, 3);
+			groupBox8.Name = "groupBox8";
+			groupBox8.Padding = new Padding(4, 3, 4, 3);
+			groupBox8.Size = new Size(280, 81);
+			groupBox8.TabIndex = 10;
+			groupBox8.TabStop = false;
+			groupBox8.Text = "VALOR";
 			// 
 			// textBox_valorT
 			// 
-			this.textBox_valorT.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox_valorT.Font = new System.Drawing.Font("Microsoft Tai Le", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_valorT.Location = new System.Drawing.Point(3, 17);
-			this.textBox_valorT.Multiline = true;
-			this.textBox_valorT.Name = "textBox_valorT";
-			this.textBox_valorT.Size = new System.Drawing.Size(234, 50);
-			this.textBox_valorT.TabIndex = 0;
-			this.textBox_valorT.Text = "999.99";
-			this.textBox_valorT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			textBox_valorT.Dock = DockStyle.Fill;
+			textBox_valorT.Font = new Font("Microsoft Tai Le", 30F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			textBox_valorT.Location = new Point(4, 17);
+			textBox_valorT.Margin = new Padding(4, 3, 4, 3);
+			textBox_valorT.Multiline = true;
+			textBox_valorT.Name = "textBox_valorT";
+			textBox_valorT.Size = new Size(272, 61);
+			textBox_valorT.TabIndex = 0;
+			textBox_valorT.Text = "999.99";
+			textBox_valorT.TextAlign = HorizontalAlignment.Center;
 			// 
 			// comboBox_modo
 			// 
-			this.comboBox_modo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBox_modo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox_modo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.comboBox_modo.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_modo.FormattingEnabled = true;
-			this.comboBox_modo.Location = new System.Drawing.Point(401, 45);
-			this.comboBox_modo.Name = "comboBox_modo";
-			this.comboBox_modo.Size = new System.Drawing.Size(447, 33);
-			this.comboBox_modo.TabIndex = 2;
+			comboBox_modo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			comboBox_modo.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBox_modo.FlatStyle = FlatStyle.System;
+			comboBox_modo.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			comboBox_modo.FormattingEnabled = true;
+			comboBox_modo.Location = new Point(468, 52);
+			comboBox_modo.Margin = new Padding(4, 3, 4, 3);
+			comboBox_modo.Name = "comboBox_modo";
+			comboBox_modo.Size = new Size(504, 33);
+			comboBox_modo.TabIndex = 2;
 			// 
 			// label13
 			// 
-			this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label13.AutoSize = true;
-			this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label13.Location = new System.Drawing.Point(396, 17);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(196, 25);
-			this.label13.TabIndex = 9;
-			this.label13.Text = "MODO DE ENTREGA:";
+			label13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			label13.AutoSize = true;
+			label13.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label13.Location = new Point(462, 20);
+			label13.Margin = new Padding(4, 0, 4, 0);
+			label13.Name = "label13";
+			label13.Size = new Size(196, 25);
+			label13.TabIndex = 9;
+			label13.Text = "MODO DE ENTREGA:";
 			// 
 			// comboBox_pag
 			// 
-			this.comboBox_pag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox_pag.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.comboBox_pag.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_pag.FormattingEnabled = true;
-			this.comboBox_pag.Location = new System.Drawing.Point(167, 45);
-			this.comboBox_pag.Name = "comboBox_pag";
-			this.comboBox_pag.Size = new System.Drawing.Size(228, 33);
-			this.comboBox_pag.TabIndex = 1;
+			comboBox_pag.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBox_pag.FlatStyle = FlatStyle.System;
+			comboBox_pag.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			comboBox_pag.FormattingEnabled = true;
+			comboBox_pag.Location = new Point(195, 52);
+			comboBox_pag.Margin = new Padding(4, 3, 4, 3);
+			comboBox_pag.Name = "comboBox_pag";
+			comboBox_pag.Size = new Size(265, 33);
+			comboBox_pag.TabIndex = 1;
 			// 
 			// label12
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label12.Location = new System.Drawing.Point(162, 17);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(237, 25);
-			this.label12.TabIndex = 7;
-			this.label12.Text = "FORMA DE PAGAMENTO:";
+			label12.AutoSize = true;
+			label12.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label12.Location = new Point(189, 20);
+			label12.Margin = new Padding(4, 0, 4, 0);
+			label12.Name = "label12";
+			label12.Size = new Size(237, 25);
+			label12.TabIndex = 7;
+			label12.Text = "FORMA DE PAGAMENTO:";
 			// 
 			// comboBox_situacao
 			// 
-			this.comboBox_situacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox_situacao.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.comboBox_situacao.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_situacao.FormattingEnabled = true;
-			this.comboBox_situacao.Location = new System.Drawing.Point(6, 45);
-			this.comboBox_situacao.Name = "comboBox_situacao";
-			this.comboBox_situacao.Size = new System.Drawing.Size(155, 33);
-			this.comboBox_situacao.TabIndex = 0;
+			comboBox_situacao.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBox_situacao.FlatStyle = FlatStyle.System;
+			comboBox_situacao.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			comboBox_situacao.FormattingEnabled = true;
+			comboBox_situacao.Location = new Point(7, 52);
+			comboBox_situacao.Margin = new Padding(4, 3, 4, 3);
+			comboBox_situacao.Name = "comboBox_situacao";
+			comboBox_situacao.Size = new Size(180, 33);
+			comboBox_situacao.TabIndex = 0;
 			// 
 			// label11
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label11.Location = new System.Drawing.Point(1, 17);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(109, 25);
-			this.label11.TabIndex = 5;
-			this.label11.Text = "SITUAÇÃO:";
+			label11.AutoSize = true;
+			label11.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label11.Location = new Point(1, 20);
+			label11.Margin = new Padding(4, 0, 4, 0);
+			label11.Name = "label11";
+			label11.Size = new Size(109, 25);
+			label11.TabIndex = 5;
+			label11.Text = "SITUAÇÃO:";
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.groupBox6);
-			this.groupBox1.Controls.Add(this.groupBox5);
-			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox1.Location = new System.Drawing.Point(0, 343);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(1100, 176);
-			this.groupBox1.TabIndex = 3;
-			this.groupBox1.TabStop = false;
+			groupBox1.Controls.Add(groupBox6);
+			groupBox1.Controls.Add(groupBox5);
+			groupBox1.Dock = DockStyle.Top;
+			groupBox1.Location = new Point(0, 395);
+			groupBox1.Margin = new Padding(4, 3, 4, 3);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new Padding(4, 3, 4, 3);
+			groupBox1.Size = new Size(1266, 203);
+			groupBox1.TabIndex = 3;
+			groupBox1.TabStop = false;
 			// 
 			// groupBox6
 			// 
-			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox6.Controls.Add(this.textBox_obsGeral);
-			this.groupBox6.Location = new System.Drawing.Point(517, 19);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(571, 152);
-			this.groupBox6.TabIndex = 5;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "OBSERVAÇÕES GERAIS";
+			groupBox6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			groupBox6.Controls.Add(textBox_obsGeral);
+			groupBox6.Location = new Point(603, 22);
+			groupBox6.Margin = new Padding(4, 3, 4, 3);
+			groupBox6.Name = "groupBox6";
+			groupBox6.Padding = new Padding(4, 3, 4, 3);
+			groupBox6.Size = new Size(649, 175);
+			groupBox6.TabIndex = 5;
+			groupBox6.TabStop = false;
+			groupBox6.Text = "OBSERVAÇÕES GERAIS";
 			// 
 			// textBox_obsGeral
 			// 
-			this.textBox_obsGeral.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBox_obsGeral.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_obsGeral.Location = new System.Drawing.Point(3, 16);
-			this.textBox_obsGeral.Multiline = true;
-			this.textBox_obsGeral.Name = "textBox_obsGeral";
-			this.textBox_obsGeral.Size = new System.Drawing.Size(565, 133);
-			this.textBox_obsGeral.TabIndex = 0;
+			textBox_obsGeral.Dock = DockStyle.Fill;
+			textBox_obsGeral.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_obsGeral.Location = new Point(4, 19);
+			textBox_obsGeral.Margin = new Padding(4, 3, 4, 3);
+			textBox_obsGeral.Multiline = true;
+			textBox_obsGeral.Name = "textBox_obsGeral";
+			textBox_obsGeral.Size = new Size(641, 153);
+			textBox_obsGeral.TabIndex = 0;
 			// 
 			// groupBox5
 			// 
-			this.groupBox5.Controls.Add(this.dataGridView_medicamentos);
-			this.groupBox5.Location = new System.Drawing.Point(12, 19);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(499, 152);
-			this.groupBox5.TabIndex = 4;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "MANIPULADO";
+			groupBox5.Controls.Add(dataGridView_medicamentos);
+			groupBox5.Location = new Point(14, 22);
+			groupBox5.Margin = new Padding(4, 3, 4, 3);
+			groupBox5.Name = "groupBox5";
+			groupBox5.Padding = new Padding(4, 3, 4, 3);
+			groupBox5.Size = new Size(582, 175);
+			groupBox5.TabIndex = 4;
+			groupBox5.TabStop = false;
+			groupBox5.Text = "MANIPULADO";
 			// 
 			// dataGridView_medicamentos
 			// 
-			this.dataGridView_medicamentos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView_medicamentos.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-			this.dataGridView_medicamentos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.dataGridView_medicamentos.ColumnHeadersVisible = false;
-			this.dataGridView_medicamentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DADOS});
-			this.dataGridView_medicamentos.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView_medicamentos.Location = new System.Drawing.Point(3, 16);
-			this.dataGridView_medicamentos.MultiSelect = false;
-			this.dataGridView_medicamentos.Name = "dataGridView_medicamentos";
-			this.dataGridView_medicamentos.RowHeadersVisible = false;
-			this.dataGridView_medicamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.dataGridView_medicamentos.Size = new System.Drawing.Size(493, 133);
-			this.dataGridView_medicamentos.TabIndex = 0;
+			dataGridView_medicamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dataGridView_medicamentos.BackgroundColor = SystemColors.ButtonFace;
+			dataGridView_medicamentos.BorderStyle = BorderStyle.Fixed3D;
+			dataGridView_medicamentos.ColumnHeadersVisible = false;
+			dataGridView_medicamentos.Columns.AddRange(new DataGridViewColumn[] { DADOS });
+			dataGridView_medicamentos.Dock = DockStyle.Fill;
+			dataGridView_medicamentos.Location = new Point(4, 19);
+			dataGridView_medicamentos.Margin = new Padding(4, 3, 4, 3);
+			dataGridView_medicamentos.MultiSelect = false;
+			dataGridView_medicamentos.Name = "dataGridView_medicamentos";
+			dataGridView_medicamentos.RowHeadersVisible = false;
+			dataGridView_medicamentos.SelectionMode = DataGridViewSelectionMode.CellSelect;
+			dataGridView_medicamentos.Size = new Size(574, 153);
+			dataGridView_medicamentos.TabIndex = 0;
 			// 
 			// DADOS
 			// 
-			this.DADOS.HeaderText = "Column1";
-			this.DADOS.Name = "DADOS";
+			DADOS.HeaderText = "Column1";
+			DADOS.Name = "DADOS";
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.ePictureBox_search);
-			this.groupBox3.Controls.Add(this.groupBox4);
-			this.groupBox3.Controls.Add(this.textBox5_tel);
-			this.groupBox3.Controls.Add(this.textBox_nomeC);
-			this.groupBox3.Controls.Add(this.label7);
-			this.groupBox3.Controls.Add(this.label4);
-			this.groupBox3.Controls.Add(this.textBox_rg);
-			this.groupBox3.Controls.Add(this.label14);
-			this.groupBox3.Controls.Add(this.textBox_cpf);
-			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox3.Location = new System.Drawing.Point(0, 100);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(1100, 243);
-			this.groupBox3.TabIndex = 0;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "DADOS DO CLIENTE";
-			// 
-			// groupBox4
-			// 
-			this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox4.Controls.Add(this.textBox_obsEnd);
-			this.groupBox4.Controls.Add(this.label10);
-			this.groupBox4.Controls.Add(this.textBox_log);
-			this.groupBox4.Controls.Add(this.label5);
-			this.groupBox4.Location = new System.Drawing.Point(6, 83);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(1088, 153);
-			this.groupBox4.TabIndex = 14;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "ENDEREÇO DO CLIENTE";
-			// 
-			// textBox_obsEnd
-			// 
-			this.textBox_obsEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_obsEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_obsEnd.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_obsEnd.Location = new System.Drawing.Point(6, 108);
-			this.textBox_obsEnd.Name = "textBox_obsEnd";
-			this.textBox_obsEnd.Size = new System.Drawing.Size(1076, 33);
-			this.textBox_obsEnd.TabIndex = 1;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(6, 80);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(140, 25);
-			this.label10.TabIndex = 15;
-			this.label10.Text = "OBSERVAÇÃO:";
-			// 
-			// textBox_log
-			// 
-			this.textBox_log.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_log.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_log.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_log.Location = new System.Drawing.Point(6, 44);
-			this.textBox_log.Name = "textBox_log";
-			this.textBox_log.Size = new System.Drawing.Size(1076, 33);
-			this.textBox_log.TabIndex = 0;
-			this.textBox_log.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_log_KeyDown);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(6, 16);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(114, 25);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "ENDEREÇO:";
-			// 
-			// textBox5_tel
-			// 
-			this.textBox5_tel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox5_tel.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox5_tel.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox5_tel.Location = new System.Drawing.Point(767, 44);
-			this.textBox5_tel.Name = "textBox5_tel";
-			this.textBox5_tel.Size = new System.Drawing.Size(327, 33);
-			this.textBox5_tel.TabIndex = 3;
-			this.textBox5_tel.Validated += new System.EventHandler(this.textBox5_tel_Validated);
-			// 
-			// textBox_nomeC
-			// 
-			this.textBox_nomeC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_nomeC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_nomeC.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_nomeC.Location = new System.Drawing.Point(424, 44);
-			this.textBox_nomeC.Name = "textBox_nomeC";
-			this.textBox_nomeC.Size = new System.Drawing.Size(337, 33);
-			this.textBox_nomeC.TabIndex = 2;
-			// 
-			// label7
-			// 
-			this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(776, 16);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(105, 25);
-			this.label7.TabIndex = 12;
-			this.label7.Text = "TELEFONE:";
-			// 
-			// label4
-			// 
-			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(419, 16);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(74, 25);
-			this.label4.TabIndex = 6;
-			this.label4.Text = "NOME:";
-			// 
-			// textBox_rg
-			// 
-			this.textBox_rg.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_rg.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_rg.Location = new System.Drawing.Point(196, 44);
-			this.textBox_rg.Name = "textBox_rg";
-			this.textBox_rg.Size = new System.Drawing.Size(184, 33);
-			this.textBox_rg.TabIndex = 1;
-			this.textBox_rg.Validated += new System.EventHandler(this.textBox_rg_Validated);
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label14.Location = new System.Drawing.Point(196, 16);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(42, 25);
-			this.label14.TabIndex = 10;
-			this.label14.Text = "RG:";
-			// 
-			// textBox_cpf
-			// 
-			this.textBox_cpf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_cpf.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_cpf.Location = new System.Drawing.Point(6, 44);
-			this.textBox_cpf.Name = "textBox_cpf";
-			this.textBox_cpf.Size = new System.Drawing.Size(184, 33);
-			this.textBox_cpf.TabIndex = 0;
-			this.textBox_cpf.Validated += new System.EventHandler(this.textBox_cpf_Validated);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(6, 16);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(49, 25);
-			this.label6.TabIndex = 10;
-			this.label6.Text = "CPF:";
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.comboBox_user);
-			this.groupBox2.Controls.Add(this.textBox_atn);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Controls.Add(this.label2);
-			this.groupBox2.Controls.Add(this.label1);
-			this.groupBox2.Controls.Add(this.dateTimePicker_data);
-			this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.groupBox2.Location = new System.Drawing.Point(0, 0);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(1100, 100);
-			this.groupBox2.TabIndex = 1;
-			this.groupBox2.TabStop = false;
-			// 
-			// comboBox_user
-			// 
-			this.comboBox_user.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-			this.comboBox_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBox_user.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.comboBox_user.FormattingEnabled = true;
-			this.comboBox_user.Location = new System.Drawing.Point(8, 44);
-			this.comboBox_user.Name = "comboBox_user";
-			this.comboBox_user.Size = new System.Drawing.Size(257, 33);
-			this.comboBox_user.TabIndex = 0;
-			this.comboBox_user.Text = " ";
-			// 
-			// textBox_atn
-			// 
-			this.textBox_atn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox_atn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.textBox_atn.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox_atn.Location = new System.Drawing.Point(776, 44);
-			this.textBox_atn.Name = "textBox_atn";
-			this.textBox_atn.Size = new System.Drawing.Size(318, 33);
-			this.textBox_atn.TabIndex = 2;
-			// 
-			// label3
-			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(776, 16);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(298, 25);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "ATENDENTE DA MANIPULAÇÃO:";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(6, 16);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(143, 25);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "VENDEDOR(A):";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(266, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(66, 25);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "DATA:";
-			// 
-			// dateTimePicker_data
-			// 
-			this.dateTimePicker_data.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.dateTimePicker_data.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dateTimePicker_data.Location = new System.Drawing.Point(271, 44);
-			this.dateTimePicker_data.Name = "dateTimePicker_data";
-			this.dateTimePicker_data.Size = new System.Drawing.Size(499, 33);
-			this.dateTimePicker_data.TabIndex = 1;
+			groupBox3.Controls.Add(ePictureBox_search);
+			groupBox3.Controls.Add(groupBox4);
+			groupBox3.Controls.Add(textBox5_tel);
+			groupBox3.Controls.Add(textBox_nomeC);
+			groupBox3.Controls.Add(label7);
+			groupBox3.Controls.Add(label4);
+			groupBox3.Controls.Add(textBox_rg);
+			groupBox3.Controls.Add(label14);
+			groupBox3.Controls.Add(textBox_cpf);
+			groupBox3.Controls.Add(label6);
+			groupBox3.Dock = DockStyle.Top;
+			groupBox3.Location = new Point(0, 115);
+			groupBox3.Margin = new Padding(4, 3, 4, 3);
+			groupBox3.Name = "groupBox3";
+			groupBox3.Padding = new Padding(4, 3, 4, 3);
+			groupBox3.Size = new Size(1266, 280);
+			groupBox3.TabIndex = 0;
+			groupBox3.TabStop = false;
+			groupBox3.Text = "DADOS DO CLIENTE";
 			// 
 			// ePictureBox_search
 			// 
-			this.ePictureBox_search.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.ePictureBox_search.Image = global::EterPharmaPro.Properties.Resources.lupa;
-			this.ePictureBox_search.Location = new System.Drawing.Point(386, 44);
-			this.ePictureBox_search.Name = "ePictureBox_search";
-			this.ePictureBox_search.Size = new System.Drawing.Size(32, 33);
-			this.ePictureBox_search.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.ePictureBox_search.TabIndex = 15;
-			this.ePictureBox_search.TabStop = false;
-			this.ePictureBox_search.ToolTipText = "Buscar Cliente";
-			this.ePictureBox_search.Click += new System.EventHandler(this.BuscaCliente_Click);
+			ePictureBox_search.Cursor = Cursors.Hand;
+			ePictureBox_search.Image = Properties.Resources.lupa;
+			ePictureBox_search.Location = new Point(450, 51);
+			ePictureBox_search.Margin = new Padding(4, 3, 4, 3);
+			ePictureBox_search.Name = "ePictureBox_search";
+			ePictureBox_search.Size = new Size(37, 38);
+			ePictureBox_search.SizeMode = PictureBoxSizeMode.StretchImage;
+			ePictureBox_search.TabIndex = 15;
+			ePictureBox_search.TabStop = false;
+			ePictureBox_search.ToolTipText = "Buscar Cliente";
+			ePictureBox_search.Click += BuscaCliente_Click;
+			// 
+			// groupBox4
+			// 
+			groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			groupBox4.Controls.Add(button_getAddress);
+			groupBox4.Controls.Add(textBox_obsEnd);
+			groupBox4.Controls.Add(label10);
+			groupBox4.Controls.Add(textBox_log);
+			groupBox4.Controls.Add(label5);
+			groupBox4.Location = new Point(7, 96);
+			groupBox4.Margin = new Padding(4, 3, 4, 3);
+			groupBox4.Name = "groupBox4";
+			groupBox4.Padding = new Padding(4, 3, 4, 3);
+			groupBox4.Size = new Size(1252, 177);
+			groupBox4.TabIndex = 14;
+			groupBox4.TabStop = false;
+			groupBox4.Text = "ENDEREÇO DO CLIENTE";
+			// 
+			// button_getAddress
+			// 
+			button_getAddress.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			button_getAddress.Font = new Font("Microsoft Tai Le", 15F);
+			button_getAddress.Location = new Point(1038, 50);
+			button_getAddress.Name = "button_getAddress";
+			button_getAddress.Size = new Size(203, 33);
+			button_getAddress.TabIndex = 16;
+			button_getAddress.Text = "Buscar Endereço";
+			button_getAddress.UseVisualStyleBackColor = true;
+			button_getAddress.Click += button_getAddress_Click;
+			// 
+			// textBox_obsEnd
+			// 
+			textBox_obsEnd.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_obsEnd.CharacterCasing = CharacterCasing.Upper;
+			textBox_obsEnd.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_obsEnd.Location = new Point(7, 125);
+			textBox_obsEnd.Margin = new Padding(4, 3, 4, 3);
+			textBox_obsEnd.Name = "textBox_obsEnd";
+			textBox_obsEnd.ReadOnly = true;
+			textBox_obsEnd.Size = new Size(1238, 33);
+			textBox_obsEnd.TabIndex = 1;
+			// 
+			// label10
+			// 
+			label10.AutoSize = true;
+			label10.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label10.Location = new Point(7, 92);
+			label10.Margin = new Padding(4, 0, 4, 0);
+			label10.Name = "label10";
+			label10.Size = new Size(140, 25);
+			label10.TabIndex = 15;
+			label10.Text = "OBSERVAÇÃO:";
+			// 
+			// textBox_log
+			// 
+			textBox_log.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_log.CharacterCasing = CharacterCasing.Upper;
+			textBox_log.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_log.Location = new Point(7, 51);
+			textBox_log.Margin = new Padding(4, 3, 4, 3);
+			textBox_log.Name = "textBox_log";
+			textBox_log.ReadOnly = true;
+			textBox_log.Size = new Size(1024, 33);
+			textBox_log.TabIndex = 0;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label5.Location = new Point(7, 18);
+			label5.Margin = new Padding(4, 0, 4, 0);
+			label5.Name = "label5";
+			label5.Size = new Size(114, 25);
+			label5.TabIndex = 8;
+			label5.Text = "ENDEREÇO:";
+			// 
+			// textBox5_tel
+			// 
+			textBox5_tel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			textBox5_tel.CharacterCasing = CharacterCasing.Upper;
+			textBox5_tel.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox5_tel.Location = new Point(878, 51);
+			textBox5_tel.Margin = new Padding(4, 3, 4, 3);
+			textBox5_tel.Name = "textBox5_tel";
+			textBox5_tel.Size = new Size(381, 33);
+			textBox5_tel.TabIndex = 3;
+			textBox5_tel.Validated += textBox5_tel_Validated;
+			// 
+			// textBox_nomeC
+			// 
+			textBox_nomeC.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_nomeC.CharacterCasing = CharacterCasing.Upper;
+			textBox_nomeC.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_nomeC.Location = new Point(495, 51);
+			textBox_nomeC.Margin = new Padding(4, 3, 4, 3);
+			textBox_nomeC.Name = "textBox_nomeC";
+			textBox_nomeC.Size = new Size(375, 33);
+			textBox_nomeC.TabIndex = 2;
+			// 
+			// label7
+			// 
+			label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			label7.AutoSize = true;
+			label7.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label7.Location = new Point(888, 18);
+			label7.Margin = new Padding(4, 0, 4, 0);
+			label7.Name = "label7";
+			label7.Size = new Size(105, 25);
+			label7.TabIndex = 12;
+			label7.Text = "TELEFONE:";
+			// 
+			// label4
+			// 
+			label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			label4.AutoSize = true;
+			label4.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label4.Location = new Point(489, 18);
+			label4.Margin = new Padding(4, 0, 4, 0);
+			label4.Name = "label4";
+			label4.Size = new Size(74, 25);
+			label4.TabIndex = 6;
+			label4.Text = "NOME:";
+			// 
+			// textBox_rg
+			// 
+			textBox_rg.CharacterCasing = CharacterCasing.Upper;
+			textBox_rg.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_rg.Location = new Point(229, 51);
+			textBox_rg.Margin = new Padding(4, 3, 4, 3);
+			textBox_rg.Name = "textBox_rg";
+			textBox_rg.Size = new Size(214, 33);
+			textBox_rg.TabIndex = 1;
+			textBox_rg.Validated += textBox_rg_Validated;
+			// 
+			// label14
+			// 
+			label14.AutoSize = true;
+			label14.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label14.Location = new Point(229, 18);
+			label14.Margin = new Padding(4, 0, 4, 0);
+			label14.Name = "label14";
+			label14.Size = new Size(42, 25);
+			label14.TabIndex = 10;
+			label14.Text = "RG:";
+			// 
+			// textBox_cpf
+			// 
+			textBox_cpf.CharacterCasing = CharacterCasing.Upper;
+			textBox_cpf.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_cpf.Location = new Point(7, 51);
+			textBox_cpf.Margin = new Padding(4, 3, 4, 3);
+			textBox_cpf.Name = "textBox_cpf";
+			textBox_cpf.Size = new Size(214, 33);
+			textBox_cpf.TabIndex = 0;
+			textBox_cpf.Validated += textBox_cpf_Validated;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(7, 18);
+			label6.Margin = new Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new Size(49, 25);
+			label6.TabIndex = 10;
+			label6.Text = "CPF:";
+			// 
+			// groupBox2
+			// 
+			groupBox2.Controls.Add(comboBox_user);
+			groupBox2.Controls.Add(textBox_atn);
+			groupBox2.Controls.Add(label3);
+			groupBox2.Controls.Add(label2);
+			groupBox2.Controls.Add(label1);
+			groupBox2.Controls.Add(dateTimePicker_data);
+			groupBox2.Dock = DockStyle.Top;
+			groupBox2.Location = new Point(0, 0);
+			groupBox2.Margin = new Padding(4, 3, 4, 3);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Padding = new Padding(4, 3, 4, 3);
+			groupBox2.Size = new Size(1266, 115);
+			groupBox2.TabIndex = 1;
+			groupBox2.TabStop = false;
+			// 
+			// comboBox_user
+			// 
+			comboBox_user.AutoCompleteMode = AutoCompleteMode.Append;
+			comboBox_user.AutoCompleteSource = AutoCompleteSource.ListItems;
+			comboBox_user.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			comboBox_user.FormattingEnabled = true;
+			comboBox_user.Location = new Point(9, 51);
+			comboBox_user.Margin = new Padding(4, 3, 4, 3);
+			comboBox_user.Name = "comboBox_user";
+			comboBox_user.Size = new Size(299, 33);
+			comboBox_user.TabIndex = 0;
+			comboBox_user.Text = " ";
+			// 
+			// textBox_atn
+			// 
+			textBox_atn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			textBox_atn.CharacterCasing = CharacterCasing.Upper;
+			textBox_atn.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_atn.Location = new Point(888, 51);
+			textBox_atn.Margin = new Padding(4, 3, 4, 3);
+			textBox_atn.Name = "textBox_atn";
+			textBox_atn.Size = new Size(370, 33);
+			textBox_atn.TabIndex = 2;
+			// 
+			// label3
+			// 
+			label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			label3.AutoSize = true;
+			label3.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label3.Location = new Point(888, 18);
+			label3.Margin = new Padding(4, 0, 4, 0);
+			label3.Name = "label3";
+			label3.Size = new Size(298, 25);
+			label3.TabIndex = 4;
+			label3.Text = "ATENDENTE DA MANIPULAÇÃO:";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label2.Location = new Point(7, 18);
+			label2.Margin = new Padding(4, 0, 4, 0);
+			label2.Name = "label2";
+			label2.Size = new Size(143, 25);
+			label2.TabIndex = 3;
+			label2.Text = "VENDEDOR(A):";
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label1.Location = new Point(310, 18);
+			label1.Margin = new Padding(4, 0, 4, 0);
+			label1.Name = "label1";
+			label1.Size = new Size(66, 25);
+			label1.TabIndex = 1;
+			label1.Text = "DATA:";
+			// 
+			// dateTimePicker_data
+			// 
+			dateTimePicker_data.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			dateTimePicker_data.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			dateTimePicker_data.Location = new Point(316, 51);
+			dateTimePicker_data.Margin = new Padding(4, 3, 4, 3);
+			dateTimePicker_data.Name = "dateTimePicker_data";
+			dateTimePicker_data.Size = new Size(565, 33);
+			dateTimePicker_data.TabIndex = 1;
 			// 
 			// CreateManipulados
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(1100, 704);
-			this.Controls.Add(this.panel_center);
-			this.Controls.Add(this.toolStrip_topMenu);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Name = "CreateManipulados";
-			this.ShowIcon = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Load += new System.EventHandler(this.CreateManipulados_Load);
-			this.toolStrip_topMenu.ResumeLayout(false);
-			this.toolStrip_topMenu.PerformLayout();
-			this.panel_center.ResumeLayout(false);
-			this.groupBox7.ResumeLayout(false);
-			this.groupBox7.PerformLayout();
-			this.groupBox8.ResumeLayout(false);
-			this.groupBox8.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
-			this.groupBox5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView_medicamentos)).EndInit();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
-			this.groupBox4.ResumeLayout(false);
-			this.groupBox4.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ePictureBox_search)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			AutoScroll = true;
+			ClientSize = new Size(1283, 749);
+			Controls.Add(panel_center);
+			Controls.Add(toolStrip_topMenu);
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Margin = new Padding(4, 3, 4, 3);
+			Name = "CreateManipulados";
+			ShowIcon = false;
+			StartPosition = FormStartPosition.CenterScreen;
+			Load += CreateManipulados_Load;
+			toolStrip_topMenu.ResumeLayout(false);
+			toolStrip_topMenu.PerformLayout();
+			panel_center.ResumeLayout(false);
+			groupBox7.ResumeLayout(false);
+			groupBox7.PerformLayout();
+			groupBox8.ResumeLayout(false);
+			groupBox8.PerformLayout();
+			groupBox1.ResumeLayout(false);
+			groupBox6.ResumeLayout(false);
+			groupBox6.PerformLayout();
+			groupBox5.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)dataGridView_medicamentos).EndInit();
+			groupBox3.ResumeLayout(false);
+			groupBox3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)ePictureBox_search).EndInit();
+			groupBox4.ResumeLayout(false);
+			groupBox4.PerformLayout();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 
 		}
 
@@ -672,5 +720,6 @@
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.ComboBox comboBox_situacao;
 		private System.Windows.Forms.Label label11;
+		private Button button_getAddress;
 	}
 }

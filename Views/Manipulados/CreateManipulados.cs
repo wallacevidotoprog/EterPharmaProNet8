@@ -14,6 +14,7 @@ namespace EterPharmaPro.Views.Manipulados
 		private ManipulationDbModel manipulados;
 		private List<ClientDbModel> clientDbModels;
 		private ClientDbModel clientSearch;
+		private AddressClienteDbModel addressClienteDbModel;
 
 		private bool edit = false;
 
@@ -73,6 +74,7 @@ namespace EterPharmaPro.Views.Manipulados
 			textBox_valorT.Text = "0,00";
 			clientSearch = null;
 			clientDbModels = null;
+			addressClienteDbModel = null;
 
 		}
 
@@ -96,8 +98,16 @@ namespace EterPharmaPro.Views.Manipulados
 				textBox_rg.Text = manipulados.Client.RG.ReturnFormation(FormatationEnum.RG);
 				textBox_nomeC.Text = manipulados.Client.NOME;
 				textBox5_tel.Text = manipulados.Client.PHONE.ReturnFormation(FormatationEnum.TELEFONE);
-				textBox_log.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.ToString() ?? string.Empty;
-				textBox_obsEnd.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
+
+				addressClienteDbModel = manipulados.Client?.AddressCliente?.FirstOrDefault();
+
+				textBox_log.Text = addressClienteDbModel?.ToString();
+				textBox_obsEnd.Text = addressClienteDbModel?.OBSERVACAO;
+
+				//textBox_log.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.ToString() ?? string.Empty;
+				//textBox_obsEnd.Text = manipulados.Client.AddressCliente.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
+
+
 				dataGridView_medicamentos.Rows.Clear();
 				foreach (var item in manipulados.MedManipulation)
 				{
@@ -232,12 +242,7 @@ namespace EterPharmaPro.Views.Manipulados
 						NOME = textBox_nomeC.Text,
 						PHONE = textBox5_tel.Text.ReturnInt()
 					},
-					AddressCliente = new AddressClienteDbModel
-					{
-						ID = edit ? manipulados?.AddressCliente.ID : null,
-						PLACE = textBox_log.Text,
-						OBSERVACAO = textBox_obsEnd.Text
-					},
+					AddressCliente = addressClienteDbModel,
 					MedManipulation = list,
 					OBSGERAL = textBox_obsGeral.Text,
 					ID_SITUCAO = Convert.ToUInt32(comboBox_situacao.SelectedValue),
@@ -264,6 +269,18 @@ namespace EterPharmaPro.Views.Manipulados
 			catch (Exception ex)
 			{
 				ex.ErrorGet();
+			}
+		}
+
+		private void button_getAddress_Click(object sender, EventArgs e)
+		{
+			var temp = GetAddress.Show();
+
+			if (temp != null)
+			{
+				textBox_log.Text = temp.ToString();
+				textBox_obsEnd.Text = temp.OBSERVACAO;
+				addressClienteDbModel = temp;
 			}
 		}
 	}

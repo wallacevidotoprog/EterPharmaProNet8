@@ -15,8 +15,15 @@ namespace EterPharmaPro.Controllers
 
 		public EterDbController()
 		{
+			if (!Path.Exists(Path.Combine(Directory.GetCurrentDirectory(), "DADOS")))
+			{
+				Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "DADOS"));
+			}
+
+
+
 			Task.Run(async () => await SetPropsAsync()).ConfigureAwait(false);
-			
+
 		}
 
 		private async Task SetPropsAsync()
@@ -26,7 +33,7 @@ namespace EterPharmaPro.Controllers
 			DeliveryMethodDbs = EterCache.Instance.EterDb.DeliveryMethodService.GetAllAsync().Result.ToList();
 		}
 
-		
+
 
 		public bool PermissionHas(PermissoesController local, PermissionEnum mod)
 		{

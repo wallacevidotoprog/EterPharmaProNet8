@@ -124,11 +124,11 @@ namespace EterPharmaPro.Infrastructure.Services.Prints
 
 
 			g.DrawString("DE: R$", cellFont2, Brushes.Black, x + cellPadding, y + cellHeight * 3);
-			g.DrawString(model.OLD_PRICE.ToString("F2"), cellFont2, Brushes.Red, x + tableWidth - 45, y + cellHeight * 3);
+			g.DrawString(model.OLD_PRICE.ToString("F2"), cellFont2, Brushes.Red, x + tableWidth - 50, y + cellHeight * 3);
 			y -= 10;
 
 			g.DrawString("POR: R$", cellFont, Brushes.Black, x + cellPadding, y + cellHeight * 4);
-			g.DrawString(model.NEW_PRICE.ToString("F2"), cellFontBold, Brushes.Red, x + tableWidth - 40, y + cellHeight * 4);
+			g.DrawString(model.NEW_PRICE.ToString("F2"), cellFontBold, Brushes.Red, x + tableWidth - 45, y + cellHeight * 4);
 			y -= 10;
 			g.DrawString("VALIDADE:", cellFont, Brushes.Black, x + cellPadding, y + cellHeight * 5);
 			g.DrawString(model.DATE_VALITY.ToShortDateString(), cellFontBold, Brushes.Red, x + tableWidth - 75, y + cellHeight * 5);

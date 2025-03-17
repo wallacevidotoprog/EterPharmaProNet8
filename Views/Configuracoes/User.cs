@@ -1,4 +1,5 @@
-﻿using EterLibrary.Domain.Entities.DbModels;
+﻿using EterLibrary.Application.Services;
+using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Controllers.Configs;
 using EterPharmaPro.Core;
 using EterPharmaPro.Models;
@@ -47,7 +48,9 @@ namespace EterPharmaPro.Views.Configuracoes
 
 				userModel.ID_LOJA = !string.IsNullOrEmpty(textBox_id.Text) ? Convert.ToUInt32(textBox_id.Text.ReturnInt()) : RenerateID();
 				userModel.NOME = textBox_nome.Text.ToUpper();
-				userModel.PASS = string.IsNullOrEmpty(textBox_pass.Text) ? null : textBox_pass.Text;
+
+				userModel.PASS = string.IsNullOrEmpty(textBox_pass.Text) ? null : textBox_pass.Text != userModel.PASS ? PasswordHelper.HasPassword(textBox_pass.Text):null;
+
 				userModel.ID_FUNCAO = positionModel.FirstOrDefault(x => x.ID == Convert.ToInt32(comboBox_funcao.SelectedValue)).ID;
 				userModel.STATUS = eSwitchControl_stats.Checked;
 
@@ -87,6 +90,7 @@ namespace EterPharmaPro.Views.Configuracoes
 			}
 
 		}
+
 		private long? GeneteID()
 		{
 			Random random = new Random();
@@ -120,7 +124,9 @@ namespace EterPharmaPro.Views.Configuracoes
 
 			textBox_id.Text = userModel.ID_LOJA.ToString();
 			textBox_nome.Text = userModel.NOME;
-			//textBox_pass.Text = userModel.PASS;
+
+			textBox_pass.Text = userModel.PASS;
+
 			comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexCbGeneric(userModel.Position.ID);
 			eSwitchControl_stats.Checked = userModel.STATUS;
 
