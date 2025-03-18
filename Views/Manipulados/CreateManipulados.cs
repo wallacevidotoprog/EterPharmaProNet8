@@ -72,8 +72,9 @@ namespace EterPharmaPro.Views.Manipulados
 			comboBox_pag.SelectedIndex = -1;
 			comboBox_modo.SelectedIndex = -1;
 			textBox_valorT.Text = "0,00";
+
 			clientSearch = null;
-			clientDbModels = null;
+			//clientDbModels = null;
 			addressClienteDbModel = null;
 
 		}
@@ -81,7 +82,7 @@ namespace EterPharmaPro.Views.Manipulados
 		private async void CreateManipulados_Load(object sender, EventArgs e)
 		{
 
-			clientDbModels = await manipuladoController.GetAllClient();
+			//clientDbModels = await manipuladoController.GetAllClient();
 
 			CleanAll(null, null);
 
@@ -99,7 +100,7 @@ namespace EterPharmaPro.Views.Manipulados
 				textBox_nomeC.Text = manipulados.Client.NOME;
 				textBox5_tel.Text = manipulados.Client.PHONE.ReturnFormation(FormatationEnum.TELEFONE);
 
-				addressClienteDbModel = manipulados.Client?.AddressCliente?.FirstOrDefault();
+				addressClienteDbModel = manipulados?.AddressCliente;
 
 				textBox_log.Text = addressClienteDbModel?.ToString();
 				textBox_obsEnd.Text = addressClienteDbModel?.OBSERVACAO;
@@ -163,16 +164,15 @@ namespace EterPharmaPro.Views.Manipulados
 				{
 					return;
 				}
-				///////////////////////////// -------------------------- ARRUMAR 
 				clientSearch = tempSelect;
-				clientSearch.AddressCliente = new List<AddressClienteDbModel> { tempSelect.AddressCliente.FirstOrDefault() };
+				addressClienteDbModel = tempSelect.AddressCliente?.FirstOrDefault();
 
 				textBox_cpf.Text = tempSelect?.CPF.ReturnFormation(FormatationEnum.CPF);
 				textBox_rg.Text = tempSelect?.RG.ReturnFormation(FormatationEnum.RG);
 				textBox_nomeC.Text = tempSelect?.NOME;
 				textBox5_tel.Text = tempSelect?.PHONE.ReturnFormation(FormatationEnum.TELEFONE);
-				textBox_log.Text = tempSelect.AddressCliente.FirstOrDefault()?.ToString() ?? string.Empty;
-				textBox_obsEnd.Text = tempSelect.AddressCliente.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
+				textBox_log.Text = tempSelect.AddressCliente?.FirstOrDefault()?.ToString() ?? string.Empty;
+				textBox_obsEnd.Text = tempSelect.AddressCliente?.FirstOrDefault()?.OBSERVACAO ?? string.Empty;
 
 			}
 			catch (Exception ex)
@@ -240,7 +240,8 @@ namespace EterPharmaPro.Views.Manipulados
 						CPF = textBox_cpf.Text.ReturnInt(),
 						RG = textBox_rg.Text.ReturnInt(),
 						NOME = textBox_nomeC.Text,
-						PHONE = textBox5_tel.Text.ReturnInt()
+						PHONE = textBox5_tel.Text.ReturnInt(),
+						//AddressCliente = new List<AddressClienteDbModel> { addressClienteDbModel }
 					},
 					AddressCliente = addressClienteDbModel,
 					MedManipulation = list,
@@ -252,7 +253,7 @@ namespace EterPharmaPro.Views.Manipulados
 				};
 
 				EnumManipulado enumManipulado = SelectPrint.Show();
-				if (enumManipulado == EnumManipulado.NONE) return;
+				// if (enumManipulado == EnumManipulado.NONE) return;
 
 				if (await manipuladoController.PrintDocManipulado(manipulacaoModel, enumManipulado, edit))
 				{
@@ -274,7 +275,8 @@ namespace EterPharmaPro.Views.Manipulados
 
 		private void button_getAddress_Click(object sender, EventArgs e)
 		{
-			var temp = GetAddress.Show();
+
+			var temp = GetAddress.Show(addressClienteDbModel);
 
 			if (temp != null)
 			{

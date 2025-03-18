@@ -23,7 +23,7 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			});
 		}
 
-		public async Task<List<ClientDbModel>> GetCliente(string query) => EterCache.Instance.EterDb.ClientService.GetAllAsync((!string.IsNullOrEmpty(query) ? f => f.CPF == query || f.RG == query : null), i => i.AddressCliente).Result.ToList();
+		public async Task<List<ClientDbModel>> GetCliente(string query) => (await EterCache.Instance.EterDb.ClientService.GetAllAsync((!string.IsNullOrEmpty(query) ? f => f.CPF == query || f.RG == query : null), i => i.AddressCliente)).ToList();
 
 		public async Task<bool> PrintDocManipulado(ManipulationDbModel model, EnumManipulado enumManipulado, bool edit = false)
 		{
@@ -32,23 +32,29 @@ namespace EterPharmaPro.Controllers.Manipulacao
 			model.Situation = await EterCache.Instance.EterDb.SituationService.GetByAsync(f => f.ID == model.ID_SITUCAO);
 			model.Payment = await EterCache.Instance.EterDb.PaymentService.GetByAsync(f => f.ID == model.ID_FORMAPAGAMENTO);
 			model.DeliveryMethod = await EterCache.Instance.EterDb.DeliveryMethodService.GetByAsync(f => f.ID == model.ID_MODOENTREGA);
+			//model.AddressCliente = model?.Client?.AddressCliente?.FirstOrDefault();
 
-			try
+
+			if (enumManipulado != EnumManipulado.NONE)
 			{
-				switch (enumManipulado)
+				try
 				{
-					case EnumManipulado.P_80:
-						manipuladoService.PrintDocManipulado80mm(model);
-						break;
-					case EnumManipulado.A4:
-						manipuladoService.PrintDocManipuladoA4(model);
-						break;
+					switch (enumManipulado)
+					{
+						case EnumManipulado.P_80:
+							manipuladoService.PrintDocManipulado80mm(model);
+							break;
+						case EnumManipulado.A4:
+							manipuladoService.PrintDocManipuladoA4(model);
+							break;
+					}
+				}
+				catch (Exception ex)
+				{
+					ex.ErrorGet();
 				}
 			}
-			catch (Exception ex)
-			{
-				ex.ErrorGet();
-			}
+
 			model.Situation = null;
 			model.Payment = null;
 			model.DeliveryMethod = null;
@@ -59,37 +65,19 @@ namespace EterPharmaPro.Controllers.Manipulacao
 				ClientDbModel client = model.Client;
 				AddressClienteDbModel address = model.AddressCliente;
 
-
+				client.AddressCliente = null;
 				model.AddressCliente = null;
 				model.Client = null;
 
 
-
-				if (client.ID != null && (await EterCache.Instance.EterDb.ClientService.GetByAsync(f => f.ID == client.ID) != null))
-				{
-					client = await EterCache.Instance.EterDb.ClientService.UpdateAsync(client);
-				}
-				else
-				{
-					client = await EterCache.Instance.EterDb.ClientService.AddAsync(client);
-				}
-
-				if (address.ID != null && (await EterCache.Instance.EterDb.AddressService.GetByAsync(f => f.ID == client.ID) != null))
-				{
-					address.ID_CLIENT = client.ID;
-					address = await EterCache.Instance.EterDb.AddressService.UpdateAsync(address);
-				}
-				else
-				{
-					address = await EterCache.Instance.EterDb.AddressService.AddAsync(address);
-				}
-
-
-
+				client = await EterCache.Instance.EterDb.ClientService.AddOrUpdateAsync(client);
+				address.ID_CLIENT = client.ID;
+				address = await EterCache.Instance.EterDb.AddressService.AddOrUpdateAsync(address);
+				
 				model.ID_CLIENTE = client.ID;
 				model.ID_ENDERECO = address.ID;
 
-				var tempMeds = await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == model.ID,I=>I.MedManipulation);
+				var tempMeds = await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == model.ID, I => I.MedManipulation);
 				if (tempMeds != null)
 				{
 					foreach (var item in tempMeds.MedManipulation)
@@ -97,19 +85,24 @@ namespace EterPharmaPro.Controllers.Manipulacao
 						await EterCache.Instance.EterDb.MedControlService.RemoveAsync((int)item.ID);
 					}
 				}
-				if (model.ID != null && (await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == client.ID) != null))
-				{
-					model = await EterCache.Instance.EterDb.ManipulationService.UpdateAsync(model);
-				}
-				else
-				{
-					model = await EterCache.Instance.EterDb.ManipulationService.AddAsync(model);
-				}
 
-
+				model = await EterCache.Instance.EterDb.ManipulationService.AddOrUpdateAsync(model);
 
 
 				return true;
+				//if (model.ID != null && (await EterCache.Instance.EterDb.ManipulationService.GetByAsync(f => f.ID == client.ID) != null))
+				//{
+				//	model = await EterCache.Instance.EterDb.ManipulationService.UpdateAsync(model);
+				//}
+				//else
+				//{
+				//	model = await EterCache.Instance.EterDb.ManipulationService.AddAsync(model);
+				//}
+
+
+
+
+				//return true;
 			}
 			catch (Exception ex)
 			{

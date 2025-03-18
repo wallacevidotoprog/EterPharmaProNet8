@@ -9,18 +9,42 @@ namespace EterPharmaPro.Utils.Extencions
 		private ValidatorFields validatorFields = new ValidatorFields();
 
 		public static AddressClienteDbModel addressClienteDbModel { get; private set; }
+		private AddressClienteDbModel tempAddressClienteDbModel;
 
 		public GetAddress()
 		{
 			InitializeComponent();
 
+
+			comboBox_logadouro.Text = null;
+			comboBox_bairro.Text = null;
+			comboBox_cidade.Text = null;
+			comboBox_uf.Text = null;
+			textBox_number.Text = null;
+			textBox_obs.Text = null;
+
 			validatorFields.SetListControl(new List<Control> { comboBox_logadouro, comboBox_bairro, comboBox_cidade, comboBox_uf, textBox_number });
+
+			if (addressClienteDbModel != null)
+			{
+				tempAddressClienteDbModel = addressClienteDbModel;
+
+				comboBox_logadouro.Text = addressClienteDbModel?.PLACE;
+				comboBox_bairro.Text = addressClienteDbModel?.ZONE;
+				comboBox_cidade.Text = addressClienteDbModel?.CITY;
+				comboBox_uf.Text = addressClienteDbModel?.UF;
+				textBox_number.Text = addressClienteDbModel?.NUMBER.ToString();
+				textBox_obs.Text = addressClienteDbModel?.OBSERVACAO;
+			}
 
 		}
 
-		public static new AddressClienteDbModel Show()
+		public static new AddressClienteDbModel Show(AddressClienteDbModel addressCliente = null)
 		{
-
+			if (addressCliente != null)
+			{
+				addressClienteDbModel = addressCliente;
+			}
 			using (GetAddress inputDate = new GetAddress())
 			{
 				return inputDate.ShowDialog() == DialogResult.OK ? addressClienteDbModel : null;
@@ -52,8 +76,10 @@ namespace EterPharmaPro.Utils.Extencions
 		{
 			if (validatorFields.ValidateFields())
 			{
+
 				addressClienteDbModel = new AddressClienteDbModel
 				{
+					ID = null,
 					ZONE = comboBox_bairro.Text,
 					CITY = comboBox_cidade.Text,
 					UF = comboBox_uf.Text,
@@ -61,6 +87,10 @@ namespace EterPharmaPro.Utils.Extencions
 					NUMBER = Convert.ToInt32(textBox_number.Text.ReturnInt()),
 					OBSERVACAO = textBox_obs.Text
 				};
+				if (tempAddressClienteDbModel != null && tempAddressClienteDbModel.ToString() == addressClienteDbModel.ToString())
+				{
+					addressClienteDbModel.ID = tempAddressClienteDbModel.ID;
+				}
 				base.DialogResult = DialogResult.OK;
 			}
 		}

@@ -377,7 +377,7 @@
 			// 
 			ePictureBox_search.Cursor = Cursors.Hand;
 			ePictureBox_search.Image = Properties.Resources.lupa;
-			ePictureBox_search.Location = new Point(450, 51);
+			ePictureBox_search.Location = new Point(450, 44);
 			ePictureBox_search.Margin = new Padding(4, 3, 4, 3);
 			ePictureBox_search.Name = "ePictureBox_search";
 			ePictureBox_search.Size = new Size(37, 38);

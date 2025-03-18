@@ -405,14 +405,58 @@ namespace EterPharmaPro.Utils.Extencions
 						return null;
 					}
 					ClientDbModel tempSelect = clienteModels[retList];
-					//tempSelect.AddressCliente.Add = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
+
+					if (tempSelect.AddressCliente.Count > 0)
+					{
+
+						tempEnd = new object[tempSelect.AddressCliente.Count];
+						var tempAddress = tempSelect.AddressCliente.ToList();
+						for (int i = 0; i < tempEnd.Length; i++)
+						{
+							tempEnd[i] = new object[2]
+							{
+							i,
+							tempAddress[i].ToString()
+							};
+						}
+						retList = InputList.Show(tempEnd, "Endereço");
+						tempSelect.AddressCliente = null;
+						if (retList == -1)
+						{
+							return tempSelect;
+						}
+						tempSelect.AddressCliente = new List<AddressClienteDbModel> { tempAddress[retList] };
+					}
+
 					return tempSelect;
 
 				}
 				else
 				{
-					ClientDbModel tempSelect = clienteModels[0];
-					//tempSelect.ENDERECO = ((List<EnderecoClienteDbModel>)tempSelect.ENDERECO).GetEnderecoModel();
+					ClientDbModel tempSelect = clienteModels?.FirstOrDefault() ;
+
+					if (tempSelect.AddressCliente.Count > 0)
+					{
+
+						tempEnd = new object[tempSelect.AddressCliente.Count];
+						var tempAddress = tempSelect.AddressCliente.ToList();
+						for (int i = 0; i < tempEnd.Length; i++)
+						{
+							tempEnd[i] = new object[2]
+							{
+							i,
+							tempAddress[i].ToString()
+							};
+						}
+						retList = InputList.Show(tempEnd, "Endereço");
+						tempSelect.AddressCliente = null;
+						if (retList == -1)
+						{
+							return tempSelect;
+						}
+						tempSelect.AddressCliente = new List<AddressClienteDbModel> { tempAddress[retList] };
+					}
+
 					return tempSelect;
 				}
 			}
