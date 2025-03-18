@@ -3,7 +3,6 @@ using EterLibrary.Domain.Entities.DbModels;
 using EterPharmaPro.Core;
 using EterPharmaPro.Models;
 using EterPharmaPro.Utils.Extencions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using Timer = System.Windows.Forms.Timer;
 
 namespace EterPharmaPro.Views
@@ -57,31 +56,38 @@ namespace EterPharmaPro.Views
 
 		private void ePictureBox_acess_Click(object sender, EventArgs e)
 		{
-
-			UserDbModel temp = userModels[comboBox_user.SelectedIndex];
-
-
-
-			if (!string.IsNullOrEmpty(temp.PASS))
+			try
 			{
-				if (!string.IsNullOrEmpty(textBox_pass.Text) && PasswordHelper.VerifyPassword(textBox_pass.Text, temp.PASS))
+				UserDbModel temp = userModels[comboBox_user.SelectedIndex];
+
+
+
+				if (!string.IsNullOrEmpty(temp.PASS))
+				{
+					if (!string.IsNullOrEmpty(textBox_pass.Text) && PasswordHelper.VerifyPassword(textBox_pass.Text, temp.PASS))
+					{
+						loginSucced = true;
+						EterCache.Instance.UserDbModel = temp;
+						this.Close();
+					}
+					else
+					{
+						MessageBox.Show("Sua senha está incorreta.", "ALGO ERRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+					return;
+				}
+				else
 				{
 					loginSucced = true;
 					EterCache.Instance.UserDbModel = temp;
 					this.Close();
 				}
-				else
-				{
-					MessageBox.Show("Sua senha está incorreta.", "ALGO ERRADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-				return;
 			}
-			else
+			catch (Exception ex)
 			{
-				loginSucced = true;
-				EterCache.Instance.UserDbModel = temp;
-				this.Close();
+				ex.ErrorGet();
 			}
+
 		}
 
 		private void AcesUser_LoadAsync(object sender, EventArgs e)
@@ -146,7 +152,7 @@ namespace EterPharmaPro.Views
 		private void ePictureBox_close_Click(object sender, EventArgs e)
 		{
 			pClose = exit = true;
-			
+
 			Application.Exit();
 		}
 	}

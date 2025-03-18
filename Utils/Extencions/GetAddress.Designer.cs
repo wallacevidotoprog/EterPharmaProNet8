@@ -42,9 +42,9 @@
 			label1 = new Label();
 			label4 = new Label();
 			textBox_number = new TextBox();
-			label6 = new Label();
-			label7 = new Label();
 			textBox_obs = new TextBox();
+			label7 = new Label();
+			label6 = new Label();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_save).BeginInit();
 			groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)ePictureBox_search).BeginInit();
@@ -82,7 +82,7 @@
 			textBox_cep.Margin = new Padding(4, 3, 4, 3);
 			textBox_cep.Name = "textBox_cep";
 			textBox_cep.Size = new Size(385, 33);
-			textBox_cep.TabIndex = 15;
+			textBox_cep.TabIndex = 0;
 			// 
 			// groupBox1
 			// 
@@ -115,7 +115,7 @@
 			comboBox_uf.Location = new Point(650, 274);
 			comboBox_uf.Name = "comboBox_uf";
 			comboBox_uf.Size = new Size(100, 33);
-			comboBox_uf.TabIndex = 17;
+			comboBox_uf.TabIndex = 5;
 			// 
 			// ePictureBox_search
 			// 
@@ -137,7 +137,7 @@
 			comboBox_cidade.Location = new Point(7, 274);
 			comboBox_cidade.Name = "comboBox_cidade";
 			comboBox_cidade.Size = new Size(637, 33);
-			comboBox_cidade.TabIndex = 17;
+			comboBox_cidade.TabIndex = 4;
 			// 
 			// comboBox_bairro
 			// 
@@ -146,7 +146,7 @@
 			comboBox_bairro.Location = new Point(7, 210);
 			comboBox_bairro.Name = "comboBox_bairro";
 			comboBox_bairro.Size = new Size(743, 33);
-			comboBox_bairro.TabIndex = 17;
+			comboBox_bairro.TabIndex = 3;
 			// 
 			// label5
 			// 
@@ -166,7 +166,7 @@
 			comboBox_logadouro.Location = new Point(7, 144);
 			comboBox_logadouro.Name = "comboBox_logadouro";
 			comboBox_logadouro.Size = new Size(636, 33);
-			comboBox_logadouro.TabIndex = 17;
+			comboBox_logadouro.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -210,18 +210,19 @@
 			textBox_number.Margin = new Padding(4, 3, 4, 3);
 			textBox_number.Name = "textBox_number";
 			textBox_number.Size = new Size(100, 33);
-			textBox_number.TabIndex = 15;
+			textBox_number.TabIndex = 2;
 			// 
-			// label6
+			// textBox_obs
 			// 
-			label6.AutoSize = true;
-			label6.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label6.Location = new Point(650, 116);
-			label6.Margin = new Padding(4, 0, 4, 0);
-			label6.Name = "label6";
-			label6.Size = new Size(100, 25);
-			label6.TabIndex = 16;
-			label6.Text = "NÚMERO:";
+			textBox_obs.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			textBox_obs.CharacterCasing = CharacterCasing.Upper;
+			textBox_obs.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			textBox_obs.Location = new Point(7, 349);
+			textBox_obs.Margin = new Padding(4, 3, 4, 3);
+			textBox_obs.Multiline = true;
+			textBox_obs.Name = "textBox_obs";
+			textBox_obs.Size = new Size(743, 60);
+			textBox_obs.TabIndex = 6;
 			// 
 			// label7
 			// 
@@ -234,17 +235,16 @@
 			label7.TabIndex = 16;
 			label7.Text = "OBSERVAÇÃO:";
 			// 
-			// textBox_obs
+			// label6
 			// 
-			textBox_obs.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			textBox_obs.CharacterCasing = CharacterCasing.Upper;
-			textBox_obs.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			textBox_obs.Location = new Point(7, 349);
-			textBox_obs.Margin = new Padding(4, 3, 4, 3);
-			textBox_obs.Multiline = true;
-			textBox_obs.Name = "textBox_obs";
-			textBox_obs.Size = new Size(743, 60);
-			textBox_obs.TabIndex = 15;
+			label6.AutoSize = true;
+			label6.Font = new Font("Microsoft Tai Le", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(650, 116);
+			label6.Margin = new Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new Size(100, 25);
+			label6.TabIndex = 16;
+			label6.Text = "NÚMERO:";
 			// 
 			// GetAddress
 			// 
@@ -275,16 +275,16 @@
 		private GroupBox groupBox1;
 		private Label label2;
 		private Label label1;
-		private ComboBox comboBox_logadouro;
-		private ComboBox comboBox_bairro;
+		private  ComboBox comboBox_logadouro;
+		private  ComboBox comboBox_bairro;
 		private Label label4;
-		private ComboBox comboBox_cidade;
+		private  ComboBox comboBox_cidade;
 		private Label label5;
-		private ComboBox comboBox_uf;
-		private TextBox textBox_number;
+		private  ComboBox comboBox_uf;
+		private  TextBox textBox_number;
 		private Label label6;
 		private eControl.ePictureBox ePictureBox_search;
-		private TextBox textBox_obs;
+		private  TextBox textBox_obs;
 		private Label label7;
 	}
 }

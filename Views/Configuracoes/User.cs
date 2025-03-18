@@ -49,7 +49,7 @@ namespace EterPharmaPro.Views.Configuracoes
 				userModel.ID_LOJA = !string.IsNullOrEmpty(textBox_id.Text) ? Convert.ToUInt32(textBox_id.Text.ReturnInt()) : RenerateID();
 				userModel.NOME = textBox_nome.Text.ToUpper();
 
-				userModel.PASS = string.IsNullOrEmpty(textBox_pass.Text) ? null : textBox_pass.Text != userModel.PASS ? PasswordHelper.HasPassword(textBox_pass.Text):null;
+				userModel.PASS = string.IsNullOrEmpty(textBox_pass.Text) ? null : textBox_pass.Text != userModel.PASS ? PasswordHelper.HasPassword(textBox_pass.Text) : null;
 
 				userModel.ID_FUNCAO = positionModel.FirstOrDefault(x => x.ID == Convert.ToInt32(comboBox_funcao.SelectedValue)).ID;
 				userModel.STATUS = eSwitchControl_stats.Checked;
@@ -127,7 +127,7 @@ namespace EterPharmaPro.Views.Configuracoes
 
 			textBox_pass.Text = userModel.PASS;
 
-			comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexCbGeneric(userModel.Position.ID);
+			comboBox_funcao.SelectedIndex = comboBox_funcao.ReturnIndexCbGeneric(userModel?.Position?.ID);
 			eSwitchControl_stats.Checked = userModel.STATUS;
 
 			isEdit = true;

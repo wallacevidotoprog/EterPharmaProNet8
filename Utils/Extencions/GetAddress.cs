@@ -16,12 +16,7 @@ namespace EterPharmaPro.Utils.Extencions
 			InitializeComponent();
 
 
-			comboBox_logadouro.Text = null;
-			comboBox_bairro.Text = null;
-			comboBox_cidade.Text = null;
-			comboBox_uf.Text = null;
-			textBox_number.Text = null;
-			textBox_obs.Text = null;
+			Clear();
 
 			validatorFields.SetListControl(new List<Control> { comboBox_logadouro, comboBox_bairro, comboBox_cidade, comboBox_uf, textBox_number });
 
@@ -38,9 +33,18 @@ namespace EterPharmaPro.Utils.Extencions
 			}
 
 		}
-
+		private void Clear()
+		{
+			comboBox_logadouro.Text = null;
+			comboBox_bairro.Text = null;
+			comboBox_cidade.Text = null;
+			comboBox_uf.Text = null;
+			textBox_number.Text = null;
+			textBox_obs.Text = null;
+		}
 		public static new AddressClienteDbModel Show(AddressClienteDbModel addressCliente = null)
 		{
+
 			if (addressCliente != null)
 			{
 				addressClienteDbModel = addressCliente;
@@ -94,5 +98,13 @@ namespace EterPharmaPro.Utils.Extencions
 				base.DialogResult = DialogResult.OK;
 			}
 		}
+
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			addressClienteDbModel = null;
+			base.OnFormClosing(e);
+			this.Dispose();
+		}
+
 	}
 }

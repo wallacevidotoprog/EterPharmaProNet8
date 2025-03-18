@@ -139,7 +139,7 @@ namespace EterPharmaPro.Controllers.Configs
 			return tabela;
 		}
 
-		public async Task<UserDbModel> GetUser(long? value) => EterCache.Instance.EterDb.UserService.GetByAsync(f => f.ID == value).Result;
+		public async Task<UserDbModel> GetUser(long? value) => EterCache.Instance.EterDb.UserService.GetByAsync(f => f.ID == value, i => i.Position).Result;
 
 		public ProdutosModel GetProdutoCC(object tempCod)
 		{
