@@ -378,7 +378,7 @@ namespace EterPharmaPro.Views.Validade
 					return;
 				}
 				int temp = int.Parse(listView1.SelectedItems[0]?.SubItems[0].Text);
-				if (MessageBox.Show("Deseja excluir esse item ?\n" + listView1.SelectedItems[0]?.SubItems[3].Text, "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK && temp >= 0)
+				if (MessageBox.Show("Deseja excluir esse item ?\n" + listView1.SelectedItems[0]?.SubItems[2].Text, "Excluir Item", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK && temp >= 0)
 				{
 					if (await validadeController.DeleteProduto(temp))
 					{

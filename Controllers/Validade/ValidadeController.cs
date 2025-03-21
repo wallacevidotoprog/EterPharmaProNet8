@@ -238,23 +238,25 @@ namespace EterPharmaPro.Controllers.Validade
 		{
 			try
 			{
-				ValityDbModal tempVT = await EterCache.Instance.EterDb.ValityService.GetByAsync(p => p.ID == vality_id, i => i.ProductValidades, i => i.ProductValidades.Select(x => x.Category));
+				ValityDbModal tempVT = await EterCache.Instance.EterDb.ValityService.GetByAsync(p => p.ID == vality_id, i => i.ProductValidades, i => i.UserModel);
 
-				UserDbModel us = tempVT != null ? await EterCache.Instance.EterDb.UserService.GetByAsync(u => u.ID == tempVT.ID_USER) : null;
-
-				List<CategoryDbModal> cat = tempVT?.ProductValidades.Select(x => x.Category).ToList();
-
-
-				if (tempVT is null || us is null)
+				if (tempVT is null)
 				{
-					throw new Exception($"Vality or User not found.\nValityDbModal=>{tempVT}\nUserDbModel=>{us}");
+					throw new Exception($"Vality or User not found.\nValityDbModal=>{tempVT}\nUserDbModel=>{tempVT.UserModel}");
+				}
+
+				List<CategoryDbModal> cat = (await EterCache.Instance.EterDb.CategoryService.GetAllAsync(f => f.ID_USER == tempVT.ID_USER)).ToList();
+
+				foreach (var item in tempVT?.ProductValidades)
+				{
+					item.Category = cat == null ? new CategoryDbModal { ID = 1, NAME = "SEM CATEGORIA" } : cat.FirstOrDefault(x => x.ID == item.ID_CATEGORIA);
 				}
 
 				return await WriteValityExport.ExportValityExcel(
 					new ValityExportModel
 					{
-						ID_LOJA = us.ID_LOJA,
-						NAME = us.NOME,
+						ID_LOJA = tempVT.UserModel.ID_LOJA,
+						NAME = tempVT.UserModel.NOME,
 						ValityDbModal = tempVT,
 						Category = cat,
 					}, filePath, true);

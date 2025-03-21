@@ -49,7 +49,6 @@
 			contextMenuStrip_produtos = new ContextMenuStrip(components);
 			eDITARToolStripMenuItem = new ToolStripMenuItem();
 			eXCLUIRToolStripMenuItem = new ToolStripMenuItem();
-			iMPORTARPRODUTOSToolStripMenuItem = new ToolStripMenuItem();
 			groupBox_ne = new GroupBox();
 			ePictureBox_create = new EterPharmaPro.Utils.eControl.ePictureBox();
 			groupBox_insert = new GroupBox();
@@ -289,15 +288,15 @@
 			// 
 			// contextMenuStrip_produtos
 			// 
-			contextMenuStrip_produtos.Items.AddRange(new ToolStripItem[] { eDITARToolStripMenuItem, eXCLUIRToolStripMenuItem, iMPORTARPRODUTOSToolStripMenuItem });
+			contextMenuStrip_produtos.Items.AddRange(new ToolStripItem[] { eDITARToolStripMenuItem, eXCLUIRToolStripMenuItem });
 			contextMenuStrip_produtos.Name = "contextMenuStrip1";
-			contextMenuStrip_produtos.Size = new Size(193, 70);
+			contextMenuStrip_produtos.Size = new Size(181, 70);
 			// 
 			// eDITARToolStripMenuItem
 			// 
 			eDITARToolStripMenuItem.Image = Properties.Resources.arquivo_v;
 			eDITARToolStripMenuItem.Name = "eDITARToolStripMenuItem";
-			eDITARToolStripMenuItem.Size = new Size(192, 22);
+			eDITARToolStripMenuItem.Size = new Size(180, 22);
 			eDITARToolStripMenuItem.Text = "EDITAR";
 			eDITARToolStripMenuItem.Click += eDITARToolStripMenuItem_Click;
 			// 
@@ -305,17 +304,9 @@
 			// 
 			eXCLUIRToolStripMenuItem.Image = Properties.Resources.arquivo__;
 			eXCLUIRToolStripMenuItem.Name = "eXCLUIRToolStripMenuItem";
-			eXCLUIRToolStripMenuItem.Size = new Size(192, 22);
+			eXCLUIRToolStripMenuItem.Size = new Size(180, 22);
 			eXCLUIRToolStripMenuItem.Text = "EXCLUIR";
 			eXCLUIRToolStripMenuItem.Click += eXCLUIRToolStripMenuItem_ClickAsync;
-			// 
-			// iMPORTARPRODUTOSToolStripMenuItem
-			// 
-			iMPORTARPRODUTOSToolStripMenuItem.Image = Properties.Resources.inserir;
-			iMPORTARPRODUTOSToolStripMenuItem.Name = "iMPORTARPRODUTOSToolStripMenuItem";
-			iMPORTARPRODUTOSToolStripMenuItem.Size = new Size(192, 22);
-			iMPORTARPRODUTOSToolStripMenuItem.Text = "IMPORTAR PRODUTOS";
-			iMPORTARPRODUTOSToolStripMenuItem.Click += iMPORTARPRODUTOSToolStripMenuItem_Click;
 			// 
 			// groupBox_ne
 			// 
